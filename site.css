@@ -280,7 +280,7 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 
 /* ---- video hero (Kuala Lumpur) — emerges from the cloud dive ---------- */
 .vhero{position:relative;height:160vh;margin-top:-100vh;z-index:2;background:transparent;font-family:var(--font-sans)}
-.vhero__stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden;opacity:0}
+.vhero__stage{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden;opacity:0;background:#03040b}
 .vhero *{font-family:var(--font-sans)}
 .vhero .vhead,.vhero .vhead *{font-family:var(--font-display)}
 .vhero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transform-origin:center;will-change:transform}

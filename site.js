@@ -128,7 +128,7 @@
       // in underneath it, so the hand-off is one continuous wash of light — never a
       // flat white wall that lingers for a screen of scrolling.
       if (flash) flash.style.opacity = String(clamp(0.86, 1.0, p) * 0.82);
-      if (vstage) vstage.style.opacity = String(clamp(0.88, 1.0, p));
+      if (vstage) vstage.style.opacity = p < 0.999 ? '0' : '1';
       const stage = p < 0.16 ? -1 : p < 0.46 ? 0 : p < 0.7 ? 1 : p < 0.9 ? 2 : -1;
       beatEls.forEach((b, i) => b.classList.toggle('active', i === stage));
     };
@@ -220,7 +220,7 @@
     // then you dwell in KL. The whole white passage is short and always moving.
     const reveal = pr => {
       // the journey cross-fades the stage in by p=1; from there keep it solid
-      if (pr > 0.004 && stage) stage.style.opacity = '1';
+      if (stage) stage.style.opacity = pr > 0.004 ? '1' : '0';
       if (veil) veil.style.opacity = String(1 - ss(pr, 0, 0.26));
       if (bg) bg.style.transform = 'scale(' + (1.12 - 0.12 * ss(pr, 0, 0.65)).toFixed(3) + ')';
       if (pad) pad.style.opacity = String(ss(pr, 0.22, 0.5));
