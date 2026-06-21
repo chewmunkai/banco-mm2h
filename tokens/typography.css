@@ -1,0 +1,60 @@
+/* ── Banco MM2H · Typography ─────────────────────────────────────────────
+   Bricolage Grotesque (display) carries a modern, characterful authority.
+   Hanken Grotesk (sans) does the working text. Warm, humanist scale. */
+
+:root {
+  --font-display: 'Bricolage Grotesque', -apple-system, 'Segoe UI', sans-serif;
+  --font-sans:    'Hanken Grotesk', -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:    'Spline Sans Mono', ui-monospace, 'SF Mono', monospace;
+  /* legacy alias — older specimens referenced --font-serif for display */
+  --font-serif:   var(--font-display);
+
+  /* Type scale (1.250 major-third, rounded) */
+  --text-xs:   0.75rem;   /* 12 */
+  --text-sm:   0.875rem;  /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-md:   1.125rem;  /* 18 */
+  --text-lg:   1.375rem;  /* 22 */
+  --text-xl:   1.75rem;   /* 28 */
+  --text-2xl:  2.25rem;   /* 36 */
+  --text-3xl:  2.9375rem; /* 47 */
+  --text-4xl:  3.8125rem; /* 61 */
+  --text-5xl:  5rem;      /* 80 */
+
+  /* Weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold: 600;
+  --weight-bold:    700;
+  --weight-black:   800;
+
+  /* Line heights */
+  --leading-tight:  1.08;
+  --leading-snug:   1.22;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.65;
+
+  /* Tracking */
+  --tracking-tight:  -0.025em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.04em;
+  --tracking-caps:   0.16em;  /* eyebrows */
+
+  /* Semantic roles */
+  --display-font:   var(--font-display);
+  --display-weight: var(--weight-bold);
+  --heading-font:   var(--font-display);
+  --body-font:      var(--font-sans);
+  --label-font:     var(--font-sans);
+  --eyebrow-font:   var(--font-sans);
+}
+
+/* Eyebrow / overline — uppercase brand convention */
+.mm-eyebrow {
+  font-family: var(--eyebrow-font);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-caps);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}

@@ -1,0 +1,302 @@
+<!-- @dsCard group="Marketing Website" viewport="1320x900" name="Banco MM2H · Immersive Site" subtitle="White welcoming site with an Earth→Kuala Lumpur scroll intro & 3D icons" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Banco MM2H — A second home in Malaysia</title>
+<link rel="stylesheet" href="styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./site.css">
+<script>if(!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('anim');
+setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classList.add('nojourney');document.querySelectorAll('.reveal').forEach(function(e){e.classList.add('in');});document.querySelectorAll('[data-count]').forEach(function(e){e.textContent=e.dataset.count+(e.dataset.suffix||'');});}},6000);</script>
+</head>
+<body class="immersive">
+
+  <div class="progress"><i></i></div>
+
+  <!-- nav -->
+  <header class="nav">
+    <a href="#top" data-scroll-to="#top" data-cursor="Top">
+      <img class="logo-light" src="assets/logo-full-light.svg" alt="Banco MM2H" height="36">
+      <img class="logo-dark" src="assets/logo-full.svg" alt="Banco MM2H" height="36">
+    </a>
+    <nav class="nav__links">
+      <a href="#hub" data-scroll-to="#hub">Our hub</a>
+      <a href="#pathways" data-scroll-to="#pathways">Pathways</a>
+      <a href="#education" data-scroll-to="#education">Schooling</a>
+      <a href="#property" data-scroll-to="#property">Property</a>
+      <a href="#life" data-scroll-to="#life">Life here</a>
+      <a href="#faq" data-scroll-to="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn--primary magnetic" data-strength="0.5" href="#cta" data-scroll-to="#cta" data-cursor="Let's talk"><span class="btn__l">Begin application <span class="btn__arrow">↗</span></span></a>
+  </header>
+
+  <!-- JOURNEY: space → Earth → Kuala Lumpur -->
+  <section class="journey" id="top">
+    <div class="journey__pin">
+      <canvas id="journey-canvas" data-base="assets/earth/"></canvas>
+      <div class="journey__veil"></div>
+      <div class="journey__flash"></div>
+      <div class="journey__caps">
+        <div class="jhero">
+          <div class="jhero__tl">
+            <h1 class="jtitle jtitle--top" data-depth="0.4"><span data-split data-split-hero>A second</span><br><span data-split data-split-hero>home in</span></h1>
+            <div class="jlead jhero__fade">
+              <p class="jlead__sub">Scroll to descend — from Earth to Kuala Lumpur. One eco-system hub for visas, property, schooling, banking and tax, all the way down.</p>
+              <div class="jlead__ctas">
+                <a class="btn btn--primary magnetic" data-strength="0.5" href="#welcome" data-scroll-to="#welcome" data-cursor="Descend"><span class="btn__l">Begin your descent <span class="btn__arrow">↓</span></span></a>
+                <a class="btn btn--ghost btn--on-dark magnetic" data-strength="0.4" href="#hub" data-scroll-to="#hub"><span class="btn__l">Explore the hub</span></a>
+              </div>
+            </div>
+          </div>
+          <h1 class="jtitle jtitle--bottom" data-depth="0.7"><span data-split data-split-hero>Malaysia</span><span class="script" data-split data-split-hero>thoughtfully</span></h1>
+          <span class="jside jside--l jhero__fade">MM2H · Est. 2014</span>
+          <span class="jside jside--r jhero__fade">Kuala Lumpur · 3°08′N</span>
+        </div>
+        <div class="beat"><div class="k">Leaving orbit</div><div class="l">A calmer life is closer than you think.</div></div>
+        <div class="beat"><div class="k">Approaching Malaysia</div><div class="l">Tropical, affordable, world-class healthcare.</div></div>
+        <div class="beat"><div class="k">Touchdown · Kuala Lumpur</div><div class="l">Welcome to your second home.</div></div>
+      </div>
+      <div class="journey__rail"><i></i></div>
+      <div class="scrollcue"><span>Scroll to descend</span><span class="line"></span></div>
+    </div>
+  </section>
+
+  <!-- VIDEO HERO (Kuala Lumpur) — emerges from the cloud dive -->
+  <section class="vhero" id="welcome">
+   <div class="vhero__stage">
+    <video class="vhero__bg" autoplay loop muted playsinline preload="auto" poster="assets/photos/kl-hero.jpg">
+      <source src="assets/video/kl-hero.mp4" type="video/mp4">
+    </video>
+    <div class="vhero__veil"></div>
+    <div class="vhero__mask" aria-hidden="true"></div>
+    <div class="vhero__clouds" aria-hidden="true">
+      <span class="vcloud" style="left:-10%;top:8%" data-s="1.3" data-sp="1.15"></span>
+      <span class="vcloud" style="left:42%;top:2%" data-s="1.7" data-sp="0.8"></span>
+      <span class="vcloud" style="left:76%;top:16%" data-s="1.4" data-sp="1.3"></span>
+      <span class="vcloud" style="left:14%;top:34%" data-s="1.6" data-sp="1.0"></span>
+      <span class="vcloud" style="left:58%;top:46%" data-s="1.5" data-sp="1.25"></span>
+      <span class="vcloud" style="left:-6%;top:60%" data-s="1.9" data-sp="0.9"></span>
+      <span class="vcloud" style="left:82%;top:66%" data-s="1.5" data-sp="1.1"></span>
+      <span class="vcloud" style="left:30%;top:80%" data-s="1.7" data-sp="1.2"></span>
+    </div>
+    <div class="vhero__pad">
+      <nav class="vnav liquid-glass">
+        <a class="vnav__logo" href="#top" data-scroll-to="#top">Banco</a>
+        <div class="vnav__links">
+          <a href="#hub" data-scroll-to="#hub">Our hub</a>
+          <a href="#pathways" data-scroll-to="#pathways">Pathways</a>
+          <a href="#property" data-scroll-to="#property">Property</a>
+          <a href="#faq" data-scroll-to="#faq">FAQ</a>
+        </div>
+        <a class="vnav__cta" href="#cta" data-scroll-to="#cta">Start a chat</a>
+      </nav>
+      <div class="vhero__content">
+        <div class="vhero__main">
+          <h1 class="vhead" data-vhead>Your second home,
+in Kuala Lumpur.</h1>
+          <p class="vsub" data-vfade="800">A calmer, well-arranged life in Malaysia — visas, property, schooling and banking, handled end to end by one advisor.</p>
+          <div class="vbtns" data-vfade="1200">
+            <a class="vbtn vbtn--solid" href="#cta" data-scroll-to="#cta">Start a chat</a>
+            <a class="vbtn vbtn--glass liquid-glass" href="#hub" data-scroll-to="#hub">Explore now</a>
+          </div>
+        </div>
+        <div class="vtagwrap" data-vfade="1400">
+          <div class="vtag liquid-glass">Live. Invest. Belong.</div>
+        </div>
+      </div>
+    </div>
+   </div>
+  </section>
+
+  <!-- ONE HUB pillars -->
+  <section class="section" id="hub" style="background:var(--ivory)">
+    <div class="wrap">
+      <div style="max-width:640px">
+        <span class="eyebrow reveal">One hub, every step</span>
+        <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-4);margin-top:18px;color:var(--ink)">Everything a second home needs, <span class="accent text-grad">under one roof.</span></h2>
+      </div>
+      <div class="pillars">
+        <article class="pcard reveal" data-cursor="Visas"><span class="idx">01</span><img src="assets/icons-3d/visa.svg" alt=""><h3>Visa &amp; residency</h3><p>MM2H application, renewals and dependent passes — lodged and tracked for you.</p></article>
+        <article class="pcard reveal" data-delay="80" data-cursor="Property"><span class="idx">02</span><img src="assets/icons-3d/property.svg" alt=""><h3>Property concierge</h3><p>Curated homes to buy or lease, with legal checks and financing partners.</p></article>
+        <article class="pcard reveal" data-delay="160" data-cursor="Schools"><span class="idx">03</span><img src="assets/icons-3d/education.svg" alt=""><h3>Schools &amp; education</h3><p>International school placement and student passes for your children.</p></article>
+        <article class="pcard reveal" data-delay="240" data-cursor="Banking"><span class="idx">04</span><img src="assets/icons-3d/banking.svg" alt=""><h3>Banking &amp; tax</h3><p>Local accounts, fixed deposits and tax structuring with vetted advisors.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PATHWAYS (image cards) -->
+  <section class="section" id="pathways">
+    <div class="wrap">
+      <div style="max-width:560px">
+        <span class="eyebrow reveal">Choose your pathway</span>
+        <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">Three routes to Malaysian residency</h2>
+      </div>
+      <div class="paths">
+        <article class="pathc reveal" data-cursor="Retirement"><image-slot id="path-retire" src="assets/photos/path-retire.jpg" placeholder="Photo · retirees by the coast"></image-slot><div class="pathc__b"><div class="num">01</div><h3>Retirement</h3><p>For those 50+ seeking a calm, affordable base with world-class healthcare.</p><span class="more">From RM 1M deposit →</span></div></article>
+        <article class="pathc reveal" data-delay="100" data-cursor="Business"><image-slot id="path-biz" src="assets/photos/path-biz.jpg" placeholder="Photo · KL business district"></image-slot><div class="pathc__b"><div class="num">02</div><h3>Business</h3><p>For entrepreneurs and investors establishing a regional presence.</p><span class="more">Bespoke structuring →</span></div></article>
+        <article class="pathc reveal" data-delay="200" data-cursor="Education"><image-slot id="path-edu" src="assets/photos/path-edu.jpg" placeholder="Photo · international school"></image-slot><div class="pathc__b"><div class="num">03</div><h3>Education</h3><p>For families prioritising international schooling for their children.</p><span class="more">Student passes included →</span></div></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION (children & schooling) -->
+  <section class="section" id="education" style="background:var(--ivory)">
+    <div class="wrap">
+      <div class="feature">
+        <div class="feature__copy">
+          <span class="eyebrow reveal">Children &amp; schooling</span>
+          <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">Your children, settled and <span class="accent text-grad">thriving.</span></h2>
+          <p class="reveal" data-delay="120" style="margin-top:18px">Malaysia is one of Asia's most established homes for international education — and your children can enrol on a dependent or student pass arranged right alongside your MM2H application.</p>
+          <ul class="flist reveal" data-delay="160">
+            <li><b>Curricula on your doorstep</b> — British (IGCSE &amp; A-Levels), International Baccalaureate, American, Australian and Canadian programmes across Kuala Lumpur, Penang and Iskandar Puteri.</li>
+            <li><b>From day schools to British boarding names</b> — we shortlist by curriculum, commute and budget, then arrange the visits.</li>
+            <li><b>Passes for every child</b> — dependent and student passes lodged with your application and renewed in step with your stay.</li>
+            <li><b>A clear path to university</b> — Malaysia hosts branch campuses of UK and Australian universities, with onward routes to the UK, US and beyond.</li>
+          </ul>
+          <p class="fnote reveal" data-delay="200">We handle placement, registration and the paperwork; you choose the school that feels right.</p>
+        </div>
+        <div class="feature__media reveal" data-delay="80">
+          <image-slot id="edu-feature" src="assets/photos/edu-feature.jpg" placeholder="International campus"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPERTY (buy or lease) -->
+  <section class="section" id="property">
+    <div class="wrap">
+      <div class="feature rev">
+        <div class="feature__copy">
+          <span class="eyebrow reveal">Property &amp; ownership</span>
+          <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">A home to buy, or a place to <span class="accent text-grad">lease.</span></h2>
+          <p class="reveal" data-delay="120" style="margin-top:18px">Foreigners can own property in Malaysia in their own name — most homes are freehold or long leasehold. We make the search, the checks and the financing feel effortless.</p>
+          <ul class="flist reveal" data-delay="160">
+            <li><b>Own above a state minimum</b> — each state sets a minimum purchase price (commonly around RM&nbsp;1,000,000, with lower thresholds in some states and zones). We confirm what applies to you.</li>
+            <li><b>Buy or lease</b> — curated condominiums and landed homes in KL (Mont Kiara, Bangsar, KLCC, Desa ParkCity), Penang and Iskandar Puteri — with rentals while you settle.</li>
+            <li><b>Verified before you sign</b> — independent title checks and a vetted conveyancing lawyer on every purchase.</li>
+            <li><b>Financing for non-residents</b> — through our banking partners, with clear guidance on the categories foreigners cannot buy.</li>
+          </ul>
+          <p class="fnote reveal" data-delay="200">Property and visa rules are set by the government and revised from time to time — we verify the current thresholds before you commit.</p>
+        </div>
+        <div class="feature__media reveal" data-delay="80">
+          <image-slot id="property-feature" src="assets/photos/property-feature.jpg" placeholder="Kuala Lumpur residential"></image-slot>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIFE HERE (gallery) -->
+  <section class="section" id="life" style="background:var(--mintbg)">
+    <div class="wrap">
+      <div style="max-width:600px;margin-bottom:8px">
+        <span class="eyebrow reveal">Life in Malaysia</span>
+        <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">A warm, welcoming place to land</h2>
+      </div>
+      <div class="gallery reveal">
+        <image-slot id="life-1" src="assets/photos/life-1.jpg" class="g-tall" placeholder="Skyline at dusk"></image-slot>
+        <image-slot id="life-2" src="assets/photos/life-2.jpg" placeholder="Street food"></image-slot>
+        <image-slot id="life-3" src="assets/photos/life-3.jpg" placeholder="Family at home"></image-slot>
+        <image-slot id="life-4" src="assets/photos/life-4.jpg" class="g-wide" placeholder="Tropical nature / islands"></image-slot>
+        <image-slot id="life-5" src="assets/photos/life-5.jpg" placeholder="Modern condo interior"></image-slot>
+        <image-slot id="life-6" src="assets/photos/life-6.jpg" placeholder="Children at school"></image-slot>
+        <image-slot id="life-7" src="assets/photos/life-7.jpg" class="g-wide" placeholder="Marina / waterfront living"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF / stats -->
+  <section class="section" id="proof">
+    <div class="wrap">
+      <div style="max-width:680px;margin-bottom:56px">
+        <span class="eyebrow reveal">Why Banco</span>
+        <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">A licensed advisory that handles every authority, signature and milestone — so nothing is lost in translation.</h2>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><div class="n text-grad" data-count="2400" data-suffix="+">0</div><div class="l">Families relocated since 2014</div></div>
+        <div class="stat reveal" data-delay="80"><div class="n text-grad" data-count="98" data-suffix="%">0</div><div class="l">Application approval rate</div></div>
+        <div class="stat reveal" data-delay="160"><div class="n text-grad" data-count="12">0</div><div class="l">Government &amp; legal partners</div></div>
+        <div class="stat reveal" data-delay="240"><div class="n text-grad" data-count="4.9" data-dec="1">0</div><div class="l">Average client rating</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:var(--mintbg)">
+    <div class="wrap">
+      <div class="faqhead">
+        <span class="eyebrow reveal">Good to know</span>
+        <h2 class="h-display reveal" data-delay="60" style="font-size:var(--step-3);margin-top:16px;color:var(--ink)">MM2H, answered plainly</h2>
+        <p class="reveal" data-delay="120">The honest version — what the programme is, what it lets you do, and where the official rules live.</p>
+      </div>
+      <div class="faqs reveal" data-delay="80">
+        <details><summary>Who is MM2H for?</summary><div class="faqs__a"><p>Malaysia My Second Home is a long-stay visa for foreigners who want to live in Malaysia without giving up their citizenship — retirees, families, remote professionals and investors. It is renewable, and your spouse, children and, in many cases, parents can join you as dependents.</p></div></details>
+        <details><summary>Can my children study in Malaysia?</summary><div class="faqs__a"><p>Yes. Children join on a dependent or student pass and attend Malaysia's international and private schools — British, IB, American, Australian and more. We arrange placement and the pass paperwork. See <a href="#education" data-scroll-to="#education">Children &amp; schooling</a> above.</p></div></details>
+        <details><summary>Can I buy a home — and what can foreigners own?</summary><div class="faqs__a"><p>Foreigners can own property in their own name above a minimum purchase price set by each state (commonly around RM&nbsp;1,000,000, with variations). Some categories — such as Malay-reserved land and certain low-cost units — are not open to foreign buyers. You can also lease while you settle. See <a href="#property" data-scroll-to="#property">Property &amp; ownership</a>.</p></div></details>
+        <details><summary>Can I work or run a business on MM2H?</summary><div class="faqs__a"><p>MM2H is a residency visa, not an automatic work permit. Employment, part-time work and running a business each have their own rules and passes, and these change from time to time. We advise on the right structure for your plans.</p></div></details>
+        <details><summary>What are the financial requirements?</summary><div class="faqs__a"><p>The government sets fixed-deposit, offshore-income and property thresholds. They are revised periodically and differ by tier and by state — Sarawak and Sabah run their own programmes. Rather than quote a figure that may already be out of date, we confirm the current requirements for your exact situation and point you to the official sources.</p></div></details>
+        <details><summary>How is healthcare in Malaysia?</summary><div class="faqs__a"><p>Malaysia's private hospitals are excellent and far more affordable than in the West, and many are internationally accredited. We recommend private health cover and can introduce trusted providers.</p></div></details>
+        <details><summary>How are taxes handled?</summary><div class="faqs__a"><p>Malaysia generally taxes income sourced in Malaysia, and the treatment of foreign-sourced income has its own rules that have changed in recent years. We connect you with vetted tax advisors so your situation is structured correctly — we don't make one-size-fits-all tax promises.</p></div></details>
+        <details><summary>How long does approval take?</summary><div class="faqs__a"><p>Timelines vary with the programme and your paperwork and are typically measured in months. We prepare and lodge everything, then track each milestone so you always know where things stand.</p></div></details>
+        <details><summary>What does Banco actually do?</summary><div class="faqs__a"><p>Everything, in one place: eligibility, documents, lodging your application, property, schooling, banking, tax introductions and settling-in support — one dedicated advisor from first enquiry to arrivals.</p></div></details>
+      </div>
+      <p class="faqs__note reveal" data-delay="120">Official requirements rest with the Government of Malaysia. For the current programme rules, see the official MM2H portal and the Immigration Department of Malaysia — we'll confirm everything that applies to your situation.</p>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="section tm" style="background:var(--ivory)">
+    <div class="wrap tmrow">
+      <image-slot id="tm-photo" src="assets/photos/tm-photo.jpg" class="reveal" placeholder="Client family portrait"></image-slot>
+      <div>
+        <q class="reveal">Banco turned what felt impossible into a calm, guided process. We were settled in Penang with our children in school within three months.</q>
+        <div class="by reveal" data-delay="120"><span>KO</span><div><div style="font-weight:700;color:var(--ink)">Karim &amp; Olivia Haddad</div><div style="color:var(--muted);font-size:13px">Relocated from Dubai · Retirement pathway</div></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section" id="cta">
+    <div class="wrap">
+      <div class="ctaband reveal">
+        <div class="ctaband__glow"></div>
+        <img class="ctaband__icon" src="assets/icons-3d/concierge.svg" alt="">
+        <span class="eyebrow">Ready when you are</span>
+        <h2>Speak with a <span class="accent">relocation advisor.</span></h2>
+        <p>No obligation. Tell us a little about your plans and we'll be in touch within one business day.</p>
+        <div class="ctaband__actions">
+          <a class="btn btn--gold magnetic" data-strength="0.5" href="#cta" data-cursor="Book"><span class="btn__l">Book a consultation <span class="btn__arrow">↗</span></span></a>
+          <span class="ctaband__phone"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg>Call us <b>+60 3 2710 8800</b></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="wrap">
+      <div class="foot__big">BANCO MM2H</div>
+      <div class="foot__row">
+        <span>© 2026 Banco MM2H Sdn Bhd · Licensed relocation advisory · Kuala Lumpur · Penang · Johor</span>
+        <span style="display:flex;gap:22px"><a data-cursor="Privacy">Privacy</a><a data-cursor="Terms">Terms</a><a data-cursor="Email">hello@bancomm2h.my</a></span>
+      </div>
+      <details class="foot__credits">
+        <summary>Image credits &amp; attribution</summary>
+        <p>Photography via <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>, used under the noted licences (images cropped to fit): KL skyline at dusk — Walkerssk (CC0) · Petronas Towers — Wee Hong (CC BY-SA 4.0) · KLCC, Perhentian Islands &amp; Taman Negara — Vyacheslav Argenberg (CC BY 4.0) · George Town hawker stall — Khairil Yusof (CC BY-SA 4.0) · Batu Caves &amp; Putra Mosque — CEphoto / Uwe Aranas (CC BY-SA 3.0) · Cameron Highlands — Jakub Ha&#322;un (CC BY 4.0) · Puteri Harbour Marina — Chongkian (CC BY-SA 4.0) · University of Malaya — Chaoyang Sunrise (CC BY-SA 4.0) · University of Nottingham Malaysia campus — Best50 (CC BY-SA 4.0) · Mont Kiara — Azreey (CC BY-SA 4.0). The Earth&nbsp;&rarr;&nbsp;Kuala&nbsp;Lumpur journey adapts shaders &amp; interaction techniques from <a href="https://github.com/chewmunkai/website-side-projects" target="_blank" rel="noopener">github.com/chewmunkai/website-side-projects</a>; Earth textures by Solar System Scope (CC BY 4.0).</p>
+      </details>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+  <script src="./journey.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="./image-slot.js"></script>
+  <script src="./site.js"></script>
+</body>
+</html>

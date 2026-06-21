@@ -1,0 +1,45 @@
+/* ── Banco MM2H · Base / resets ──────────────────────────────────────────
+   Light-touch normalize + brand defaults applied to the document. */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--body-font);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--text-body);
+  background: var(--surface-page);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--heading-font);
+  color: var(--text-strong);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+  margin: 0;
+  text-wrap: balance;
+}
+
+p { margin: 0; text-wrap: pretty; }
+
+a { color: var(--text-link); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+
+::selection { background: var(--green-200); color: var(--green-900); }
+
+:focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: var(--radius-sm); }
+
+/* Tabular figures helper for tables / numerals */
+.mm-tabular { font-variant-numeric: tabular-nums; }
+
+/* Hairline divider */
+.mm-rule { border: 0; border-top: 1px solid var(--border-hairline); margin: 0; }
+
+/* Gold decorative rule used under eyebrows / section heads */
+.mm-rule-gold { width: 40px; height: 2px; background: var(--accent); border: 0; border-radius: 2px; }

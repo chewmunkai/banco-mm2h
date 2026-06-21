@@ -1,0 +1,11 @@
+# OS / editor cruft
+.DS_Store
+**/.DS_Store
+Thumbs.db
+
+# Local Claude Code session/config — do not publish
+.claude/
+
+# Node (none committed; dev-only)
+node_modules/
+npm-debug.log*

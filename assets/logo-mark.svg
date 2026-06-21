@@ -1,0 +1,12 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Banco MM2H mark">
+  <defs>
+    <linearGradient id="t" x1="0" y1="0" x2="0" y2="64" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#125C44"></stop><stop offset="1" stop-color="#042118"></stop></linearGradient>
+    <radialGradient id="g" cx="0.35" cy="0.3" r="0.85"><stop offset="0" stop-color="#F6E8BF"></stop><stop offset="0.55" stop-color="#E0C58A"></stop><stop offset="1" stop-color="#B5923F"></stop></radialGradient>
+  </defs>
+  <rect width="64" height="64" rx="16" fill="url(#t)"></rect>
+  <rect x="0.75" y="0.75" width="62.5" height="62.5" rx="15.25" fill="none" stroke="#ffffff" stroke-opacity="0.12"></rect>
+  <path d="M13 45 L23.5 26.5 L32 38 L40.5 26.5 L51 45" stroke="#9CC9B3" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" fill="none"></path>
+  <path d="M13 50.5 L51 50.5" stroke="#9CC9B3" stroke-width="2.6" stroke-linecap="round" opacity="0.5"></path>
+  <circle cx="32" cy="21.5" r="4" fill="url(#g)"></circle>
+  <circle cx="30.7" cy="20.2" r="1.1" fill="#FCF4DD" opacity="0.85"></circle>
+</svg>
