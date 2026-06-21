@@ -28,6 +28,7 @@
     const sec = document.querySelector('.hubx'); if (!sec) return;
     const rows = [...sec.querySelectorAll('.hubx__row')];
     const icon = sec.querySelector('.hubx__icon');
+    const photo = sec.querySelector('.hubx__photo');
     const stageT = sec.querySelector('.hubx__stagetitle .t');
     const cur = sec.querySelector('.hubx__count .cur');
     if (!rows.length) return;
@@ -40,6 +41,10 @@
       if (icon){
         icon.classList.add('swap');
         setTimeout(()=>{ icon.src = r.dataset.icon; icon.classList.remove('swap'); },250);
+      }
+      if (photo && r.dataset.img){
+        photo.classList.add('swap');
+        setTimeout(()=>{ photo.src = r.dataset.img; photo.classList.remove('swap'); },250);
       }
       if (stageT){
         stageT.classList.add('swap');
