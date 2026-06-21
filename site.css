@@ -217,8 +217,8 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .btn--gold::after{content:"";position:absolute;inset:0;background:#E0C58A;opacity:0;transition:opacity .45s var(--ease);z-index:1}
 .btn--gold:hover::after{opacity:1}
 .foot{background:var(--pine-900);color:#CFE3D8;padding-top:70px}
-.foot__logo{display:block;width:min(340px,72%);height:auto;margin-bottom:30px}
-.foot__big{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,13vw,11rem);letter-spacing:-0.05em;line-height:0.85;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.18);padding-block:18px}
+.foot__logo{display:block;width:min(400px,82%);height:auto;margin:6px auto 30px}
+.foot__big{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,13vw,11rem);letter-spacing:-0.05em;line-height:0.85;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.18);padding-block:18px;text-align:center}
 .foot__row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:26px 0 24px;border-top:1px solid rgba(255,255,255,0.12);color:#7FA992;font-size:13px}
 .foot__credits{padding-bottom:40px;color:#6E8E7C}
 .foot__credits summary{cursor:pointer;font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:#7FA992;list-style:none}
