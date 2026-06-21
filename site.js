@@ -245,8 +245,37 @@
     }
   }
 
+  /* ---- process timeline: scrub the fill line, light each step in turn ---- */
+  function initProcess() {
+    const rails = document.querySelectorAll('[data-steps]'); if (!rails.length) return;
+    if (reduced || !G) { rails.forEach(s => { s.style.setProperty('--sp', '1'); s.querySelectorAll('.step').forEach(st => st.classList.add('is-on')); }); return; }
+    rails.forEach(steps => {
+      const items = Array.prototype.slice.call(steps.querySelectorAll('.step'));
+      if (items[0]) items[0].classList.add('is-on');
+      ScrollTrigger.create({
+        trigger: steps, start: 'top 78%', end: 'bottom 62%', scrub: 0.6,
+        onUpdate: self => {
+          steps.style.setProperty('--sp', self.progress.toFixed(3));
+          const lit = Math.max(1, Math.ceil(self.progress * items.length));
+          items.forEach((it, i) => it.classList.toggle('is-on', i < lit));
+        }
+      });
+    });
+  }
+
+  /* ---- clip-path "rise" reveal on feature/pathway/testimonial/guide media ---- */
+  function initClipReveal() {
+    const els = Array.prototype.slice.call(document.querySelectorAll('.feature__media image-slot, .tmrow image-slot'));
+    if (!els.length) return;
+    if (reduced || !G) { els.forEach(e => e.classList.add('clip-rise', 'in')); return; }
+    els.forEach(el => {
+      el.classList.add('clip-rise');
+      ScrollTrigger.create({ trigger: el, start: 'top 88%', once: true, onEnter: () => el.classList.add('in') });
+    });
+  }
+
   function boot() {
-    initLenis(); initReveals(); initNav(); initMagnetic(); initTilt(); initCursor(); initJourney(); initVHero(); initProgress(); initParallax(); initHeroParallax(); startHero();
+    initLenis(); initReveals(); initNav(); initMagnetic(); initTilt(); initCursor(); initJourney(); initVHero(); initProgress(); initProcess(); initClipReveal(); initParallax(); initHeroParallax(); startHero();
     if (G) ScrollTrigger.refresh();
     window.__bancoBooted = true;
   }
