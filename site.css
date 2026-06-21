@@ -61,9 +61,16 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .nav{position:fixed;top:0;left:0;right:0;z-index:70;display:flex;align-items:center;justify-content:space-between;padding:22px var(--gutter);transition:background .4s var(--ease),backdrop-filter .4s,padding .4s var(--ease),border-color .4s,opacity .4s var(--ease),transform .5s var(--ease)}
 .nav.scrolled{background:rgba(255,255,255,0.82);backdrop-filter:blur(14px);padding-top:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
 .nav--hidden{opacity:0;transform:translateY(-118%);pointer-events:none}
-.nav .logo-dark{display:none}
-.nav.scrolled .logo-light{display:none}
-.nav.scrolled .logo-dark{display:block}
+.brand{display:flex;align-items:center;gap:11px}
+.brand__mark{width:38px;height:38px;border-radius:10px;display:block;flex:none;box-shadow:0 2px 10px -4px rgba(0,0,0,.5)}
+.brand__txt{display:flex;flex-direction:column;line-height:1}
+.brand__name{font-family:var(--font-display);font-weight:700;font-size:21px;letter-spacing:.04em;color:#FBFAF5;transition:color .3s}
+.brand__sub{font-family:var(--font-sans);font-weight:600;font-size:10px;letter-spacing:.22em;color:#A8D4BE;transition:color .3s;margin-top:3px}
+.nav.scrolled .brand__name{color:var(--pine-deep)}
+.nav.scrolled .brand__sub{color:var(--pine)}
+/* nav CTA: gold so it reads on BOTH the dark hero and the white scrolled bar (green gradient vanished on the hero) */
+.nav .btn--primary{color:#06160f;background:var(--gold-soft)}
+.nav .btn--primary::after{background:#E0C58A}
 .nav__links{display:flex;gap:6px}
 .nav__links a{font-size:14px;font-weight:600;color:#E7F0EA;padding:8px 14px;border-radius:999px;transition:color .3s,background .3s}
 .nav.scrolled .nav__links a{color:var(--body)}
@@ -210,7 +217,7 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .btn--gold::after{content:"";position:absolute;inset:0;background:#E0C58A;opacity:0;transition:opacity .45s var(--ease);z-index:1}
 .btn--gold:hover::after{opacity:1}
 .foot{background:var(--pine-900);color:#CFE3D8;padding-top:70px}
-.foot__logo{display:block;width:min(360px,74%);height:auto;border-radius:16px;margin-bottom:34px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07),0 20px 44px -26px rgba(0,0,0,.7)}
+.foot__logo{display:block;width:min(340px,72%);height:auto;margin-bottom:30px}
 .foot__big{font-family:var(--font-display);font-weight:800;font-size:clamp(3rem,13vw,11rem);letter-spacing:-0.05em;line-height:0.85;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.18);padding-block:18px}
 .foot__row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:26px 0 24px;border-top:1px solid rgba(255,255,255,0.12);color:#7FA992;font-size:13px}
 .foot__credits{padding-bottom:40px;color:#6E8E7C}

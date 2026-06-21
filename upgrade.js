@@ -60,12 +60,35 @@
     const rails = [...sec.querySelectorAll('.phz__rail i')];
     const hintBar = sec.querySelector('.phz__hint .bar i');
     const small = window.innerWidth < 760;
-    if (!has || small){ sec.classList.add('no-pin'); return; }
+    if (!has || small){ sec.classList.add('no-pin'); if (has) initPathwaysMobile(sec); return; }
     const dist = ()=> Math.max(0, track.scrollWidth - window.innerWidth);
     G.to(track,{ x:()=>-dist(), ease:'none',
       scrollTrigger:{ trigger:sec, start:'top top', end:()=>'+='+dist(), scrub:0.5,
         pin:true, anticipatePin:1, invalidateOnRefresh:true,
         onUpdate:self=>{ const p=self.progress; rails.forEach(r=>r.style.transform='scaleX('+p+')'); if(hintBar) hintBar.style.transform='scaleX('+p+')'; } }
+    });
+  }
+
+  /* ---- PATHWAYS (mobile) · vertical scroll choreography ------------- */
+  function initPathwaysMobile(sec){
+    const intro = sec.querySelector('.phz__intro');
+    const hintBar = sec.querySelector('.phz__hint .bar i');
+    if (intro) G.from([...intro.children], {y:30,opacity:0,duration:.7,stagger:.08,ease:'expo.out',
+      scrollTrigger:{trigger:intro,start:'top 85%',once:true}});
+    if (hintBar) G.fromTo(hintBar,{scaleX:0},{scaleX:1,ease:'none',
+      scrollTrigger:{trigger:sec,start:'top 70%',end:'bottom bottom',scrub:0.5}});
+    sec.querySelectorAll('.phz__panel').forEach(panel=>{
+      const img  = panel.querySelector('image-slot');
+      const big  = panel.querySelector('.phz__big');
+      const rail = panel.querySelector('.phz__rail i');
+      G.from(panel,{y:46,opacity:0,duration:.85,ease:'expo.out',
+        scrollTrigger:{trigger:panel,start:'top 86%',once:true}});
+      if (img)  G.fromTo(img,{scale:1.16,yPercent:-5},{scale:1,yPercent:5,ease:'none',
+        scrollTrigger:{trigger:panel,start:'top bottom',end:'bottom top',scrub:true}});
+      if (big)  G.fromTo(big,{yPercent:34},{yPercent:-22,ease:'none',
+        scrollTrigger:{trigger:panel,start:'top bottom',end:'bottom top',scrub:true}});
+      if (rail) G.fromTo(rail,{scaleX:0},{scaleX:1,ease:'none',
+        scrollTrigger:{trigger:panel,start:'top 78%',end:'bottom 62%',scrub:0.4}});
     });
   }
 
