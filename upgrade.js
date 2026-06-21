@@ -189,7 +189,19 @@
     vp.addEventListener('dragstart',e=>e.preventDefault());
   }
 
+  /* ---- mobile nav menu (hamburger) ---------------------------------- */
+  function initNavMenu(){
+    const nav = document.querySelector('.nav'); if (!nav) return;
+    const burger = nav.querySelector('.nav__burger'); if (!burger) return;
+    const setOpen = (o)=>{ nav.classList.toggle('menu-open', o); burger.setAttribute('aria-expanded', o?'true':'false'); };
+    burger.addEventListener('click', ()=> setOpen(!nav.classList.contains('menu-open')));
+    nav.querySelectorAll('.nav__links a').forEach(a=> a.addEventListener('click', ()=> setOpen(false)));
+    window.addEventListener('keydown', e=>{ if (e.key==='Escape') setOpen(false); });
+    window.addEventListener('resize', ()=>{ if (window.innerWidth>860) setOpen(false); });
+  }
+
   function boot(){
+    initNavMenu();
     initClips(); initHub(); initTiers(); initProcess(); initFilm();
     initFeatures(); initPathways();
     if (G && ST){ ST.refresh(); setTimeout(()=>ST.refresh(), 600); }

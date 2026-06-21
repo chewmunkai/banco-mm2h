@@ -76,7 +76,26 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .nav.scrolled .nav__links a{color:var(--body)}
 .nav__links a:hover{background:rgba(255,255,255,0.12)}
 .nav.scrolled .nav__links a:hover{background:var(--mintbg)}
-@media (max-width:860px){.nav__links{display:none}}
+.nav__right{display:flex;align-items:center;gap:10px}
+.nav__burger{display:none}
+@media (max-width:860px){
+  .nav__links{display:none}
+  .nav .btn--primary{padding:0.66em 1.05em;font-size:13px}
+  .nav .btn--primary .btn__arrow{display:none}
+  .nav__burger{display:inline-flex;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;padding:11px;background:transparent;border:0;cursor:pointer;flex:none}
+  .nav__burger span{display:block;height:2px;width:100%;background:#FBFAF5;border-radius:2px;transition:transform .35s var(--ease),opacity .2s,background .3s}
+  .nav.scrolled .nav__burger span{background:var(--pine-deep)}
+  .nav.menu-open{background:#072A20;border-bottom-color:transparent;backdrop-filter:none}
+  .nav.menu-open .brand__name{color:#FBFAF5}
+  .nav.menu-open .brand__sub{color:#A8D4BE}
+  .nav.menu-open .nav__burger span{background:#FBFAF5}
+  .nav.menu-open .nav__burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav.menu-open .nav__burger span:nth-child(2){opacity:0}
+  .nav.menu-open .nav__burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .nav.menu-open .nav__links{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:#072A20;padding:8px 22px calc(20px + env(safe-area-inset-bottom));gap:0;box-shadow:0 24px 40px -20px rgba(0,0,0,.6)}
+  .nav.menu-open .nav__links a{color:#EAF3EC;font-family:var(--font-display);font-weight:600;font-size:23px;letter-spacing:-0.01em;padding:17px 4px;border-bottom:1px solid rgba(255,255,255,0.09);border-radius:0}
+  .nav.menu-open .nav__links a:active,.nav.menu-open .nav__links a:hover{background:transparent;color:var(--gold-soft)}
+}
 
 /* ---- buttons -------------------------------------------------------- */
 .btn{position:relative;display:inline-flex;align-items:center;gap:0.6em;padding:1em 1.7em;border-radius:999px;font-family:var(--font-sans);font-size:var(--step-0);font-weight:700;letter-spacing:-0.01em;white-space:nowrap;overflow:hidden;border:1px solid transparent;transition:color .4s var(--ease),border-color .4s var(--ease)}
