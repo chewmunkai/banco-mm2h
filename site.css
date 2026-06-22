@@ -296,13 +296,15 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .liquid-glass{background:rgba(0,0,0,0.4);background-blend-mode:luminosity;backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:none;box-shadow:inset 0 1px 1px rgba(255,255,255,0.1);position:relative;overflow:hidden}
 .liquid-glass::before{content:'';position:absolute;inset:0;border-radius:inherit;padding:1.4px;background:linear-gradient(180deg,rgba(255,255,255,0.3) 0%,rgba(255,255,255,0.1) 20%,rgba(255,255,255,0) 40%,rgba(255,255,255,0) 60%,rgba(255,255,255,0.1) 80%,rgba(255,255,255,0.3) 100%);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
 
-.vnav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:10px 16px;border-radius:14px}
-.vnav__logo{font-size:22px;font-weight:600;letter-spacing:-0.03em;color:#fff}
-.vnav__links{display:none;gap:34px}
-.vnav__links a{font-size:14px;font-weight:400;color:#fff;opacity:.85;transition:opacity .3s}
-.vnav__links a:hover{opacity:.6}
-.vhero .vnav__cta{background:#fff;color:#000;padding:9px 22px;border-radius:10px;font-size:14px;font-weight:500;transition:background .3s}
-.vhero .vnav__cta:hover{background:#e9e9e9}
+.vnav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:9px 12px 9px 14px;border-radius:16px}
+.vnav__brand .brand__mark{width:32px;height:32px;border-radius:9px}
+.vnav__brand .brand__name{font-size:18px}
+.vnav__brand .brand__sub{font-size:9px;margin-top:2px}
+.vnav__links{display:none;gap:8px}
+.vnav__links a{font-family:var(--font-sans);font-size:14px;font-weight:600;color:#F0F4F1;padding:8px 14px;border-radius:999px;transition:background .3s,color .3s}
+.vnav__links a:hover{background:rgba(255,255,255,0.14)}
+.vhero .vnav__cta{background:var(--gold-soft);color:#06160f;padding:10px 22px;border-radius:999px;font-family:var(--font-sans);font-size:14px;font-weight:700;letter-spacing:-0.01em;transition:background .3s}
+.vhero .vnav__cta:hover{background:#E0C58A}
 @media (min-width:860px){.vnav__links{display:flex}}
 
 .vhero__content{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:26px}
@@ -314,10 +316,10 @@ body.cursor-on,body.cursor-on *{cursor:none !important}
 .vhead .ch.in{opacity:1;transform:none}
 .vsub{font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;color:rgba(255,255,255,0.82);max-width:44ch;margin:0 0 22px;line-height:1.55;text-shadow:0 1px 18px rgba(0,0,0,0.4)}
 .vbtns{display:flex;flex-wrap:wrap;gap:16px}
-.vbtn{display:inline-flex;align-items:center;padding:13px 30px;border-radius:11px;font-size:15px;font-weight:500;transition:background .3s,color .3s}
-.vhero .vbtn--solid{background:#fff;color:#000}
-.vhero .vbtn--solid:hover{background:#e9e9e9}
-.vbtn--glass{color:#fff;border:1px solid rgba(255,255,255,0.2)}
+.vbtn{display:inline-flex;align-items:center;padding:13px 30px;border-radius:999px;font-family:var(--font-sans);font-size:15px;font-weight:700;letter-spacing:-0.01em;transition:background .3s,color .3s}
+.vhero .vbtn--solid{background:var(--gold-soft);color:#06160f}
+.vhero .vbtn--solid:hover{background:#E0C58A}
+.vbtn--glass{color:#fff;border:1px solid rgba(255,255,255,0.32)}
 .vbtn--glass:hover{background:#fff;color:#000}
 .vtagwrap{display:flex;align-items:flex-end;justify-content:flex-start}
 @media (min-width:1024px){.vtagwrap{justify-content:flex-end}}
