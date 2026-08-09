@@ -1,0 +1,190 @@
+/* Language switcher + Traditional Chinese typography.
+   Loaded only by the zh page and by index.html (for the switcher itself). */
+
+.langsw {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .22);
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: blur(10px);
+  font-size: 12.5px;
+  letter-spacing: .02em;
+  white-space: nowrap;
+}
+
+.langsw__opt {
+  display: inline-block;
+  padding: 5px 11px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .62);
+  text-decoration: none;
+  line-height: 1;
+  transition: color .22s ease, background-color .22s ease;
+}
+
+.langsw__opt:hover { color: #fff; }
+
+.langsw__opt.is-on {
+  color: #0F2C1E;
+  background: #E9E4D4;
+  font-weight: 600;
+}
+
+/* The fixed header turns light once the journey ends — invert there.
+   site.js toggles `.scrolled` on .nav (site.js:63); an earlier guess at
+   `.is-solid` matched nothing, so these rules never applied. */
+.nav.scrolled .langsw,
+.nojourney .nav .langsw {
+  border-color: rgba(15, 44, 30, .16);
+  background: rgba(15, 44, 30, .04);
+}
+.nav.scrolled .langsw__opt,
+.nojourney .nav .langsw__opt { color: rgba(15, 44, 30, .55); }
+.nav.scrolled .langsw__opt:hover,
+.nojourney .nav .langsw__opt:hover { color: #0F2C1E; }
+.nav.scrolled .langsw__opt.is-on,
+.nojourney .nav .langsw__opt.is-on { color: #FFF; background: #0F2C1E; }
+
+.langsw--v { margin-left: 14px; }
+
+/* Hero switcher.
+   The fixed header carries `.nav--hidden` for the whole Earth→KL journey, so
+   the very first screen a visitor sees had no way to switch language. This one
+   lives inside the journey and hands off to the header switcher the moment the
+   header appears — .nav precedes .journey as a sibling, so it can drive that.
+
+   Deliberately NOT tagged .jhero__fade: site.js runs a GSAP .from() over that
+   class, and an appended fourth element was left stranded at the tween's start
+   value (inline opacity:0). Own entrance instead, so this never depends on the
+   hero's animation timeline. */
+.langsw--hero {
+  position: absolute;
+  top: clamp(22px, 3.4vh, 40px);
+  right: var(--gutter);
+  z-index: 6;
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+}
+
+/* `backwards`, not `both`: a filled-forwards animation keeps its final opacity
+   at animation priority, which outranks normal declarations and would defeat
+   the handoff rule below. This applies the start frame during the delay only,
+   then hands the element back to the cascade. */
+.anim .langsw--hero { animation: langswIn .9s var(--ease) .75s backwards; }
+
+@keyframes langswIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim .langsw--hero { animation: none; }
+}
+
+.nav:not(.nav--hidden) ~ .journey .langsw--hero {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+}
+
+@media (max-width: 820px) {
+  /* .jside labels are hidden at this width; keep the switcher, it is the only
+     language control on the first screen. */
+  .langsw--hero { top: clamp(16px, 2.6vh, 28px); }
+}
+
+/* The fixed header is transparent for the whole journey sequence, so the
+   video-hero switcher is the only one on the first screen. It must survive
+   every width — .vnav stays visible on mobile even though .vnav__links don't. */
+@media (max-width: 900px) {
+  .langsw { font-size: 11.5px; padding: 2px; }
+  .langsw__opt { padding: 4px 8px; }
+  .langsw--v { margin-left: 8px; }
+}
+
+@media (max-width: 620px) {
+  .vnav { gap: 8px; padding: 8px 9px 8px 11px; }
+  .langsw--v { margin-left: 6px; }
+  .langsw--v .langsw__opt { padding: 4px 8px; font-size: 11px; }
+  /* Too narrow for a two-option pill next to the brand and CTA. Show only the
+     language you'd switch to — the current one is what you're already reading. */
+  .langsw--v .langsw__opt.is-on { display: none; }
+  .langsw--v .langsw__opt { color: rgba(255, 255, 255, .9); }
+}
+
+/* ── Traditional Chinese typography ──────────────────────────────────────── */
+/* Chinese has no ascenders/descenders and reads denser than Latin, so the
+   Latin line-heights run tight and the display tracking runs loose. */
+html[lang="zh-Hant-TW"] {
+  --zh-sans: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei",
+             "Hiragino Sans CNS", "Heiti TC", sans-serif;
+}
+
+html[lang="zh-Hant-TW"] body { font-family: var(--zh-sans); }
+
+html[lang="zh-Hant-TW"] h1,
+html[lang="zh-Hant-TW"] h2,
+html[lang="zh-Hant-TW"] h3,
+html[lang="zh-Hant-TW"] .jtitle,
+html[lang="zh-Hant-TW"] .vhead {
+  font-family: var(--zh-sans);
+  letter-spacing: .02em;      /* Latin display faces are tracked tight; CJK needs air */
+}
+
+/* Display sizes can run tight; CJK has no descender slack, so anything set in a
+   height-constrained box needs more. 1.24 clipped the hub headings by 3px. */
+html[lang="zh-Hant-TW"] h1,
+html[lang="zh-Hant-TW"] h2,
+html[lang="zh-Hant-TW"] .jtitle,
+html[lang="zh-Hant-TW"] .vhead { line-height: 1.24; }
+
+html[lang="zh-Hant-TW"] h3 { line-height: 1.4; }
+
+html[lang="zh-Hant-TW"] p,
+html[lang="zh-Hant-TW"] li,
+html[lang="zh-Hant-TW"] .v,
+html[lang="zh-Hant-TW"] .a p { line-height: 1.85; }
+
+/* The italic serif accent is a Latin-only face — fall back to the CJK stack so
+   the script fragments don't render in a substituted font mid-heading.
+   Colour is deliberately NOT set here: refine.css makes the hero accent mint and
+   leaves body accents gold, and hardcoding one here overrode both, leaving the
+   Chinese hero gold while the English hero was mint. */
+html[lang="zh-Hant-TW"] .u-script,
+html[lang="zh-Hant-TW"] .script {
+  font-family: var(--zh-sans);
+  font-style: normal;
+  font-weight: 500;
+}
+
+/* Small caps / wide tracking is a Latin device; it shreds CJK. */
+html[lang="zh-Hant-TW"] .u-eyebrow,
+html[lang="zh-Hant-TW"] .jside,
+html[lang="zh-Hant-TW"] .scrollcue,
+html[lang="zh-Hant-TW"] .beat .k {
+  letter-spacing: .12em;
+  font-variant: normal;
+  text-transform: none;
+}
+
+/* Tier names stay Latin — keep the original display face on those. */
+html[lang="zh-Hant-TW"] .ptier__name,
+html[lang="zh-Hant-TW"] .foot__big,
+html[lang="zh-Hant-TW"] .brand__name { font-family: inherit; }
+
+/* Vertical side labels.
+   .jside--l pairs writing-mode:vertical-rl with rotate(180deg) so Latin reads
+   bottom-to-top. CJK glyphs stay upright in vertical mode, so that same rotation
+   renders them upside down. Drop the flip and let it read top-to-bottom, which
+   is the correct direction for Chinese anyway. text-orientation stays `mixed`:
+   CJK upright, the Latin runs (MM2H, 2014, 3°08′) rotated — standard practice. */
+html[lang="zh-Hant-TW"] .jside--l {
+  transform: translateY(-50%);
+  writing-mode: vertical-rl;
+}
+html[lang="zh-Hant-TW"] .jside {
+  letter-spacing: .16em;
+  font-family: var(--zh-sans);
+}

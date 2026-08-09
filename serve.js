@@ -6,8 +6,12 @@ const http = require("http");
 const fs = require("fs");
 const path = require("path");
 
-const ROOT = "/Users/corrinelai/Documents/Personal project MM2H";
-const PORT = Number(process.env.PORT) || 8850;
+// __dirname, not a hardcoded path: this file's own folder IS the web root, so
+// the server follows the checkout it ships with (main repo or a git worktree)
+// instead of silently serving a different one.
+const ROOT = __dirname;
+// Port: argv > env > default. Lets two checkouts preview side by side.
+const PORT = Number(process.argv[2]) || Number(process.env.PORT) || 8850;
 
 const TYPES = {
   ".html": "text/html; charset=utf-8",

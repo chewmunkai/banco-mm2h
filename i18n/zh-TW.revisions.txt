@@ -1,0 +1,338 @@
+EDITORIAL PASS over zh-TW.raw.txt. Same [[key]] format; these entries override
+the model output, and any key not present here is taken from the raw file
+unchanged. Kept separate so the as-received translation stays auditable.
+
+Two kinds of entry below:
+  REVISED — a string the model produced that needed fixing (register, accuracy,
+            Taiwan vocabulary, or fit).
+  NEW     — a string the design added after the translation was commissioned.
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · register — "one advisor" is the brand promise
+────────────────────────────────────────────────────────────────────────────
+單一窗口 is what a government service desk is called in Taiwan. It reads
+administrative, and it is the opposite of the premium, personal register this
+brand is selling. Replaced with 專屬顧問 / 一位顧問 throughout.
+
+[[hero.lead]]
+向下滑動，從地球一路降落吉隆坡。簽證、房產、學校、銀行、稅務，由一位專屬顧問全程打理，直到您安心落地。
+
+[[hub.eyebrow]]
+一位顧問，全程陪伴
+
+[[manifesto.1.k]]
+專屬顧問
+
+[[manifesto.1.v]]
+從初次諮詢到您落地當天，都由同一位顧問負責。不必重新說明，也不會被轉手他人。
+
+[[vhero.sub]]
+在馬來西亞，展開更從容、更有條理的生活。簽證、房產、學校、銀行，由同一位顧問全程打理。
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · accuracy
+────────────────────────────────────────────────────────────────────────────
+本行 means "this bank". Banco is a licensed relocation advisory, not a bank —
+the English reads "through our banking partners". Left uncorrected this is a
+misrepresentation, not a style preference.
+
+[[prop.li.4]]
+<b>非居民融資服務</b>透過我們的合作銀行提供，並明確告知外國人不得購買的物件類別。
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · 承諾 used for "commit"
+────────────────────────────────────────────────────────────────────────────
+承諾 means to pledge or promise. It does not mean deciding or signing, so
+「在您承諾之前」 reads as "before you make a promise to us". Fixed only where
+the English means commit/decide — 無需承諾 ("no obligation") and 稅務承諾
+("tax promises") are correct usage and are left alone.
+
+[[tier.label.hint]]
+此為參考顧問費，正式確認後才需要您做決定。
+
+[[tiers.lead]]
+馬來西亞提供多種長期居留方案。以下為主要門檻摘要。在您做出決定前，我們會為您確認符合自身情況的最新規定。
+
+[[prop.note]]
+房產與簽證規定由政府制定，且不定期調整。我們會在您正式簽約前，為您確認最新門檻。
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · Taiwan vocabulary and register
+────────────────────────────────────────────────────────────────────────────
+
+[[faq.1.a]]
+馬來西亞第二家園計畫（MM2H）是一項長期居留簽證，提供給希望在馬來西亞長期居住、但無需放棄原有國籍的外國人，包括退休人士、家庭、遠距工作者與投資人。簽證可續簽，配偶、子女，以及多數情況下父母，均可作為家屬一同申請。
+
+[[faq.4.a]]
+全國適用的銀級與金級為居留簽證，並非工作許可證。白金級別允許工作與經商，SEZ 經濟特區途徑則適合遠距專業人士。就業與經商各有其適用的規定，且會不定期調整。我們會依據您的計畫，建議適合的架構。
+
+[[cta.eyebrow]]
+隨時歡迎與我們聯絡
+
+[[cta.lead]]
+無需任何承諾。請簡單告訴我們您的計畫，我們將在一個工作天內與您聯絡。
+
+[[cta.h2]]
+與 <span class="u-script">MM2H 顧問</span> 談談
+
+[[proof.h2]]
+領有執照的顧問公司，為您處理所有主管機關、簽章與進度，<span class="u-script">不讓任何細節在溝通中遺漏。</span>
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · placement and fit
+────────────────────────────────────────────────────────────────────────────
+hero.title.top split as 第二個 / 家 left a single character stranded on its own
+display line. Rebalanced to 您的 / 第二個家, which also reads better into the
+bottom line: 您的第二個家 · 在馬來西亞 · 從容落腳.
+
+[[hero.title.top]]
+您的⏎第二個家
+
+prop.badge.t repeated 產權 twice in nine characters and overran its badge.
+
+[[prop.badge.t]]
+永久產權查核
+
+────────────────────────────────────────────────────────────────────────────
+REVISED · captions the design re-shot
+────────────────────────────────────────────────────────────────────────────
+
+[[life.cap.1]]
+吉隆坡 · 天際線
+
+[[life.cap.2]]
+喬治市 · 小吃攤
+
+life.cap.6 was 校園 · 國際學校 against the old "School · international". The design
+now reads "Children · international school", and the new campus slide already
+opens with 校園 — two adjacent captions starting on the same word.
+
+[[life.cap.6]]
+孩子 · 國際學校
+
+────────────────────────────────────────────────────────────────────────────
+NEW · filmstrip slides added by the design
+────────────────────────────────────────────────────────────────────────────
+
+[[life.cap.8]]
+吉隆坡城中城 · 商業區
+
+[[life.cap.9]]
+校園 · 學生生活
+
+[[life.cap.10]]
+孟沙 · 住宅區
+
+[[ui.ph.life8]]
+商業區
+
+[[ui.ph.life9]]
+校園生活
+
+[[ui.ph.life10]]
+城市住宅
+
+────────────────────────────────────────────────────────────────────────────
+NEW · pathway calls to action
+────────────────────────────────────────────────────────────────────────────
+
+[[path.1.cta]]
+選擇退休方案
+
+[[path.2.cta]]
+選擇商務方案
+
+[[path.3.cta]]
+選擇教育方案
+
+[[path.1.note]]
+房產門檻 RM 1M 起
+
+[[path.2.note]]
+客製化架構
+
+[[path.3.note]]
+含學生准證
+
+────────────────────────────────────────────────────────────────────────────
+NEW · expanded footer
+────────────────────────────────────────────────────────────────────────────
+
+[[footer.blurb]]
+一站式整合簽證、房產、學校、銀行與稅務。您在馬來西亞的第二個家，由我們全程安排。
+
+[[footer.cta]]
+開始申請
+
+[[footer.col.programmes]]
+方案
+
+[[footer.col.services]]
+服務項目
+
+[[footer.col.company]]
+關於我們
+
+[[footer.col.talk]]
+聯絡我們
+
+[[footer.prog.silver]]
+MM2H 銀級
+
+[[footer.prog.gold]]
+MM2H 金級
+
+[[footer.prog.platinum]]
+MM2H 白金級
+
+[[footer.prog.pvip]]
+高階簽證（PVIP）
+
+[[footer.svc.visa]]
+簽證與居留
+
+[[footer.svc.property]]
+房產禮賓
+
+[[footer.svc.education]]
+學校與教育
+
+[[footer.svc.banking]]
+銀行與稅務
+
+[[footer.co.pathways]]
+居留方案
+
+[[footer.co.process]]
+服務流程
+
+[[footer.co.life]]
+馬來西亞生活
+
+[[footer.co.faq]]
+常見問題
+
+[[footer.talk.cities]]
+吉隆坡 · 檳城 · 柔佛
+
+[[footer.talk.hours]]
+週一至週五 · 上午 9 時至下午 6 時（馬來西亞時間）
+
+[[footer.legal]]
+© 2026 Banco MM2H Sdn Bhd · 合法註冊移居顧問
+
+════════════════════════════════════════════════════════════════════════════
+SECOND AUDIT PASS · Taiwan localisation
+════════════════════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────────────────────
+FACTUAL — wrong district
+────────────────────────────────────────────────────────────────────────────
+孟沙 is Bangsar. Mont Kiara is a different Kuala Lumpur neighbourhood entirely
+(蒙特奇亞拉 / 满家乐 in Malaysian Chinese). Naming the wrong district under a
+photograph of it is a credibility problem for a property advisory, so the Latin
+name stays — it is also how a Taiwanese buyer will search for it.
+
+[[life.cap.10]]
+Mont Kiara · 住宅區
+
+────────────────────────────────────────────────────────────────────────────
+TYPOGRAPHY — no spaces between CJK characters
+────────────────────────────────────────────────────────────────────────────
+Chinese does not space around inline elements. Every <span> and <a> boundary in
+these strings had left a gap mid-sentence (的 途徑, 問 談談, 詳見 房產與產權).
+Latin runs still take a space on each side — that rule is unchanged.
+
+[[tiers.h2]]
+找到最適合您<br>規劃的<span class="u-script">途徑。</span>
+
+[[cta.h2]]
+與 <span class="u-script">MM2H 顧問</span>談談
+
+[[tiers.note]]
+上述金額皆為參考，由馬來西亞政府制定，會定期調整，且不同級別與各州規定不盡相同（砂拉越與沙巴另設有各自的方案）。定期存款中最多 <b>50%</b> 日後可用於經核准的房產購置、教育或醫療用途。我們會在您確定前，為您確認符合自身情況的最新規定。官方規則請見<a href="#faq">常見問題</a>中的查證管道。
+
+[[faq.2.a]]
+可以。子女可憑家屬准證或學生准證入讀馬來西亞的國際學校與私立學校，英式、IB、美式、澳式等課程皆可選擇。我們協助安排入學並辦理相關准證文件。詳見上方<a href="#education">子女與教育</a>單元。
+
+[[faq.3.a]]
+外國人得以個人名義持有房產，但須符合各州政府規定的最低購屋價格（通常約為 RM&nbsp;1,000,000，各州略有差異）。部分類別，例如馬來保留地及特定低價住宅，不在外國人可購買之列。您亦可先承租，待熟悉環境後再做決定。詳見<a href="#property">房產與產權</a>。
+
+────────────────────────────────────────────────────────────────────────────
+REGISTER — Taiwan usage
+────────────────────────────────────────────────────────────────────────────
+輔導 in Taiwan carries a counselling/remedial sense (學校輔導, 就業輔導). A
+premium advisory assists clients, it does not counsel them.
+
+[[proof.stat.1]]
+自 2014 年協助家庭移居
+
+全家庭 is not idiomatic; Taiwanese writes 全家.
+
+[[tier.val.family]]
+全家
+
+電郵 is Hong Kong and mainland usage. Taiwan writes 電子郵件.
+
+[[ui.cursor.email]]
+電子郵件
+
+────────────────────────────────────────────────────────────────────────────
+CONSISTENCY — 方案 was carrying two different meanings
+────────────────────────────────────────────────────────────────────────────
+方案 was used for "Pathways" in the nav and for "Programmes" in the footer,
+while the footer's own Pathways link said 居留方案. Three labels, two concepts,
+no consistent mapping. Pathways is now 居留方案 everywhere; the footer column
+listing Silver/Gold/Platinum/PVIP becomes 簽證方案.
+
+[[nav.pathways]]
+居留方案
+
+[[footer.col.programmes]]
+簽證方案
+
+────────────────────────────────────────────────────────────────────────────
+RESTRAINT — the page title made a claim the English does not
+────────────────────────────────────────────────────────────────────────────
+The English title is simply "Banco MM2H · A second home in Malaysia".
+「您的海外安居首選」 adds a best-in-market claim, which the brief bans and which
+Taiwan's advertising rules treat as a substantiable superlative.
+
+[[meta.title]]
+Banco MM2H · 馬來西亞第二家園
+
+────────────────────────────────────────────────────────────────────────────
+PUNCTUATION — finishing the de-dashing consistently
+────────────────────────────────────────────────────────────────────────────
+The design removed em dashes from the English for a calmer read, and the first
+editorial pass did the same to six Chinese strings — which left the page using
+—— in some places and 。/，for the same move in others. Normalised across the
+strings a visitor meets first. —— is kept where it genuinely introduces an
+aside rather than joining two clauses.
+
+[[path.lead]]
+退休、經商或子女教育，同樣的從容與全程服務，根據您的移居理由量身規劃。
+
+[[edu.lead]]
+馬來西亞是亞洲最具規模的國際教育據點之一。您的子女可憑與 MM2H 申請同步辦理的學生准證或家屬准證入學。
+
+[[prop.lead]]
+外國人得以個人名義在馬來西亞持有房產，多數住宅為永久產權或長期租賃產權。我們讓搜尋、查核與融資的過程，變得輕鬆無負擔。
+
+[[tier.silver.desc]]
+入門級別。以最低的門檻，建立從容且合宜的第二家園。
+
+[[tier.gold.desc]]
+最均衡的選擇。更長的居留權利，並可納入全家成員。
+
+[[tier.platinum.desc]]
+頂級級別。最長的居留年限與最廣泛的權益。
+
+[[tier.pvip.desc]]
+馬來西亞高階簽證方案（PVIP）。專為高收入人士設計的長期居留途徑，無需定期存款。
+
+[[tier.pvip.hint]]
+參考金額，我們將為您確認最新數字
+
+[[manifesto.2.v]]
+簽證、房產、學校、銀行、稅務，依照最合理的順序、同一條時間軸，一併安排妥當。
