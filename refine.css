@@ -179,5 +179,6 @@ a:hover{color:inherit}
 @media (min-width:1024px){.vhero__content{display:flex;grid-template-columns:none}}
 
 /* beat .immersive a{color:inherit} so every primary CTA keeps its white label */
-.foot .foot__cta,.phz .phz__cta,.ptier .ptier__btn--gold{color:#fff}
-.ctax .btn--gold,.immersive a.btn--gold{color:#06160f}
+/* one durable rule: every CTA keeps its own label colour past .immersive a{color:inherit} */
+.immersive a.foot__cta,.immersive a.phz__cta,.immersive a.ptier__btn--gold,.immersive a.btn--primary,.immersive a.vbtn--solid,.immersive a.vnav__cta{color:#fff}
+.immersive a.btn--gold,.immersive a.ptier__btn--solid{color:#06160f}
