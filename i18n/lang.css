@@ -140,6 +140,37 @@ html[lang="zh-Hant-TW"] h2,
 html[lang="zh-Hant-TW"] .jtitle,
 html[lang="zh-Hant-TW"] .vhead { line-height: 1.24; }
 
+/* ── Hero title: CJK needs a full em per character ──────────────────────────
+   site.css sizes .jtitle--top at min(clamp(2.6rem,9vw,10rem),15.5vh) = 160px on
+   a 1920px screen, inside a 560px .jhero__tl. That was measured against "home
+   in" — 7 Latin glyphs at roughly half an em each, so ~560px. 「第二個家」 is 4
+   glyphs at a FULL em each = 640px, which overflowed and broke the line into
+   您的 / 第二 / 個家. The extra line then pushed the CTAs down into the scroll
+   cue. Widen the column and ease the cap so the longest Chinese line always
+   fits on one line. A slightly smaller px size reads the same optical weight in
+   CJK, because every glyph fills its em box where Latin does not. */
+html[lang="zh-Hant-TW"] .jhero__tl { max-width: min(92vw, 680px); }
+
+html[lang="zh-Hant-TW"] .jtitle--top,
+html[lang="zh-Hant-TW"] .jtitle--bottom {
+  font-size: min(clamp(2.4rem, 8vw, 9rem), 14vh);
+  letter-spacing: -0.01em;   /* the Latin display face is tracked -0.045em, which collides CJK glyphs */
+}
+
+/* Each hero line is a single short phrase — never let one break mid-phrase. */
+html[lang="zh-Hant-TW"] .jtitle--top span[data-split],
+html[lang="zh-Hant-TW"] .jtitle--bottom span[data-split] { white-space: nowrap; }
+
+/* Chinese hero copy is taller than the English it replaced — denser glyphs at
+   line-height 1.85 — so on a short laptop the CTAs come down to meet the scroll
+   cue (6px apart at 668px tall). site.css only relieves this below 660px.
+   Drop the cue rather than the copy: the primary CTA directly above it already
+   reads 「開始降落 ↓」, so the affordance survives and the value proposition
+   stays on screen. */
+@media (max-height: 780px) {
+  html[lang="zh-Hant-TW"] .scrollcue { display: none; }
+}
+
 html[lang="zh-Hant-TW"] h3 { line-height: 1.4; }
 
 html[lang="zh-Hant-TW"] p,
