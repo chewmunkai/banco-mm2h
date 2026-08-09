@@ -1,0 +1,176 @@
+/* ============================================================================
+   Banco MM2H — refinement layer.
+   Loaded last, after site.css and upgrade.css. Owns: cursor removal, one type
+   scale, one button system, one radius system, eyebrow/subhead hierarchy,
+   pathway CTAs, process iconography, filmstrip sizing, footer.
+   ========================================================================== */
+
+/* ---- 1 · no bespoke cursor ------------------------------------------- */
+.cursor{display:none!important}
+body.cursor-on,body.cursor-on *{cursor:auto!important}
+body.cursor-on a,body.cursor-on button,body.cursor-on summary,body.cursor-on [data-scroll-to],body.cursor-on .hubx__row{cursor:pointer!important}
+body.cursor-on .film__viewport{cursor:grab!important}
+body.cursor-on .film__viewport.is-drag{cursor:grabbing!important}
+
+/* ---- 2 · shared tokens ----------------------------------------------- */
+:root{--r-card:20px;--r-panel:24px;--body-1:17px;--body-2:15.5px}
+
+/* ---- 3 · eyebrow (preheadline): no rule, larger, gold ---------------- */
+.u-eyebrow::before,.eyebrow::before{display:none!important}
+.u-eyebrow,.eyebrow{display:flex;width:fit-content;gap:0;font-family:var(--font-sans);font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-700);margin:0 0 20px}
+.u-eyebrow.on-dark,.eyebrow.on-dark{color:#E7C977}
+.manifesto__ey{margin-bottom:22px}
+
+/* ---- 4 · subheadline: bigger, lighter, visually distinct from body --- */
+.tiers__head p,.faqx__head p,.feat__copy>p,.phz__intro p,.ctax__l p,.film__head p{font-family:var(--font-sans);font-size:clamp(1.15rem,0.45vw + 1.05rem,1.35rem);font-weight:400;line-height:1.6;letter-spacing:-0.008em;color:var(--muted);max-width:56ch}
+.phz__intro p,.ctax__l p{color:#C6D6CA}
+
+/* ---- 5 · body copy: one larger scale --------------------------------- */
+.manifesto__meta div{max-width:34ch}
+.manifesto__meta .v{font-size:19px;line-height:1.62;color:var(--body)}
+.manifesto__meta .k{font-size:12px;letter-spacing:0.18em}
+.hubx__row .body p{font-size:var(--body-1);line-height:1.65;max-width:54ch}
+@media (min-width:921px){.hubx__row.is-active .body p{max-height:240px}}
+.hubx__row .tags span{font-size:12px}
+.phz__cap p{font-size:var(--body-1);line-height:1.6;max-width:48ch}
+.ptier__desc{font-size:16.5px;line-height:1.6}
+.ptier__hint{font-size:12.5px;line-height:1.5}
+.ptier__row{font-size:15px}
+.feat__list li{font-size:16.5px;line-height:1.65}
+.feat__list li b{font-size:18px}
+.proc__step p{font-size:var(--body-1);line-height:1.68;max-width:52ch}
+.faqx__list .a p{font-size:var(--body-1);line-height:1.75}
+.faqx__list .q{font-size:17px}
+.statx__cell .l{font-size:16px;line-height:1.55}
+.tiers__note{font-size:14.5px;line-height:1.7}
+.film__item .cap{font-size:12px;letter-spacing:0.1em}
+
+/* ---- 6 · one button system ------------------------------------------- */
+.btn,.vbtn,.ptier__btn,.vhero .vnav__cta,.phz__cta,.foot__cta{font-family:var(--font-sans);font-weight:700;font-size:15.5px;letter-spacing:-0.006em;border-radius:999px}
+.btn{padding:0.95em 1.85em}
+.vbtn{padding:15px 30px}
+.ptier__btn{padding:16px 24px;margin-top:26px}
+.vhero .vnav__cta{padding:11px 22px;font-size:14.5px}
+/* primary action is brand green everywhere; gold stays an accent */
+.nav .btn--primary,.btn--primary{color:#fff;background:var(--grad)}
+.nav .btn--primary::after,.btn--primary::after{background:var(--pine-deep)}
+.ptier__btn--gold{color:#fff;background:var(--grad)}
+.ptier__btn--gold:hover{background:var(--pine-deep);filter:none}
+.btn--ghost.btn--on-dark{border-color:rgba(255,255,255,0.42);color:#F3EAD0}
+
+/* ---- 7 · one radius system ------------------------------------------- */
+.ptier,.film__item,.hubx__media,.feat__badge{border-radius:var(--r-card)}
+.ctax__band,.phz__panel .media,.feat__frame{border-radius:var(--r-panel)}
+
+/* ---- 8 · navigation consistency -------------------------------------- */
+.nav__links{gap:4px}
+.nav__links a,.vnav__links a{font-family:var(--font-sans);font-size:15px;font-weight:600;letter-spacing:-0.006em;padding:9px 15px;border-radius:999px}
+.vnav{padding:10px 12px 10px 16px;gap:20px}
+.brand__name{font-size:20px;letter-spacing:.05em}
+.brand__sub{font-size:10px;letter-spacing:.2em}
+
+/* ---- 9 · scroll cue: a real, visible affordance ---------------------- */
+/* bottom-left, clear of the bottom-right wordmark */
+.scrollcue{left:var(--gutter);right:auto;bottom:clamp(24px,4.5vh,46px);transform:none;flex-direction:row;align-items:center;gap:13px;padding:12px 20px;border-radius:999px;font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;color:#F6EFDC;background:rgba(6,26,18,0.46);border:1px solid rgba(231,201,119,0.5);box-shadow:0 12px 34px rgba(0,0,0,0.38);backdrop-filter:blur(9px)}
+.scrollcue .line{width:28px;height:1px;background:linear-gradient(90deg,#E7C977,rgba(231,201,119,0));border-radius:2px;animation:cueX 2s var(--ease) infinite;transform-origin:left}
+@keyframes cueX{0%{transform:scaleX(0)}40%{transform:scaleX(1)}100%{transform:scaleX(0);transform-origin:right}}
+@media (prefers-reduced-motion:reduce){.scrollcue .line{animation:none;transform:none}}
+
+/* ---- 10 · hero wordmark: stacked, flush right, no trailing gap ------- */
+.jtitle--bottom{display:flex;flex-direction:column;align-items:flex-end;text-align:right;line-height:0.86}
+.jtitle--bottom>span{display:block;margin-right:-0.045em}
+.jtitle--bottom>span.script{margin-right:-0.015em;letter-spacing:0;margin-top:0.04em}
+@media (max-width:820px){.jtitle--bottom{align-items:flex-start;text-align:left}.jtitle--bottom>span{margin-right:0}}
+
+/* ---- 11 · pathways: a distinct CTA per route ------------------------- */
+.phz__cap{align-items:flex-end;gap:2.5rem}
+.phz__acts{flex:none;display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.phz__cta{display:inline-flex;align-items:center;gap:10px;padding:15px 26px;background:var(--grad);color:#fff;white-space:nowrap;transition:background .3s var(--ease),transform .3s var(--ease)}
+.phz__cta:hover{background:var(--pine-deep);transform:translateY(-2px)}
+.phz__cta span{transition:transform .35s var(--ease)}
+.phz__cta:hover span{transform:translateX(0.25em)}
+.phz__note{font-family:var(--font-mono);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;color:#E7C977}
+@media (max-width:600px){.phz__cap{align-items:flex-start}.phz__acts{align-items:stretch;width:100%}.phz__cta{justify-content:center}}
+
+/* ---- 12 · brand iconography ------------------------------------------ */
+.hubx__chip{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.hubx__icon{width:66px;height:66px;filter:drop-shadow(0 8px 18px rgba(7,54,41,0.22))}
+.hubx__row .mini{width:52px;height:52px;filter:drop-shadow(0 6px 14px rgba(7,54,41,0.18))}
+
+/* ---- 13 · filmstrip: one frame size, even gutters -------------------- */
+.film__track{align-items:stretch;gap:24px}
+.film__item.s-a,.film__item.s-b,.film__item.s-c{width:clamp(250px,23vw,330px);height:clamp(330px,42vh,440px);align-self:stretch;margin:0}
+.film__item image-slot{object-fit:cover}
+
+/* ---- 14 · footer ------------------------------------------------------ */
+.foot{background:var(--pine-900);color:#CFE3D8;padding-top:clamp(3.5rem,7vh,5.5rem)}
+.foot__top{display:grid;grid-template-columns:minmax(280px,1.1fr) 2fr;gap:clamp(2.5rem,5vw,5rem);padding-bottom:clamp(2.5rem,5vh,4rem);border-bottom:1px solid rgba(255,255,255,0.12)}
+@media (max-width:900px){.foot__top{grid-template-columns:1fr;gap:2.5rem}}
+.foot__logo{display:block;width:min(280px,80%);height:auto;margin:0 0 22px}
+.foot__blurb{font-size:15.5px;line-height:1.7;color:#9CC0AC;max-width:38ch;margin:0 0 26px}
+.foot__cta{display:inline-flex;align-items:center;gap:10px;padding:14px 26px;background:var(--grad);color:#fff;transition:background .3s var(--ease),transform .3s var(--ease)}
+.foot__cta:hover{background:var(--pine-deep);transform:translateY(-2px)}
+.foot__cols{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(1.5rem,3vw,2.5rem)}
+@media (max-width:760px){.foot__cols{grid-template-columns:repeat(2,1fr);gap:2rem}}
+.foot__col{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.foot__col h3{margin:0 0 4px;font-family:var(--font-sans);font-size:12px;font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:#E7C977}
+.foot__col a,.foot__col span{font-size:15px;line-height:1.4;color:#B6D0C0;transition:color .25s var(--ease)}
+.foot__col a:hover{color:#FBFAF5}
+.foot__big{font-family:var(--font-display);font-weight:800;font-size:clamp(2.6rem,12vw,10rem);letter-spacing:-0.05em;line-height:0.85;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,0.16);padding:clamp(1.8rem,4vh,3rem) 0 0;text-align:center}
+.foot__row{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:26px 0 22px;margin-top:clamp(1.5rem,3vh,2.4rem);border-top:1px solid rgba(255,255,255,0.12);color:#7FA992;font-size:13.5px}
+.foot__row a{transition:color .25s var(--ease)}
+.foot__row a:hover{color:#E7C977}
+.foot__credits p{font-size:12.5px;line-height:1.75}
+
+/* ---- 15 · alignment + rhythm ----------------------------------------- */
+.hubx__head,.tiers__head,.faqx__head,.film__head>div{max-width:none}
+.proc__curtitle{min-height:1.6em}
+.ctax__actions{align-items:center;gap:22px;flex-wrap:wrap}
+a:hover{color:inherit}
+.foot a,.foot__credits a{text-underline-offset:3px}
+
+/* ============================================================================
+   v2 — green primaries, floating nav, reworked promise mark, scroll motion
+   ========================================================================== */
+
+/* hero: green actions, green accent word */
+.vhero .vbtn--solid{background:var(--grad);color:#fff}
+.vhero .vbtn--solid:hover{background:var(--pine-deep)}
+.vhero .vnav__cta{background:var(--grad);color:#fff}
+.vhero .vnav__cta:hover{background:var(--pine-deep)}
+.jtitle .script{color:var(--mint);text-shadow:0 2px 34px rgba(0,0,0,0.55)}
+
+/* nav: floating capsule, hairline rules, underline indicator */
+.nav{top:clamp(10px,1.6vh,18px);left:clamp(12px,2.2vw,28px);right:clamp(12px,2.2vw,28px);padding:11px 11px 11px 20px;border-radius:22px;background:rgba(7,32,23,0.32);backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 46px -30px rgba(0,0,0,0.75)}
+.nav.scrolled{padding:11px 11px 11px 20px;background:rgba(251,250,245,0.9);border:1px solid rgba(20,40,30,0.09);box-shadow:0 18px 42px -28px rgba(11,46,34,0.55)}
+.brand__mark{border-radius:11px;box-shadow:0 8px 20px -10px rgba(0,0,0,0.65),inset 0 0 0 1px rgba(255,255,255,0.14)}
+.nav__links{gap:2px}
+.nav__links a{position:relative;color:#DDEAE2}
+.nav__links a::after{content:"";position:absolute;left:15px;right:15px;bottom:4px;height:1px;background:currentColor;opacity:0.5;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.nav__links a:hover::after{transform:scaleX(1)}
+.nav .nav__links a:hover,.nav.scrolled .nav__links a:hover{background:transparent}
+.nav.scrolled .nav__links a{color:var(--ink)}
+.nav__right{gap:14px}
+.nav__right::before{content:"";width:1px;height:24px;background:rgba(255,255,255,0.2)}
+.nav.scrolled .nav__right::before{background:rgba(20,40,30,0.14)}
+@media (max-width:860px){.nav__right::before{display:none}.nav.menu-open{border-radius:22px 22px 0 0}.nav.menu-open .nav__links{border-radius:0 0 22px 22px;overflow:hidden}}
+.vnav{border-radius:22px;padding:11px 11px 11px 20px}
+
+/* hero nav matches the fixed nav exactly */
+.vnav{margin-inline:calc(clamp(12px,2.2vw,28px) - clamp(22px,5vw,64px));margin-top:calc(clamp(10px,1.6vh,18px) - 24px);gap:20px;background:rgba(7,32,23,0.32);backdrop-filter:blur(16px) saturate(1.3);-webkit-backdrop-filter:blur(16px) saturate(1.3);border:1px solid rgba(255,255,255,0.14);box-shadow:0 20px 46px -30px rgba(0,0,0,0.75)}
+.vnav__brand .brand__mark{width:38px;height:38px;border-radius:11px;box-shadow:0 8px 20px -10px rgba(0,0,0,0.65),inset 0 0 0 1px rgba(255,255,255,0.14)}
+.vnav__brand .brand__name{font-size:20px;letter-spacing:.05em}
+.vnav__brand .brand__sub{font-size:10px;letter-spacing:.2em;margin-top:3px}
+.vnav__links{gap:2px}
+.vnav__links a{position:relative;font-size:15px;font-weight:600;color:#DDEAE2;padding:9px 15px}
+.vnav__links a::after{content:"";position:absolute;left:15px;right:15px;bottom:4px;height:1px;background:currentColor;opacity:0.5;transform:scaleX(0);transform-origin:left;transition:transform .45s var(--ease)}
+.vnav__links a:hover{background:transparent}
+.vnav__links a:hover::after{transform:scaleX(1)}
+.vnav__links::after{content:"";align-self:center;width:1px;height:24px;background:rgba(255,255,255,0.2);margin-inline-start:8px}
+.vhero .vnav__cta{display:inline-flex;align-items:center;flex:none;white-space:nowrap;padding:0.95em 1.85em;font-size:15.5px}
+/* hero content: single column now the promise mark is gone */
+@media (min-width:1024px){.vhero__content{display:flex;grid-template-columns:none}}
+
+/* beat .immersive a{color:inherit} so every primary CTA keeps its white label */
+.foot .foot__cta,.phz .phz__cta,.ptier .ptier__btn--gold{color:#fff}
+.ctax .btn--gold,.immersive a.btn--gold{color:#06160f}

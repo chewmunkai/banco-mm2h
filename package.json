@@ -1,0 +1,17 @@
+{
+  "name": "banco-mm2h-site",
+  "private": true,
+  "description": "Banco MM2H immersive site. The site itself is static and needs no build; these deps are dev-only tooling for the Traditional Chinese edition.",
+  "scripts": {
+    "serve": "node serve.js",
+    "i18n:check": "node i18n/validate.js",
+    "i18n:build": "node i18n/build-zh.js",
+    "i18n": "npm run i18n:check && npm run i18n:build",
+    "i18n:brief": "node i18n/md2docx.js i18n/zh-TW-translation-brief.md 'i18n/Banco MM2H — zh-TW Translation Brief.docx'"
+  },
+  "dependencies": {
+    "cheerio": "^1.2.0",
+    "docx": "^9.7.1",
+    "opencc-js": "^1.4.1"
+  }
+}

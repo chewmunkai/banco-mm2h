@@ -1,3 +1,2 @@
-# Preview deployment — not for indexing.
 User-agent: *
-Disallow: /
+Allow: /
