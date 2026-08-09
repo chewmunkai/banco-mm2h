@@ -147,6 +147,33 @@ html[lang="zh-Hant-TW"] li,
 html[lang="zh-Hant-TW"] .v,
 html[lang="zh-Hant-TW"] .a p { line-height: 1.85; }
 
+/* Chinese has no hyphenation to soak up a ragged edge, so a short final line
+   reads as a mistake rather than as rag. Two subheads were ending on a
+   3-character orphan; `pretty` pulls a word down to even the last lines out. */
+html[lang="zh-Hant-TW"] p,
+html[lang="zh-Hant-TW"] li,
+html[lang="zh-Hant-TW"] .v { text-wrap: pretty; }
+
+/* Headings are short enough that balancing beats filling — stops a two-line
+   Chinese headline leaving one or two characters stranded on line two.
+   The lead paragraphs get `balance` too, not `pretty`: `pretty` only rescues
+   single-WORD orphans, and CJK has no word boundaries for it to act on, so it
+   left 3-character last lines untouched. These run 2–3 lines, well inside the
+   line budget where a browser will balance. */
+html[lang="zh-Hant-TW"] h2,
+html[lang="zh-Hant-TW"] h3,
+html[lang="zh-Hant-TW"] .ptier__desc,
+html[lang="zh-Hant-TW"] .tiers__head p,
+html[lang="zh-Hant-TW"] .faqx__head p,
+html[lang="zh-Hant-TW"] .feat__copy > p,
+html[lang="zh-Hant-TW"] .phz__intro p,
+html[lang="zh-Hant-TW"] .ctax__l p,
+html[lang="zh-Hant-TW"] .film__head p,
+html[lang="zh-Hant-TW"] .foot__blurb { text-wrap: balance; }
+
+/* Never break a line before closing punctuation or after an opening bracket. */
+html[lang="zh-Hant-TW"] { line-break: strict; overflow-wrap: break-word; }
+
 /* The italic serif accent is a Latin-only face — fall back to the CJK stack so
    the script fragments don't render in a substituted font mid-heading.
    Colour is deliberately NOT set here: refine.css makes the hero accent mint and

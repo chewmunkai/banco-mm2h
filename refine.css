@@ -96,6 +96,13 @@ body.cursor-on .film__viewport.is-drag{cursor:grabbing!important}
 .hubx__chip{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
 .hubx__icon{width:66px;height:66px;filter:drop-shadow(0 8px 18px rgba(7,54,41,0.22))}
 .hubx__row .mini{width:52px;height:52px;filter:drop-shadow(0 6px 14px rgba(7,54,41,0.18))}
+/* On a 375px screen the 52px icon plus its gutter leaves the body column ~223px.
+   That is a workable measure in Latin but only ~13 characters in Chinese, which
+   turns every sentence into a tall, choppy stack. Give the copy the room back. */
+@media (max-width:600px){
+  .hubx__row .mini{width:34px;height:34px}
+  .hubx__row{column-gap:14px}
+}
 
 /* ---- 13 · filmstrip: one frame size, even gutters -------------------- */
 .film__track{align-items:stretch;gap:24px}
