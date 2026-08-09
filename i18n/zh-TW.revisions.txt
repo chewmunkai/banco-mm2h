@@ -216,7 +216,7 @@ MM2H 白金級
 吉隆坡 · 檳城 · 柔佛
 
 [[footer.talk.hours]]
-週一至週五 · 上午 9 時至下午 6 時（馬來西亞時間）
+週一至週五 09:00–18:00（GMT+8）
 
 [[footer.legal]]
 © 2026 Banco MM2H Sdn Bhd · 合法註冊移居顧問
