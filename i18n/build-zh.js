@@ -338,6 +338,9 @@ out = out.replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="../index.html"');
 // which tells search engines the Chinese URL's zh-TW version is the English one.
 out = out.replace(/(<link rel="alternate" hreflang="zh-Hant-TW" href=")[^"]*(")/,
   '$1./index.html$2');
+// Every CTA must land on the Chinese form, not the English one. These are
+// root-relative so the path rebase above deliberately leaves them alone.
+out = out.replace(/href="\/application\/\?src=/g, 'href="/zh/application/?src=');
 
 fs.mkdirSync(path.join(ROOT, 'zh'), { recursive: true });
 fs.writeFileSync(path.join(ROOT, 'zh', 'index.html'), out);

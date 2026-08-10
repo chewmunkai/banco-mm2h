@@ -3,9 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- noindex until the submit endpoint is connected: an indexed form that drops
-     submissions costs real enquiries. Remove once application.js has an ENDPOINT. -->
-<meta name="robots" content="noindex, nofollow">
 <title data-i18n="app.meta.title">Begin your application · Banco MM2H</title>
 <meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="Four short questions so we can match you to the right MM2H pathway. No obligation.">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
@@ -22,10 +19,6 @@
 <link rel="alternate" hreflang="zh-Hant-TW" href="../zh/application/index.html">
 </head>
 <body class="app">
-
-  <div class="app__notice" id="notice" hidden>
-    <span data-i18n="app.notice">Preview — submissions are not connected yet.</span>
-  </div>
 
   <header class="app__bar">
     <a class="app__brand" href="../index.html">
@@ -57,35 +50,42 @@
       <p class="u-sr" aria-live="polite" id="live"></p>
 
       <!-- ── 1 · pathway ─────────────────────────────────────────────── -->
-      <fieldset class="step is-on" data-step="1">
-        <legend class="step__q" data-i18n="app.q1.title">What brings you to Malaysia?</legend>
-        <p class="step__sub" data-i18n="app.q1.sub">This tells us which pathway to look at first.</p>
-        <div class="opts">
+      <fieldset class="step is-on" data-step="1" data-multi>
+        <legend class="step__q" data-i18n="app.q1.title">What do you need help with?</legend>
+        <p class="step__sub" data-i18n="app.q1.sub">Choose as many as apply.</p>
+        <div class="opts opts--multi">
           <label class="opt">
-            <input type="radio" name="pathway" value="retirement" required>
+            <input type="checkbox" name="pathway" value="retirement">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a1">A calmer chapter</span>
-              <span class="opt__d" data-i18n="app.q1.a1d">Retirement, or slowing down somewhere warmer</span>
+              <span class="opt__t" data-i18n="app.q1.a1">Retirement</span>
+              <span class="opt__d" data-i18n="app.q1.a1d">A calmer, more affordable base</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="business">
+            <input type="checkbox" name="pathway" value="business">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a2">A regional base</span>
-              <span class="opt__d" data-i18n="app.q1.a2d">Business, investment or work in Southeast Asia</span>
+              <span class="opt__t" data-i18n="app.q1.a2">Business or investment</span>
+              <span class="opt__d" data-i18n="app.q1.a2d">A base in Southeast Asia</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="education">
+            <input type="checkbox" name="pathway" value="education">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a3">A future for the children</span>
-              <span class="opt__d" data-i18n="app.q1.a3d">International schooling for the family</span>
+              <span class="opt__t" data-i18n="app.q1.a3">Children's education</span>
+              <span class="opt__d" data-i18n="app.q1.a3d">International schooling</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="exploring">
+            <input type="checkbox" name="pathway" value="property">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a4">Still looking into it</span>
+              <span class="opt__t" data-i18n="app.q1.a5">Property</span>
+              <span class="opt__d" data-i18n="app.q1.a5d">Buying or leasing a home</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="pathway" value="exploring">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a4">Still exploring</span>
               <span class="opt__d" data-i18n="app.q1.a4d">Gathering information for now</span>
             </span>
           </label>
@@ -94,8 +94,8 @@
 
       <!-- ── 2 · household ───────────────────────────────────────────── -->
       <fieldset class="step" data-step="2" hidden>
-        <legend class="step__q" data-i18n="app.q2.title">Who would be moving with you?</legend>
-        <p class="step__sub" data-i18n="app.q2.sub">Dependents change which tier fits, so it helps to know early.</p>
+        <legend class="step__q" data-i18n="app.q2.title">Who is moving with you?</legend>
+        <p class="step__sub" data-i18n="app.q2.sub">Dependents affect which tier fits.</p>
         <div class="opts">
           <label class="opt">
             <input type="radio" name="household" value="solo">
@@ -118,8 +118,8 @@
 
       <!-- ── 3 · timeline ────────────────────────────────────────────── -->
       <fieldset class="step" data-step="3" hidden>
-        <legend class="step__q" data-i18n="app.q3.title">When are you hoping to move?</legend>
-        <p class="step__sub" data-i18n="app.q3.sub">An approximate answer is fine. Nothing here is binding.</p>
+        <legend class="step__q" data-i18n="app.q3.title">When do you plan to move?</legend>
+        <p class="step__sub" data-i18n="app.q3.sub">An approximate answer is fine.</p>
         <div class="opts">
           <label class="opt">
             <input type="radio" name="timeline" value="lt6m">
@@ -135,7 +135,7 @@
           </label>
           <label class="opt">
             <input type="radio" name="timeline" value="researching">
-            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a4">No date yet, just researching</span></span>
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a4">No date yet</span></span>
           </label>
         </div>
       </fieldset>
@@ -143,7 +143,7 @@
       <!-- ── 4 · contact ─────────────────────────────────────────────── -->
       <fieldset class="step" data-step="4" hidden>
         <legend class="step__q" data-i18n="app.q4.title">How should we reach you?</legend>
-        <p class="step__sub" data-i18n="app.q4.sub">One advisor will read this and reply within one business day.</p>
+        <p class="step__sub" data-i18n="app.q4.sub">One advisor reads this and replies within one business day.</p>
 
         <div class="fields">
           <p class="field">
@@ -190,6 +190,7 @@
       <div class="done__mark" aria-hidden="true">✓</div>
       <h1 class="done__h" data-i18n="app.done.title">Thank you. We have your enquiry.</h1>
       <p class="done__p" data-i18n="app.done.body">One of our advisors will read it personally and be in touch within one business day. If it is urgent, call us on +60 3 2710 8800.</p>
+      <p class="done__p done__mail" id="doneMail" hidden data-i18n="app.done.mailto">Your email app should have opened with the details filled in — please press send to finish. If nothing opened, email us at hello@bancomm2h.my.</p>
       <a class="cta" href="../index.html" data-i18n="app.done.back">Back to the site</a>
     </section>
   </main>

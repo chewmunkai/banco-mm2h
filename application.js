@@ -1,16 +1,18 @@
 /* ============================================================================
    Banco MM2H — application quiz.
 
-   TO GO LIVE: set ENDPOINT below to the URL that should receive submissions,
-   then delete the noindex meta tag in application/index.html (and the zh copy).
-   While ENDPOINT is null the page runs in preview mode: it shows the notice
-   bar, logs the payload to the console, and never pretends a lead was sent to
-   anyone. Nothing here posts anywhere until you fill that constant in.
+   DELIVERY. Set ENDPOINT to a URL and every enquiry is POSTed there as JSON.
+   Until you do, the form falls back to opening the visitor's mail client with
+   the answers filled in and addressed to INBOX. That is deliberately not a
+   silent no-op: every CTA on the site now points here, so an enquiry that goes
+   nowhere is a lost client. Set ENDPOINT when you have one and the fallback
+   stops being used.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var ENDPOINT = null;          // e.g. 'https://formspree.io/f/xxxxxxxx'
+  var ENDPOINT = null;                        // e.g. 'https://formspree.io/f/xxxxxxxx'
+  var INBOX = 'hello@bancomm2h.my';           // used by the mailto fallback
   var TOTAL_STEPS = 4;
 
   var form = document.getElementById('quiz');
@@ -26,17 +28,16 @@
   var sendBtn = document.getElementById('send');
   var formErr = document.getElementById('formErr');
   var done = document.getElementById('done');
-  var notice = document.getElementById('notice');
+  var doneMail = document.getElementById('doneMail');
 
   var at = 1;
   var reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  if (!ENDPOINT && notice) notice.hidden = false;
-
   /* ---- step machinery ---------------------------------------------- */
   function stepEl(n) { return form.querySelector('.step[data-step="' + n + '"]'); }
+  function isMulti(n) { return stepEl(n).hasAttribute('data-multi'); }
 
-  function show(n, focusIt) {
+  function show(n) {
     at = n;
     steps.forEach(function (s) {
       var on = Number(s.dataset.step) === n;
@@ -54,35 +55,34 @@
 
     if (n < TOTAL_STEPS) nextBtn.disabled = !answered(n);
 
-    // let a screen reader know where we are without stealing focus mid-flow
-    live.textContent = stepNow.textContent + ' / ' + TOTAL_STEPS + ' — ' +
+    live.textContent = n + ' / ' + TOTAL_STEPS + ' — ' +
       stepEl(n).querySelector('.step__q').textContent;
-
-    if (focusIt) {
-      var first = stepEl(n).querySelector('input, textarea');
-      if (first) first.focus({ preventScroll: true });
-    }
   }
 
   function answered(n) {
-    var group = stepEl(n).querySelector('input[type="radio"]');
-    if (!group) return true;
-    return !!form.querySelector('input[name="' + group.name + '"]:checked');
+    var input = stepEl(n).querySelector('input[type="radio"], input[type="checkbox"]');
+    if (!input) return true;
+    return !!form.querySelector('input[name="' + input.name + '"]:checked');
   }
 
-  /* ---- choosing an option advances on its own ----------------------- */
+  /* ---- choosing an option ------------------------------------------- */
   form.addEventListener('change', function (e) {
-    if (e.target.type !== 'radio') return;
-    if (at < TOTAL_STEPS) {
-      nextBtn.disabled = false;
-      // a beat so the tick is visibly registered before the step turns over
-      setTimeout(function () { if (at < TOTAL_STEPS && answered(at)) show(at + 1, false); },
-        reduced ? 0 : 260);
+    if (e.target.type !== 'radio' && e.target.type !== 'checkbox') return;
+    if (at >= TOTAL_STEPS) return;
+
+    nextBtn.disabled = !answered(at);
+
+    // Single-choice steps move on by themselves. A multi-select step must not:
+    // the visitor is not finished until they say so, so it waits for Continue.
+    if (!isMulti(at) && e.target.type === 'radio') {
+      setTimeout(function () {
+        if (at < TOTAL_STEPS && answered(at)) show(at + 1);
+      }, reduced ? 0 : 260);
     }
   });
 
-  nextBtn.addEventListener('click', function () { if (answered(at)) show(at + 1, false); });
-  backBtn.addEventListener('click', function () { if (at > 1) show(at - 1, false); });
+  nextBtn.addEventListener('click', function () { if (answered(at)) show(at + 1); });
+  backBtn.addEventListener('click', function () { if (at > 1) show(at - 1); });
 
   /* ---- validation --------------------------------------------------- */
   function markBad(input, bad) {
@@ -115,7 +115,7 @@
   });
 
   /* ---- what we collect ---------------------------------------------- */
-  // Attribution only — no personal data ever goes into a URL or a third party.
+  // Attribution only. No personal data is ever put in a URL.
   function context() {
     var q = new URLSearchParams(location.search);
     var out = {
@@ -133,7 +133,8 @@
   function payload() {
     var d = new FormData(form);
     var body = {
-      pathway: d.get('pathway') || '',
+      // multi-select: every checked box, comma separated
+      pathway: d.getAll('pathway').join(', '),
       household: d.get('household') || '',
       timeline: d.get('timeline') || '',
       name: (d.get('name') || '').trim(),
@@ -146,12 +147,45 @@
     return body;
   }
 
-  /* ---- submit -------------------------------------------------------- */
-  function finish() {
+  /* ---- delivery ------------------------------------------------------ */
+  function finish(viaMail) {
     form.hidden = true;
     done.hidden = false;
+    if (viaMail && doneMail) doneMail.hidden = false;
     done.focus();
     if (history.replaceState) history.replaceState(null, '', location.pathname + '#done');
+  }
+
+  // The visible label for whatever is checked in a group. The payload keeps the
+  // machine values for a CRM; a person reading their inbox wants the words.
+  function labels(groupName) {
+    var picked = [].slice.call(
+      form.querySelectorAll('input[name="' + groupName + '"]:checked'));
+    return picked.map(function (i) {
+      var t = i.parentNode.querySelector('.opt__t');
+      return t ? t.textContent.trim() : i.value;
+    }).join(', ');
+  }
+
+  // Readable plain text, since a person opens this in their inbox.
+  function mailtoUrl(d) {
+    var lines = [
+      'Looking for: ' + (labels('pathway') || '—'),
+      'Household:   ' + (labels('household') || '—'),
+      'Timeline:    ' + (labels('timeline') || '—'),
+      '',
+      'Name:  ' + d.name,
+      'Email: ' + d.email,
+      'Phone: ' + (d.phone || '—'),
+      '',
+      'Notes: ' + (d.note || '—'),
+      '',
+      '— sent from ' + d.page + ' (' + d.lang + ')',
+      d.source ? 'source: ' + d.source : ''
+    ];
+    return 'mailto:' + INBOX +
+      '?subject=' + encodeURIComponent('MM2H enquiry — ' + d.name) +
+      '&body=' + encodeURIComponent(lines.filter(Boolean).join('\n'));
   }
 
   form.addEventListener('submit', function (e) {
@@ -162,10 +196,11 @@
     var data = payload();
 
     if (!ENDPOINT) {
-      // Preview mode. Show the completion screen so the flow can be reviewed,
-      // but be loud that nothing left the browser.
-      console.warn('[banco] No ENDPOINT set — nothing was sent. Payload was:', data);
-      finish();
+      // No endpoint yet: hand the enquiry to the visitor's mail client rather
+      // than dropping it. They still have to press send, which the done screen
+      // tells them.
+      window.location.href = mailtoUrl(data);
+      finish(true);
       return;
     }
 
@@ -178,14 +213,13 @@
       body: JSON.stringify(data)
     }).then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
-      finish();
+      finish(false);
     }).catch(function (err) {
-      console.error('[banco] submit failed', err);
-      formErr.hidden = false;
-      sendBtn.classList.remove('is-busy');
-      sendBtn.disabled = false;
+      console.error('[banco] submit failed, falling back to mail', err);
+      window.location.href = mailtoUrl(data);
+      finish(true);
     });
   });
 
-  show(1, false);
+  show(1);
 })();

@@ -155,6 +155,10 @@ body.app {
   transition: border-color .25s var(--app-ease), background .25s var(--app-ease);
 }
 
+/* A rounded square rather than a circle, so the multi-select step is readable
+   as "choose several" before anyone reads the instruction. */
+.opts--multi .opt__b::after { border-radius: 7px; }
+
 .opt:hover .opt__b { border-color: var(--border-brand); transform: translateY(-1px); }
 .opt input:focus-visible + .opt__b { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
 
