@@ -6,7 +6,7 @@
     "serve": "node serve.js",
     "i18n:check": "node i18n/validate.js",
     "i18n:build": "node i18n/build-zh.js",
-    "i18n": "npm run i18n:check && npm run i18n:build",
+    "i18n": "npm run i18n:check && node i18n/make-cn.js && node i18n/build-zh.js tw && node i18n/build-zh.js cn",
     "i18n:brief": "node i18n/md2docx.js i18n/zh-TW-translation-brief.md 'i18n/Banco MM2H — zh-TW Translation Brief.docx'"
   },
   "dependencies": {
