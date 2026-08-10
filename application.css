@@ -1,0 +1,300 @@
+/* ============================================================================
+   Banco MM2H — application quiz.
+   Standalone from the marketing page: it needs the brand tokens (styles.css)
+   but none of the journey, pin or filmstrip machinery. Everything below is
+   built on the same token set so the two read as one site.
+   ========================================================================== */
+
+:root {
+  --app-max: 620px;
+  --app-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --pine: #16744F;
+  --pine-deep: #0E4A37;
+  --pine-900: #072A20;
+  --grad: linear-gradient(112deg, #0E4A37, #16744F 50%, #C9A24A 130%);
+}
+
+* { box-sizing: border-box; }
+
+/* Author `display` declarations outrank the UA's [hidden] rule, so any element
+   given a display value below would ignore its own hidden attribute — which is
+   how both the Continue and Send buttons appeared on step 1 at once. */
+[hidden] { display: none !important; }
+
+body.app {
+  margin: 0;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface-page);
+  color: var(--text-body);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.u-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+
+/* ── preview notice (shown only while no endpoint is wired) ───────────── */
+.app__notice {
+  padding: 9px 16px;
+  background: #4A3A12;
+  color: #F4E8CC;
+  font-size: 13px;
+  letter-spacing: .02em;
+  text-align: center;
+}
+
+/* ── bar ──────────────────────────────────────────────────────────────── */
+.app__bar {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+  padding: 18px var(--gutter);
+}
+
+.app__brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; }
+.app__brand img { border-radius: 10px; display: block; }
+.app__brandtxt { display: flex; flex-direction: column; line-height: 1.1; }
+.app__brandtxt b {
+  font-family: var(--font-display); font-size: 18px; font-weight: 800;
+  letter-spacing: .05em; color: var(--pine-900);
+}
+.app__brandtxt i {
+  font-style: normal; font-size: 9.5px; letter-spacing: .2em;
+  color: var(--text-muted); margin-top: 2px;
+}
+
+/* the switcher on this page sits on a light background, unlike the hero */
+.app .langsw { border-color: rgba(15, 44, 30, .16); background: rgba(15, 44, 30, .04); }
+.app .langsw__opt { color: rgba(15, 44, 30, .55); }
+.app .langsw__opt:hover { color: #0F2C1E; }
+.app .langsw__opt.is-on { color: #fff; background: var(--pine-deep); }
+
+/* ── main ─────────────────────────────────────────────────────────────── */
+.app__main {
+  flex: 1;
+  display: flex; align-items: center; justify-content: center;
+  padding: clamp(1rem, 4vh, 3rem) var(--gutter) clamp(2rem, 6vh, 4rem);
+}
+
+.quiz, .done { width: 100%; max-width: var(--app-max); }
+
+/* ── progress ─────────────────────────────────────────────────────────── */
+.quiz__head { margin-bottom: clamp(1.5rem, 4vh, 2.4rem); }
+
+.quiz__count {
+  margin: 0 0 12px;
+  font-family: var(--font-mono);
+  font-size: 11.5px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--text-muted);
+}
+.quiz__count b { color: var(--pine-deep); font-weight: 700; }
+
+.quiz__bar {
+  height: 3px; border-radius: 999px;
+  background: var(--border-hairline);
+  overflow: hidden;
+}
+.quiz__bar > i {
+  display: block; height: 100%; width: 25%;
+  border-radius: 999px;
+  background: var(--grad);
+  transition: width .55s var(--app-ease);
+}
+
+/* ── step ─────────────────────────────────────────────────────────────── */
+.step { border: 0; padding: 0; margin: 0; min-inline-size: 0; }
+.step[hidden] { display: none; }
+
+.step.is-on { animation: stepIn .45s var(--app-ease) both; }
+@keyframes stepIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+.step__q {
+  display: block; padding: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 1.2vw + 1.35rem, 2.15rem);
+  font-weight: 800; line-height: 1.18; letter-spacing: -0.02em;
+  color: var(--text-strong);
+}
+
+.step__sub {
+  margin: 12px 0 clamp(1.4rem, 3vh, 2rem);
+  font-size: 16px; line-height: 1.6; color: var(--text-muted);
+  max-width: 46ch;
+}
+
+/* ── options ──────────────────────────────────────────────────────────── */
+.opts { display: grid; gap: 10px; }
+
+.opt { position: relative; display: block; cursor: pointer; }
+.opt input {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; margin: 0; cursor: pointer;
+}
+
+.opt__b {
+  display: flex; flex-direction: column; gap: 4px;
+  padding: 18px 54px 18px 20px;
+  border: 1px solid var(--border-hairline);
+  border-radius: 14px;
+  background: var(--surface-card);
+  transition: border-color .25s var(--app-ease), background .25s var(--app-ease),
+              transform .25s var(--app-ease), box-shadow .25s var(--app-ease);
+}
+
+.opt__t { font-size: 17px; font-weight: 600; color: var(--text-strong); line-height: 1.35; }
+.opt__d { font-size: 14.5px; color: var(--text-muted); line-height: 1.45; }
+
+/* tick, drawn only when chosen */
+.opt__b::after {
+  content: ""; position: absolute; top: 50%; right: 20px;
+  width: 20px; height: 20px; margin-top: -10px;
+  border: 1.5px solid var(--border-hairline); border-radius: 50%;
+  transition: border-color .25s var(--app-ease), background .25s var(--app-ease);
+}
+
+.opt:hover .opt__b { border-color: var(--border-brand); transform: translateY(-1px); }
+.opt input:focus-visible + .opt__b { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+.opt input:checked + .opt__b {
+  border-color: var(--pine);
+  background: color-mix(in oklch, var(--pine) 5%, var(--surface-card));
+  box-shadow: 0 8px 24px -18px rgba(11, 46, 34, .8);
+}
+.opt input:checked + .opt__b::after {
+  border-color: var(--pine);
+  background: var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.2 5.2L20 7'/%3E%3C/svg%3E") center / 12px no-repeat;
+}
+
+/* ── fields ───────────────────────────────────────────────────────────── */
+.fields { display: grid; gap: 16px; }
+.field { margin: 0; display: grid; gap: 7px; }
+
+.field label {
+  display: flex; align-items: baseline; gap: 8px;
+  font-size: 14px; font-weight: 600; color: var(--text-strong);
+}
+.field label em {
+  font-style: normal; font-size: 12px; font-weight: 400; color: var(--text-muted);
+}
+
+.field input, .field textarea {
+  width: 100%;
+  padding: 14px 16px;
+  font-family: inherit; font-size: 16px;   /* 16px stops iOS zooming the page on focus */
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  transition: border-color .22s var(--app-ease), box-shadow .22s var(--app-ease);
+}
+.field textarea { resize: vertical; min-height: 88px; line-height: 1.55; }
+
+.field input:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--pine);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.field__err {
+  display: none;
+  font-size: 13px; color: var(--danger, #A6332E);
+}
+.field.is-bad input, .field.is-bad textarea { border-color: var(--danger, #A6332E); }
+.field.is-bad .field__err { display: block; }
+
+.consent {
+  margin: 18px 0 0;
+  font-size: 13px; line-height: 1.6; color: var(--text-muted);
+}
+
+/* ── controls ─────────────────────────────────────────────────────────── */
+.quiz__nav {
+  display: flex; align-items: center; gap: 16px;
+  margin-top: clamp(1.5rem, 4vh, 2.2rem);
+}
+
+.cta {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  margin-left: auto;
+  padding: 15px 30px;
+  font-family: var(--font-sans); font-size: 15.5px; font-weight: 700;
+  letter-spacing: -0.006em;
+  color: #fff; background: var(--grad);
+  border: 0; border-radius: 999px;
+  text-decoration: none; cursor: pointer;
+  transition: background .3s var(--app-ease), transform .3s var(--app-ease),
+              opacity .2s var(--app-ease);
+}
+.cta:hover:not(:disabled) { background: var(--pine-deep); transform: translateY(-2px); }
+.cta:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+.cta:disabled { opacity: .38; cursor: not-allowed; }
+.cta.is-busy { opacity: .7; pointer-events: none; }
+
+.lnk {
+  padding: 8px 2px;
+  font-family: inherit; font-size: 14.5px; font-weight: 600;
+  color: var(--text-muted); background: none; border: 0; cursor: pointer;
+  border-bottom: 1px solid transparent;
+  transition: color .25s var(--app-ease), border-color .25s var(--app-ease);
+}
+.lnk:hover { color: var(--pine-deep); border-bottom-color: currentColor; }
+.lnk:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 3px; }
+
+.quiz__err {
+  margin: 16px 0 0; padding: 12px 14px;
+  font-size: 14px; line-height: 1.5;
+  color: #7A2622; background: #FBEDEC;
+  border: 1px solid #E8C9C6; border-radius: 10px;
+}
+
+/* ── done ─────────────────────────────────────────────────────────────── */
+.done { text-align: center; animation: stepIn .5s var(--app-ease) both; }
+.done:focus { outline: none; }
+
+.done__mark {
+  width: 62px; height: 62px; margin: 0 auto 22px;
+  display: grid; place-items: center;
+  font-size: 27px; color: #fff;
+  background: var(--grad); border-radius: 50%;
+}
+
+.done__h {
+  margin: 0 0 14px;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 1.4vw + 1.4rem, 2.3rem);
+  font-weight: 800; line-height: 1.2; letter-spacing: -0.02em;
+  color: var(--text-strong);
+}
+
+.done__p {
+  margin: 0 auto 28px; max-width: 44ch;
+  font-size: 16.5px; line-height: 1.65; color: var(--text-muted);
+}
+
+.done .cta { margin: 0; }
+
+/* ── foot ─────────────────────────────────────────────────────────────── */
+.app__foot {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap;
+  padding: 20px var(--gutter);
+  border-top: 1px solid var(--border-hairline);
+  font-size: 13px; color: var(--text-muted);
+}
+.app__foot a { color: inherit; text-underline-offset: 3px; }
+
+@media (max-width: 560px) {
+  .quiz__nav { flex-direction: row-reverse; justify-content: space-between; }
+  .cta { margin-left: 0; flex: 1; }
+  .lnk { flex: none; }
+  .opt__b { padding: 16px 50px 16px 17px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .step.is-on, .done { animation: none; }
+  .quiz__bar > i { transition: none; }
+  .cta:hover:not(:disabled), .opt:hover .opt__b { transform: none; }
+}

@@ -353,3 +353,50 @@ console.log(`  → zh/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
 // Unresolved selectors mean the page is structurally wrong — fail. Untranslated
 // strings are a known, reported gap, not a build failure.
 process.exitCode = miss.length ? 1 : 0;
+
+// ─── application quiz ────────────────────────────────────────────────────────
+// A second, simpler pass. This page was authored by us with data-i18n keys, so
+// it needs no selector map at all — walk the attributes and swap. index.html
+// gets the selector treatment above only because it predates the i18n work.
+(function buildApplication() {
+  const src = path.join(ROOT, 'application', 'index.html');
+  if (!fs.existsSync(src)) return;
+
+  const $a = cheerio.load(fs.readFileSync(src, 'utf8'), { decodeEntities: false });
+  const gaps = [];
+
+  $a('[data-i18n]').each((_, el) => {
+    const k = $a(el).attr('data-i18n');
+    if (!(k in t)) return gaps.push(k);
+    const attr = $a(el).attr('data-i18n-attr');   // e.g. translate the content="" of a meta
+    if (attr) $a(el).attr(attr, t[k]); else $a(el).text(t[k]);
+  });
+
+  $a('html').attr('lang', 'zh-Hant-TW');
+
+  // Mirror the switcher: Chinese becomes current, English becomes the link.
+  $a('.langsw').attr('aria-label', t['ui.lang.aria']).html(
+    `\n      <a class="langsw__opt" href="../../application/index.html" hreflang="en">${t['ui.lang.en']}</a>` +
+    `\n      <span class="langsw__opt is-on" aria-current="true">${t['ui.lang.zh']}</span>\n    `);
+
+  $a('link[rel="alternate"]').remove();
+  $a('head').append(
+    `\n<link rel="alternate" hreflang="en" href="../../application/index.html">` +
+    `\n<link rel="alternate" hreflang="x-default" href="../../application/index.html">` +
+    `\n<link rel="alternate" hreflang="zh-Hant-TW" href="./index.html">\n`);
+
+  let out = $a.html();
+  // The page sits one level deeper than the English original, so shared
+  // resources need another hop. Page links stay as they are: "../index.html"
+  // already resolves to the Chinese homepage from /zh/application/.
+  ['../assets/', '../styles.css', '../application.css', '../application.js', '../i18n/']
+    .forEach(p => { out = out.split('"' + p).join('"../' + p); });
+
+  fs.mkdirSync(path.join(ROOT, 'zh', 'application'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, 'zh', 'application', 'index.html'), out);
+
+  console.log(gaps.length
+    ? `  application: ${gaps.length} untranslated key(s): ${gaps.join(', ')}\n`
+    : '  application: all keys resolved\n');
+  console.log(`  → zh/application/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
+})();

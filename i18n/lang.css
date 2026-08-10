@@ -17,7 +17,9 @@
 
 .langsw__opt {
   display: inline-block;
-  padding: 5px 11px;
+  /* 7px vertical keeps the hit area at ~26px. WCAG 2.2 SC 2.5.8 (AA) wants at
+     least 24×24 CSS px, and 5px padding left these at 20px. */
+  padding: 7px 12px;
   border-radius: 999px;
   color: rgba(255, 255, 255, .62);
   text-decoration: none;
@@ -100,7 +102,7 @@
    every width — .vnav stays visible on mobile even though .vnav__links don't. */
 @media (max-width: 900px) {
   .langsw { font-size: 11.5px; padding: 2px; }
-  .langsw__opt { padding: 4px 8px; }
+  .langsw__opt { padding: 6px 10px; }   /* ~24px, the SC 2.5.8 floor */
   .langsw--v { margin-left: 8px; }
 }
 
@@ -226,6 +228,16 @@ html[lang="zh-Hant-TW"] .beat .k {
   font-variant: normal;
   text-transform: none;
 }
+
+/* Application quiz. The mono counter is tracked at .18em, which pushes visible
+   gaps around CJK punctuation (第 1 步 ， 共 4). Body copy on this page also
+   wants the CJK line-height the marketing page gets. */
+html[lang="zh-Hant-TW"] .quiz__count { letter-spacing: .06em; }
+html[lang="zh-Hant-TW"] .step__sub,
+html[lang="zh-Hant-TW"] .opt__d,
+html[lang="zh-Hant-TW"] .consent,
+html[lang="zh-Hant-TW"] .done__p { line-height: 1.8; }
+html[lang="zh-Hant-TW"] .opt__t { line-height: 1.5; }
 
 /* Tier names stay Latin — keep the original display face on those. */
 html[lang="zh-Hant-TW"] .ptier__name,

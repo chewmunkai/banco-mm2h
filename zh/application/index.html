@@ -1,0 +1,206 @@
+<!DOCTYPE html><html lang="zh-Hant-TW"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- noindex until the submit endpoint is connected: an indexed form that drops
+     submissions costs real enquiries. Remove once application.js has an ENDPOINT. -->
+<meta name="robots" content="noindex, nofollow">
+<title data-i18n="app.meta.title">開始申請 · Banco MM2H</title>
+<meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="四個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。">
+<link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
+<meta name="theme-color" content="#0F2C1E">
+<link rel="stylesheet" href="../../styles.css">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;1,400;1,500&amp;display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link rel="stylesheet" href="../../application.css">
+<link rel="stylesheet" href="../../i18n/lang.css">
+
+
+
+
+<link rel="alternate" hreflang="en" href="../../application/index.html">
+<link rel="alternate" hreflang="x-default" href="../../application/index.html">
+<link rel="alternate" hreflang="zh-Hant-TW" href="./index.html">
+</head>
+<body class="app">
+
+  <div class="app__notice" id="notice" hidden="">
+    <span data-i18n="app.notice">預覽模式，表單尚未連接，送出的資料不會被儲存。</span>
+  </div>
+
+  <header class="app__bar">
+    <a class="app__brand" href="../index.html">
+      <img src="../../assets/logo-mark.png" alt="Banco MM2H" width="34" height="34">
+      <span class="app__brandtxt"><b>BANCO</b><i data-i18n="nav.brand.sub">MM2H · 馬來西亞</i></span>
+    </a>
+    <div class="langsw" role="group" aria-label="選擇語言">
+      <a class="langsw__opt" href="../../application/index.html" hreflang="en">English</a>
+      <span class="langsw__opt is-on" aria-current="true">中文</span>
+    </div>
+  </header>
+
+  <main class="app__main">
+    <form class="quiz" id="quiz" novalidate="">
+
+      <!-- progress -->
+      <div class="quiz__head">
+        <p class="quiz__count">
+          <span data-i18n="app.progress.step">第</span>
+          <b id="stepNow">1</b>
+          <span data-i18n="app.progress.of">步，共</span>
+          <b>4</b>
+        </p>
+        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Application progress" id="bar"><i></i></div>
+      </div>
+
+      <!-- announced to screen readers when the step changes -->
+      <p class="u-sr" aria-live="polite" id="live"></p>
+
+      <!-- ── 1 · pathway ─────────────────────────────────────────────── -->
+      <fieldset class="step is-on" data-step="1">
+        <legend class="step__q" data-i18n="app.q1.title">是什麼讓您考慮馬來西亞？</legend>
+        <p class="step__sub" data-i18n="app.q1.sub">這能幫助我們優先為您評估合適的方案。</p>
+        <div class="opts">
+          <label class="opt">
+            <input type="radio" name="pathway" value="retirement" required="">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a1">展開從容的新篇章</span>
+              <span class="opt__d" data-i18n="app.q1.a1d">退休，或想在溫暖的地方放慢步調</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="pathway" value="business">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a2">建立區域據點</span>
+              <span class="opt__d" data-i18n="app.q1.a2d">在東南亞經商、投資或工作</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="pathway" value="education">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a3">為孩子安排未來</span>
+              <span class="opt__d" data-i18n="app.q1.a3d">讓家庭銜接國際教育</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="pathway" value="exploring">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a4">還在了解階段</span>
+              <span class="opt__d" data-i18n="app.q1.a4d">目前先蒐集資訊</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ── 2 · household ───────────────────────────────────────────── -->
+      <fieldset class="step" data-step="2" hidden="">
+        <legend class="step__q" data-i18n="app.q2.title">會有哪些家人與您同行？</legend>
+        <p class="step__sub" data-i18n="app.q2.sub">家屬人數會影響適合的級別，及早了解會更順利。</p>
+        <div class="opts">
+          <label class="opt">
+            <input type="radio" name="household" value="solo">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q2.a1">只有我</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="household" value="couple">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q2.a2">我與配偶</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="household" value="children">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q2.a3">帶著孩子一起</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="household" value="extended">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q2.a4">三代同行，含父母</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ── 3 · timeline ────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="3" hidden="">
+        <legend class="step__q" data-i18n="app.q3.title">您預計什麼時候移居？</legend>
+        <p class="step__sub" data-i18n="app.q3.sub">大概的時間即可，此處的選擇不具任何約束力。</p>
+        <div class="opts">
+          <label class="opt">
+            <input type="radio" name="timeline" value="lt6m">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a1">六個月內</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="timeline" value="6to12m">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a2">六到十二個月</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="timeline" value="1to2y">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a3">一到兩年</span></span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="timeline" value="researching">
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a4">尚未確定，仍在研究</span></span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ── 4 · contact ─────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="4" hidden="">
+        <legend class="step__q" data-i18n="app.q4.title">我們該如何與您聯絡？</legend>
+        <p class="step__sub" data-i18n="app.q4.sub">將由一位顧問親自閱讀，並在一個工作天內回覆您。</p>
+
+        <div class="fields">
+          <p class="field">
+            <label for="fname" data-i18n="app.f.name">姓名</label>
+            <input id="fname" name="name" type="text" autocomplete="name" required="">
+            <span class="field__err" data-i18n="app.err.name">請留下您的姓名。</span>
+          </p>
+          <p class="field">
+            <label for="femail" data-i18n="app.f.email">電子郵件</label>
+            <input id="femail" name="email" type="email" autocomplete="email" inputmode="email" required="">
+            <span class="field__err" data-i18n="app.err.email">請確認電子郵件格式。</span>
+          </p>
+          <p class="field">
+            <label for="fphone">
+              <span data-i18n="app.f.phone">電話或 LINE ID</span>
+              <em data-i18n="app.f.optional">選填</em>
+            </label>
+            <input id="fphone" name="phone" type="text" autocomplete="tel">
+          </p>
+          <p class="field">
+            <label for="fnote">
+              <span data-i18n="app.f.note">還有什麼想讓我們知道的</span>
+              <em data-i18n="app.f.optional">選填</em>
+            </label>
+            <textarea id="fnote" name="note" rows="3"></textarea>
+          </p>
+        </div>
+
+        <p class="consent" data-i18n="app.consent">這些資料僅用於回覆您的諮詢，我們不會出售或轉交給第三方。</p>
+      </fieldset>
+
+      <!-- ── controls ────────────────────────────────────────────────── -->
+      <div class="quiz__nav">
+        <button class="lnk" type="button" id="back" hidden="" data-i18n="app.back">上一步</button>
+        <button class="cta" type="button" id="next" disabled="" data-i18n="app.next">繼續</button>
+        <button class="cta" type="submit" id="send" hidden="" data-i18n="app.send">送出諮詢</button>
+      </div>
+
+      <p class="quiz__err" id="formErr" role="alert" hidden="" data-i18n="app.err.form">送出時發生問題，請再試一次，或來信 hello@bancomm2h.my。</p>
+    </form>
+
+    <!-- ── done ──────────────────────────────────────────────────────── -->
+    <section class="done" id="done" hidden="" tabindex="-1">
+      <div class="done__mark" aria-hidden="true">✓</div>
+      <h1 class="done__h" data-i18n="app.done.title">已收到您的諮詢，謝謝您。</h1>
+      <p class="done__p" data-i18n="app.done.body">我們的顧問會親自閱讀，並在一個工作天內與您聯絡。若有急事，歡迎撥打 +60 3 2710 8800。</p>
+      <a class="cta" href="../index.html" data-i18n="app.done.back">返回網站</a>
+    </section>
+  </main>
+
+  <footer class="app__foot">
+    <span data-i18n="footer.legal">© 2026 Banco MM2H Sdn Bhd · 合法註冊移居顧問</span>
+    <a href="mailto:hello@bancomm2h.my">hello@bancomm2h.my</a>
+  </footer>
+
+  <script src="../../application.js"></script>
+
+
+</body></html>
