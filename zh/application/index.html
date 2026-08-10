@@ -1,9 +1,6 @@
 <!DOCTYPE html><html lang="zh-Hant-TW"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- noindex until the submit endpoint is connected: an indexed form that drops
-     submissions costs real enquiries. Remove once application.js has an ENDPOINT. -->
-<meta name="robots" content="noindex, nofollow">
 <title data-i18n="app.meta.title">開始申請 · Banco MM2H</title>
 <meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="四個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
@@ -24,10 +21,6 @@
 <link rel="alternate" hreflang="zh-Hant-TW" href="./index.html">
 </head>
 <body class="app">
-
-  <div class="app__notice" id="notice" hidden="">
-    <span data-i18n="app.notice">預覽模式，表單尚未連接，送出的資料不會被儲存。</span>
-  </div>
 
   <header class="app__bar">
     <a class="app__brand" href="../index.html">
@@ -58,35 +51,42 @@
       <p class="u-sr" aria-live="polite" id="live"></p>
 
       <!-- ── 1 · pathway ─────────────────────────────────────────────── -->
-      <fieldset class="step is-on" data-step="1">
-        <legend class="step__q" data-i18n="app.q1.title">是什麼讓您考慮馬來西亞？</legend>
-        <p class="step__sub" data-i18n="app.q1.sub">這能幫助我們優先為您評估合適的方案。</p>
-        <div class="opts">
+      <fieldset class="step is-on" data-step="1" data-multi="">
+        <legend class="step__q" data-i18n="app.q1.title">您需要我們協助什麼？</legend>
+        <p class="step__sub" data-i18n="app.q1.sub">可複選。</p>
+        <div class="opts opts--multi">
           <label class="opt">
-            <input type="radio" name="pathway" value="retirement" required="">
+            <input type="checkbox" name="pathway" value="retirement">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a1">展開從容的新篇章</span>
-              <span class="opt__d" data-i18n="app.q1.a1d">退休，或想在溫暖的地方放慢步調</span>
+              <span class="opt__t" data-i18n="app.q1.a1">退休生活</span>
+              <span class="opt__d" data-i18n="app.q1.a1d">更從容、負擔更合宜的居所</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="business">
+            <input type="checkbox" name="pathway" value="business">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a2">建立區域據點</span>
-              <span class="opt__d" data-i18n="app.q1.a2d">在東南亞經商、投資或工作</span>
+              <span class="opt__t" data-i18n="app.q1.a2">經商或投資</span>
+              <span class="opt__d" data-i18n="app.q1.a2d">在東南亞建立據點</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="education">
+            <input type="checkbox" name="pathway" value="education">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a3">為孩子安排未來</span>
-              <span class="opt__d" data-i18n="app.q1.a3d">讓家庭銜接國際教育</span>
+              <span class="opt__t" data-i18n="app.q1.a3">子女教育</span>
+              <span class="opt__d" data-i18n="app.q1.a3d">銜接國際學校</span>
             </span>
           </label>
           <label class="opt">
-            <input type="radio" name="pathway" value="exploring">
+            <input type="checkbox" name="pathway" value="property">
             <span class="opt__b">
-              <span class="opt__t" data-i18n="app.q1.a4">還在了解階段</span>
+              <span class="opt__t" data-i18n="app.q1.a5">房產</span>
+              <span class="opt__d" data-i18n="app.q1.a5d">購屋或租賃</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="pathway" value="exploring">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.q1.a4">仍在了解</span>
               <span class="opt__d" data-i18n="app.q1.a4d">目前先蒐集資訊</span>
             </span>
           </label>
@@ -95,8 +95,8 @@
 
       <!-- ── 2 · household ───────────────────────────────────────────── -->
       <fieldset class="step" data-step="2" hidden="">
-        <legend class="step__q" data-i18n="app.q2.title">會有哪些家人與您同行？</legend>
-        <p class="step__sub" data-i18n="app.q2.sub">家屬人數會影響適合的級別，及早了解會更順利。</p>
+        <legend class="step__q" data-i18n="app.q2.title">有哪些家人同行？</legend>
+        <p class="step__sub" data-i18n="app.q2.sub">家屬人數會影響適合的級別。</p>
         <div class="opts">
           <label class="opt">
             <input type="radio" name="household" value="solo">
@@ -119,8 +119,8 @@
 
       <!-- ── 3 · timeline ────────────────────────────────────────────── -->
       <fieldset class="step" data-step="3" hidden="">
-        <legend class="step__q" data-i18n="app.q3.title">您預計什麼時候移居？</legend>
-        <p class="step__sub" data-i18n="app.q3.sub">大概的時間即可，此處的選擇不具任何約束力。</p>
+        <legend class="step__q" data-i18n="app.q3.title">您預計何時移居？</legend>
+        <p class="step__sub" data-i18n="app.q3.sub">大概的時間即可。</p>
         <div class="opts">
           <label class="opt">
             <input type="radio" name="timeline" value="lt6m">
@@ -136,7 +136,7 @@
           </label>
           <label class="opt">
             <input type="radio" name="timeline" value="researching">
-            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a4">尚未確定，仍在研究</span></span>
+            <span class="opt__b"><span class="opt__t" data-i18n="app.q3.a4">尚未確定</span></span>
           </label>
         </div>
       </fieldset>
@@ -144,7 +144,7 @@
       <!-- ── 4 · contact ─────────────────────────────────────────────── -->
       <fieldset class="step" data-step="4" hidden="">
         <legend class="step__q" data-i18n="app.q4.title">我們該如何與您聯絡？</legend>
-        <p class="step__sub" data-i18n="app.q4.sub">將由一位顧問親自閱讀，並在一個工作天內回覆您。</p>
+        <p class="step__sub" data-i18n="app.q4.sub">由一位顧問親自閱讀，並在一個工作天內回覆您。</p>
 
         <div class="fields">
           <p class="field">
@@ -191,6 +191,7 @@
       <div class="done__mark" aria-hidden="true">✓</div>
       <h1 class="done__h" data-i18n="app.done.title">已收到您的諮詢，謝謝您。</h1>
       <p class="done__p" data-i18n="app.done.body">我們的顧問會親自閱讀，並在一個工作天內與您聯絡。若有急事，歡迎撥打 +60 3 2710 8800。</p>
+      <p class="done__p done__mail" id="doneMail" hidden="" data-i18n="app.done.mailto">您的郵件程式應已開啟並帶入填寫內容，請按下傳送即可完成。若未自動開啟，歡迎直接來信 hello@bancomm2h.my。</p>
       <a class="cta" href="../index.html" data-i18n="app.done.back">返回網站</a>
     </section>
   </main>
