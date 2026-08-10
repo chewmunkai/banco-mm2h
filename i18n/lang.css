@@ -109,38 +109,50 @@
 @media (max-width: 620px) {
   .vnav { gap: 8px; padding: 8px 9px 8px 11px; }
   .langsw--v { margin-left: 6px; }
-  .langsw--v .langsw__opt { padding: 4px 8px; font-size: 11px; }
-  /* Too narrow for a two-option pill next to the brand and CTA. Show only the
-     language you'd switch to — the current one is what you're already reading. */
-  .langsw--v .langsw__opt.is-on { display: none; }
-  .langsw--v .langsw__opt { color: rgba(255, 255, 255, .9); }
+  .langsw--v .langsw__opt { padding: 7px 9px; font-size: 11px; }  /* 7px keeps the hit area ≥24px */
+
+  /* Three languages, a wordmark and a CTA do not fit across 375px. The fixed
+     header is still `.nav--hidden` at the video hero, so this switcher is the
+     only language control on that screen and cannot be dropped — and shrinking
+     it far enough took the tap target under the 24px floor. So the wordmark
+     gives way instead: the logo mark alone still identifies the brand, and it
+     buys enough room for all three languages at a proper size. */
+  .vnav .vnav__brand .brand__txt { display: none; }
 }
 
 /* ── Traditional Chinese typography ──────────────────────────────────────── */
 /* Chinese has no ascenders/descenders and reads denser than Latin, so the
    Latin line-heights run tight and the display tracking runs loose. */
-html[lang="zh-Hant-TW"] {
+/* Traditional and Simplified want different faces: the TC and SC cuts differ in
+   glyph shape for shared characters, so serving TC fonts to a Simplified page
+   renders some characters in Traditional-style forms. */
+html[lang^="zh-Hant"] {
   --zh-sans: "PingFang TC", "Noto Sans TC", "Microsoft JhengHei",
              "Hiragino Sans CNS", "Heiti TC", sans-serif;
 }
 
-html[lang="zh-Hant-TW"] body { font-family: var(--zh-sans); }
+html[lang^="zh-Hans"] {
+  --zh-sans: "PingFang SC", "Noto Sans SC", "Microsoft YaHei",
+             "Hiragino Sans GB", "Heiti SC", sans-serif;
+}
 
-html[lang="zh-Hant-TW"] h1,
-html[lang="zh-Hant-TW"] h2,
-html[lang="zh-Hant-TW"] h3,
-html[lang="zh-Hant-TW"] .jtitle,
-html[lang="zh-Hant-TW"] .vhead {
+html[lang^="zh"] body { font-family: var(--zh-sans); }
+
+html[lang^="zh"] h1,
+html[lang^="zh"] h2,
+html[lang^="zh"] h3,
+html[lang^="zh"] .jtitle,
+html[lang^="zh"] .vhead {
   font-family: var(--zh-sans);
   letter-spacing: .02em;      /* Latin display faces are tracked tight; CJK needs air */
 }
 
 /* Display sizes can run tight; CJK has no descender slack, so anything set in a
    height-constrained box needs more. 1.24 clipped the hub headings by 3px. */
-html[lang="zh-Hant-TW"] h1,
-html[lang="zh-Hant-TW"] h2,
-html[lang="zh-Hant-TW"] .jtitle,
-html[lang="zh-Hant-TW"] .vhead { line-height: 1.24; }
+html[lang^="zh"] h1,
+html[lang^="zh"] h2,
+html[lang^="zh"] .jtitle,
+html[lang^="zh"] .vhead { line-height: 1.24; }
 
 /* ── Hero title: CJK needs a full em per character ──────────────────────────
    site.css sizes .jtitle--top at min(clamp(2.6rem,9vw,10rem),15.5vh) = 160px on
@@ -151,17 +163,17 @@ html[lang="zh-Hant-TW"] .vhead { line-height: 1.24; }
    cue. Widen the column and ease the cap so the longest Chinese line always
    fits on one line. A slightly smaller px size reads the same optical weight in
    CJK, because every glyph fills its em box where Latin does not. */
-html[lang="zh-Hant-TW"] .jhero__tl { max-width: min(92vw, 680px); }
+html[lang^="zh"] .jhero__tl { max-width: min(92vw, 680px); }
 
-html[lang="zh-Hant-TW"] .jtitle--top,
-html[lang="zh-Hant-TW"] .jtitle--bottom {
+html[lang^="zh"] .jtitle--top,
+html[lang^="zh"] .jtitle--bottom {
   font-size: min(clamp(2.4rem, 8vw, 9rem), 14vh);
   letter-spacing: -0.01em;   /* the Latin display face is tracked -0.045em, which collides CJK glyphs */
 }
 
 /* Each hero line is a single short phrase — never let one break mid-phrase. */
-html[lang="zh-Hant-TW"] .jtitle--top span[data-split],
-html[lang="zh-Hant-TW"] .jtitle--bottom span[data-split] { white-space: nowrap; }
+html[lang^="zh"] .jtitle--top span[data-split],
+html[lang^="zh"] .jtitle--bottom span[data-split] { white-space: nowrap; }
 
 /* Chinese hero copy is taller than the English it replaced — denser glyphs at
    line-height 1.85 — so on a short laptop the CTAs come down to meet the scroll
@@ -170,22 +182,22 @@ html[lang="zh-Hant-TW"] .jtitle--bottom span[data-split] { white-space: nowrap; 
    reads 「開始降落 ↓」, so the affordance survives and the value proposition
    stays on screen. */
 @media (max-height: 780px) {
-  html[lang="zh-Hant-TW"] .scrollcue { display: none; }
+  html[lang^="zh"] .scrollcue { display: none; }
 }
 
-html[lang="zh-Hant-TW"] h3 { line-height: 1.4; }
+html[lang^="zh"] h3 { line-height: 1.4; }
 
-html[lang="zh-Hant-TW"] p,
-html[lang="zh-Hant-TW"] li,
-html[lang="zh-Hant-TW"] .v,
-html[lang="zh-Hant-TW"] .a p { line-height: 1.85; }
+html[lang^="zh"] p,
+html[lang^="zh"] li,
+html[lang^="zh"] .v,
+html[lang^="zh"] .a p { line-height: 1.85; }
 
 /* Chinese has no hyphenation to soak up a ragged edge, so a short final line
    reads as a mistake rather than as rag. Two subheads were ending on a
    3-character orphan; `pretty` pulls a word down to even the last lines out. */
-html[lang="zh-Hant-TW"] p,
-html[lang="zh-Hant-TW"] li,
-html[lang="zh-Hant-TW"] .v { text-wrap: pretty; }
+html[lang^="zh"] p,
+html[lang^="zh"] li,
+html[lang^="zh"] .v { text-wrap: pretty; }
 
 /* Headings are short enough that balancing beats filling — stops a two-line
    Chinese headline leaving one or two characters stranded on line two.
@@ -193,37 +205,37 @@ html[lang="zh-Hant-TW"] .v { text-wrap: pretty; }
    single-WORD orphans, and CJK has no word boundaries for it to act on, so it
    left 3-character last lines untouched. These run 2–3 lines, well inside the
    line budget where a browser will balance. */
-html[lang="zh-Hant-TW"] h2,
-html[lang="zh-Hant-TW"] h3,
-html[lang="zh-Hant-TW"] .ptier__desc,
-html[lang="zh-Hant-TW"] .tiers__head p,
-html[lang="zh-Hant-TW"] .faqx__head p,
-html[lang="zh-Hant-TW"] .feat__copy > p,
-html[lang="zh-Hant-TW"] .phz__intro p,
-html[lang="zh-Hant-TW"] .ctax__l p,
-html[lang="zh-Hant-TW"] .film__head p,
-html[lang="zh-Hant-TW"] .foot__blurb { text-wrap: balance; }
+html[lang^="zh"] h2,
+html[lang^="zh"] h3,
+html[lang^="zh"] .ptier__desc,
+html[lang^="zh"] .tiers__head p,
+html[lang^="zh"] .faqx__head p,
+html[lang^="zh"] .feat__copy > p,
+html[lang^="zh"] .phz__intro p,
+html[lang^="zh"] .ctax__l p,
+html[lang^="zh"] .film__head p,
+html[lang^="zh"] .foot__blurb { text-wrap: balance; }
 
 /* Never break a line before closing punctuation or after an opening bracket. */
-html[lang="zh-Hant-TW"] { line-break: strict; overflow-wrap: break-word; }
+html[lang^="zh"] { line-break: strict; overflow-wrap: break-word; }
 
 /* The italic serif accent is a Latin-only face — fall back to the CJK stack so
    the script fragments don't render in a substituted font mid-heading.
    Colour is deliberately NOT set here: refine.css makes the hero accent mint and
    leaves body accents gold, and hardcoding one here overrode both, leaving the
    Chinese hero gold while the English hero was mint. */
-html[lang="zh-Hant-TW"] .u-script,
-html[lang="zh-Hant-TW"] .script {
+html[lang^="zh"] .u-script,
+html[lang^="zh"] .script {
   font-family: var(--zh-sans);
   font-style: normal;
   font-weight: 500;
 }
 
 /* Small caps / wide tracking is a Latin device; it shreds CJK. */
-html[lang="zh-Hant-TW"] .u-eyebrow,
-html[lang="zh-Hant-TW"] .jside,
-html[lang="zh-Hant-TW"] .scrollcue,
-html[lang="zh-Hant-TW"] .beat .k {
+html[lang^="zh"] .u-eyebrow,
+html[lang^="zh"] .jside,
+html[lang^="zh"] .scrollcue,
+html[lang^="zh"] .beat .k {
   letter-spacing: .12em;
   font-variant: normal;
   text-transform: none;
@@ -232,17 +244,17 @@ html[lang="zh-Hant-TW"] .beat .k {
 /* Application quiz. The mono counter is tracked at .18em, which pushes visible
    gaps around CJK punctuation (第 1 步 ， 共 4). Body copy on this page also
    wants the CJK line-height the marketing page gets. */
-html[lang="zh-Hant-TW"] .quiz__count { letter-spacing: .06em; }
-html[lang="zh-Hant-TW"] .step__sub,
-html[lang="zh-Hant-TW"] .opt__d,
-html[lang="zh-Hant-TW"] .consent,
-html[lang="zh-Hant-TW"] .done__p { line-height: 1.8; }
-html[lang="zh-Hant-TW"] .opt__t { line-height: 1.5; }
+html[lang^="zh"] .quiz__count { letter-spacing: .06em; }
+html[lang^="zh"] .step__sub,
+html[lang^="zh"] .opt__d,
+html[lang^="zh"] .consent,
+html[lang^="zh"] .done__p { line-height: 1.8; }
+html[lang^="zh"] .opt__t { line-height: 1.5; }
 
 /* Tier names stay Latin — keep the original display face on those. */
-html[lang="zh-Hant-TW"] .ptier__name,
-html[lang="zh-Hant-TW"] .foot__big,
-html[lang="zh-Hant-TW"] .brand__name { font-family: inherit; }
+html[lang^="zh"] .ptier__name,
+html[lang^="zh"] .foot__big,
+html[lang^="zh"] .brand__name { font-family: inherit; }
 
 /* Vertical side labels.
    .jside--l pairs writing-mode:vertical-rl with rotate(180deg) so Latin reads
@@ -250,11 +262,11 @@ html[lang="zh-Hant-TW"] .brand__name { font-family: inherit; }
    renders them upside down. Drop the flip and let it read top-to-bottom, which
    is the correct direction for Chinese anyway. text-orientation stays `mixed`:
    CJK upright, the Latin runs (MM2H, 2014, 3°08′) rotated — standard practice. */
-html[lang="zh-Hant-TW"] .jside--l {
+html[lang^="zh"] .jside--l {
   transform: translateY(-50%);
   writing-mode: vertical-rl;
 }
-html[lang="zh-Hant-TW"] .jside {
+html[lang^="zh"] .jside {
   letter-spacing: .16em;
   font-family: var(--zh-sans);
 }

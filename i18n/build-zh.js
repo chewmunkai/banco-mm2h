@@ -8,7 +8,19 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 const ROOT = path.join(__dirname, '..');
-const t = JSON.parse(fs.readFileSync(path.join(__dirname, 'zh-TW.json'), 'utf8'));
+
+// Which Chinese edition this run produces. Invoked once per variant:
+//   node i18n/build-zh.js tw    → /zh/      traditional, Taiwan
+//   node i18n/build-zh.js cn    → /zh-cn/   simplified, mainland
+const EDITIONS = {
+  tw: { dir: 'zh',    lang: 'zh-Hant-TW', json: 'zh-TW.json' },
+  cn: { dir: 'zh-cn', lang: 'zh-Hans-CN', json: 'zh-CN.json' },
+};
+const TARGET = process.argv[2] || 'tw';
+const ED = EDITIONS[TARGET];
+if (!ED) { console.error('unknown edition: ' + process.argv[2]); process.exit(1); }
+
+const t = JSON.parse(fs.readFileSync(path.join(__dirname, ED.json), 'utf8'));
 const src = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 
 // decodeEntities:false keeps &amp; / &nbsp; byte-identical through the round trip.
@@ -47,7 +59,7 @@ const ATTR = (sel, attr, key, i) => {
 };
 
 // ─── document ────────────────────────────────────────────────────────────────
-$('html').attr('lang', 'zh-Hant-TW');
+$('html').attr('lang', ED.lang);
 T('title', 'meta.title');
 
 // ─── nav (fixed header) ──────────────────────────────────────────────────────
@@ -306,24 +318,31 @@ $('.langsw').remove();
 $('link[rel="alternate"]').remove();
 $('link[href$="lang.css"]').remove();
 
-const switcher = (here, there, href) => `
-      <div class="langsw" role="group" aria-label="${t['ui.lang.aria']}">
-        <a class="langsw__opt" href="${href}" hreflang="${there.lang}">${there.label}</a>
-        <span class="langsw__opt is-on" aria-current="true">${here.label}</span>
+// Every language is labelled in its OWN script, not the current page's — a
+// reader looking for Simplified scans for 简体, whatever page they are on.
+const LANGS = [
+  { key: 'en', label: 'English',  lang: 'en',          href: '../index.html' },
+  { key: 'tw', label: '\u7e41\u9ad4', lang: 'zh-Hant-TW', href: '../zh/index.html' },
+  { key: 'cn', label: '\u7b80\u4f53', lang: 'zh-Hans-CN', href: '../zh-cn/index.html' },
+];
+const switcher = () => `
+      <div class="langsw" role="group" aria-label="${t['ui.lang.aria']}">` +
+  LANGS.map(l => l.key === TARGET
+    ? `\n        <span class="langsw__opt is-on" aria-current="true">${l.label}</span>`
+    : `\n        <a class="langsw__opt" href="${l.href}" hreflang="${l.lang}">${l.label}</a>`
+  ).join('') + `
       </div>`;
-const EN = { label: t['ui.lang.en'], lang: 'en' };
-const ZH = { label: t['ui.lang.zh'], lang: 'zh-Hant-TW' };
-$('.nav__right').prepend(switcher(ZH, EN, '../index.html'));
-$('.vnav').append(switcher(ZH, EN, '../index.html').replace('class="langsw"', 'class="langsw langsw--v"'));
+$('.nav__right').prepend(switcher());
+$('.vnav').append(switcher().replace('class="langsw"', 'class="langsw langsw--v"'));
 // Third switcher inside the journey: the fixed header is hidden for the whole
-// intro, so without this the first screen offers no way back to English.
-$('.jhero').append(switcher(ZH, EN, '../index.html')
-  .replace('class="langsw"', 'class="langsw langsw--hero"'));
+// intro, so without this the first screen offers no way to change language.
+$('.jhero').append(switcher().replace('class="langsw"', 'class="langsw langsw--hero"'));
 
 $('head').append(
   `\n<link rel="alternate" hreflang="en" href="../index.html">` +
   `\n<link rel="alternate" hreflang="x-default" href="../index.html">` +
-  `\n<link rel="alternate" hreflang="zh-Hant-TW" href="./index.html">` +
+  `\n<link rel="alternate" hreflang="zh-Hant-TW" href="../zh/index.html">` +
+  `\n<link rel="alternate" hreflang="zh-Hans-CN" href="../zh-cn/index.html">` +
   `\n<link rel="stylesheet" href="../i18n/lang.css">\n`);
 
 // ─── rebase relative paths (the page now lives one directory down) ───────────
@@ -336,14 +355,15 @@ out = out.replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="../index.html"');
 // The zh self-referencing alternate must point at THIS page. The rebase above
 // rewrote its "./index.html" to "../index.html", i.e. at the English page —
 // which tells search engines the Chinese URL's zh-TW version is the English one.
-out = out.replace(/(<link rel="alternate" hreflang="zh-Hant-TW" href=")[^"]*(")/,
+out = out.replace(
+  new RegExp('(<link rel="alternate" hreflang="' + ED.lang + '" href=")[^"]*(")'),
   '$1./index.html$2');
 // Every CTA must land on the Chinese form, not the English one. These are
 // root-relative so the path rebase above deliberately leaves them alone.
-out = out.replace(/href="\/application\/\?src=/g, 'href="/zh/application/?src=');
+out = out.replace(/href="\/application\/\?src=/g, 'href="/' + ED.dir + '/application/?src=');
 
-fs.mkdirSync(path.join(ROOT, 'zh'), { recursive: true });
-fs.writeFileSync(path.join(ROOT, 'zh', 'index.html'), out);
+fs.mkdirSync(path.join(ROOT, ED.dir), { recursive: true });
+fs.writeFileSync(path.join(ROOT, ED.dir, 'index.html'), out);
 
 console.log(miss.length
   ? `\n  ${miss.length} UNRESOLVED SELECTORS:\n${miss.map(m => '    ' + m).join('\n')}\n`
@@ -352,7 +372,7 @@ if (untranslated.length) {
   console.log(`  ${untranslated.length} STRINGS SHIPPING IN ENGLISH (design added them after the translation):`);
   console.log(untranslated.map(m => '    ' + m).join('\n') + '\n');
 }
-console.log(`  → zh/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
+console.log(`  → ${ED.dir}/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
 // Unresolved selectors mean the page is structurally wrong — fail. Untranslated
 // strings are a known, reported gap, not a build failure.
 process.exitCode = miss.length ? 1 : 0;
@@ -375,18 +395,24 @@ process.exitCode = miss.length ? 1 : 0;
     if (attr) $a(el).attr(attr, t[k]); else $a(el).text(t[k]);
   });
 
-  $a('html').attr('lang', 'zh-Hant-TW');
+  $a('html').attr('lang', ED.lang);
 
-  // Mirror the switcher: Chinese becomes current, English becomes the link.
+  // Same three-way switcher as the marketing page, from one level deeper.
+  const APPLANG = [
+    { key: 'en', label: 'English',  lang: 'en',          href: '../../application/index.html' },
+    { key: 'tw', label: '\u7e41\u9ad4', lang: 'zh-Hant-TW', href: '../../zh/application/index.html' },
+    { key: 'cn', label: '\u7b80\u4f53', lang: 'zh-Hans-CN', href: '../../zh-cn/application/index.html' },
+  ];
   $a('.langsw').attr('aria-label', t['ui.lang.aria']).html(
-    `\n      <a class="langsw__opt" href="../../application/index.html" hreflang="en">${t['ui.lang.en']}</a>` +
-    `\n      <span class="langsw__opt is-on" aria-current="true">${t['ui.lang.zh']}</span>\n    `);
+    APPLANG.map(l => l.key === TARGET
+      ? `\n      <span class="langsw__opt is-on" aria-current="true">${l.label}</span>`
+      : `\n      <a class="langsw__opt" href="${l.href}" hreflang="${l.lang}">${l.label}</a>`
+    ).join('') + '\n    ');
 
   $a('link[rel="alternate"]').remove();
   $a('head').append(
-    `\n<link rel="alternate" hreflang="en" href="../../application/index.html">` +
-    `\n<link rel="alternate" hreflang="x-default" href="../../application/index.html">` +
-    `\n<link rel="alternate" hreflang="zh-Hant-TW" href="./index.html">\n`);
+    APPLANG.map(l => `\n<link rel="alternate" hreflang="${l.lang}" href="${l.key === TARGET ? './index.html' : l.href}">`).join('') +
+    `\n<link rel="alternate" hreflang="x-default" href="../../application/index.html">\n`);
 
   let out = $a.html();
   // The page sits one level deeper than the English original, so shared
@@ -395,11 +421,11 @@ process.exitCode = miss.length ? 1 : 0;
   ['../assets/', '../styles.css', '../application.css', '../application.js', '../i18n/']
     .forEach(p => { out = out.split('"' + p).join('"../' + p); });
 
-  fs.mkdirSync(path.join(ROOT, 'zh', 'application'), { recursive: true });
-  fs.writeFileSync(path.join(ROOT, 'zh', 'application', 'index.html'), out);
+  fs.mkdirSync(path.join(ROOT, ED.dir, 'application'), { recursive: true });
+  fs.writeFileSync(path.join(ROOT, ED.dir, 'application', 'index.html'), out);
 
   console.log(gaps.length
     ? `  application: ${gaps.length} untranslated key(s): ${gaps.join(', ')}\n`
     : '  application: all keys resolved\n');
-  console.log(`  → zh/application/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
+  console.log(`  → ${ED.dir}/application/index.html (${(out.length / 1024).toFixed(0)} KB)\n`);
 })();

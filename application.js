@@ -66,8 +66,21 @@
   }
 
   /* ---- choosing an option ------------------------------------------- */
+  // "Still exploring" is not compatible with naming a specific need, so it
+  // clears the rest, and choosing anything specific clears it.
+  function enforceExclusive(changed) {
+    if (changed.type !== 'checkbox' || !changed.checked) return;
+    var group = form.querySelectorAll('input[name="' + changed.name + '"]');
+    var isExclusive = changed.hasAttribute('data-exclusive');
+    [].forEach.call(group, function (i) {
+      if (i === changed) return;
+      if (isExclusive || i.hasAttribute('data-exclusive')) i.checked = false;
+    });
+  }
+
   form.addEventListener('change', function (e) {
     if (e.target.type !== 'radio' && e.target.type !== 'checkbox') return;
+    enforceExclusive(e.target);
     if (at >= TOTAL_STEPS) return;
 
     nextBtn.disabled = !answered(at);
