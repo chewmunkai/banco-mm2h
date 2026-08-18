@@ -163,7 +163,7 @@ Leave these **exactly** as they appear:
 - Brand: **BANCO**, **Banco MM2H**, **Banco MM2H Sdn Bhd**, **MM2H**, **PVIP**
 - Tier names in card titles: **Silver**, **Gold**, **Platinum**, **PVIP** — these are the official programme designations and Taiwanese readers researching MM2H will meet them in English. Put the Chinese gloss in the tier's *description* line instead, where the key allows.
 - All figures and currency: `RM 40k`, `RM 1M`, `US$150k`, `US$1M`, `RM 1,000,000`, `2400+`, `98%`, `4.9`, `50%`
-- Contact: `+60 3 2710 8800`, `hello@bancomm2h.my`, `app.bancomm2h.com`
+- Contact: `+60 16 288 0300`, `hello@bancomm2h.my`, `app.bancomm2h.com`
 - Place names keep standard Chinese forms: Kuala Lumpur → 吉隆坡 · Penang → 檳城 · Johor → 柔佛 · George Town → 喬治市 · Iskandar Puteri → 依斯干達公主城 · Sarawak → 砂拉越 · Sabah → 沙巴 · Perhentian → 停泊島 · Puteri Harbour → 公主港
 - Curriculum names: **IGCSE**, **A-Levels**, **IB** (International Baccalaureate → 國際文憑 IB)
 - Coordinates `3°08′N`, year `2014`, `© 2026`
@@ -792,7 +792,7 @@ Call us
 Add us on LINE
 ```
 
-`cta.phone` is the label only — the number `+60 3 2710 8800` follows it and is not translated. ≤ 6 characters.
+`cta.phone` is the label only — the number `+60 16 288 0300` follows it and is not translated. ≤ 6 characters.
 
 `cta.line` is **new** — it does not exist on the English page yet. A LINE contact channel is being added for Taiwanese clients (§11). Write the button label as a Taiwanese brand would phrase it — LINE 官方帳號 conventions apply. ≤ 10 characters, and keep **LINE** in Latin capitals.
 

@@ -471,7 +471,7 @@ page's job is to start a conversation, not to close.
 已收到您的諮詢，謝謝您。
 
 [[app.done.body]]
-我們的顧問會親自閱讀，並在一個工作天內與您聯絡。若有急事，歡迎撥打 +60 3 2710 8800。
+我們的顧問會親自閱讀，並在一個工作天內與您聯絡。若有急事，歡迎撥打 +60 16 288 0300。
 
 [[app.done.back]]
 返回網站
