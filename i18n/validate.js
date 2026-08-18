@@ -123,7 +123,7 @@ for (const [k, en] of Object.entries(enBlocks)) {
   if (a.join('|') !== b.join('|')) F(k, `tags differ — EN [${a}] vs ZH [${b}]`);
 }
 
-const LITERALS = /US\$\d+\w*|RM&nbsp;[\d,]*\d|RM \d+\w*|\+60 16 288 0300|© 2026|\b\d{4}\b|50%|IGCSE|A-Levels|\bIB\b|PVIP|SEZ|MM2H/g;
+const LITERALS = /US\$\d+\w*|RM&nbsp;[\d,]*\d|RM \d+\w*|\+60 16-288 0300|© 2026|\b\d{4}\b|50%|IGCSE|A-Levels|\bIB\b|PVIP|SEZ|MM2H/g;
 for (const [k, en] of Object.entries(enBlocks)) {
   if (!(k in got)) continue;
   const need = [...new Set(en.match(LITERALS) || [])];
