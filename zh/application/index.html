@@ -1,10 +1,6 @@
 <!DOCTYPE html><html lang="zh-Hant-TW"><head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- noindex while unlinked: the form has no delivery endpoint yet, so an
-     indexed form that drops submissions would cost real enquiries.
-     Remove once application.js has a working ENDPOINT. -->
-<meta name="robots" content="noindex, nofollow">
 <title data-i18n="app.meta.title">開始申請 · Banco MM2H</title>
 <meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="四個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
@@ -49,9 +45,9 @@
           <span data-i18n="app.progress.step">第</span>
           <b id="stepNow">1</b>
           <span data-i18n="app.progress.of">步，共</span>
-          <b>4</b>
+          <b>5</b>
         </p>
-        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1" aria-label="Application progress" id="bar"><i></i></div>
+        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Application progress" id="bar"><i></i></div>
       </div>
 
       <!-- announced to screen readers when the step changes -->
@@ -148,8 +144,123 @@
         </div>
       </fieldset>
 
-      <!-- ── 4 · contact ─────────────────────────────────────────────── -->
-      <fieldset class="step" data-step="4" hidden="">
+      <!-- ── 4 · services to quote ───────────────────────────────────────
+           Deliberately BEFORE the contact step, not after it. The form only
+           submits on the final screen, so a question placed last turns every
+           abandonment on it into a lost enquiry — asking here costs nothing and
+           warms them up for handing over their details. Keys are app.qs.* (not
+           app.q4.*) so the contact step keeps its existing translations even
+           though its number moved. -->
+      <fieldset class="step" data-step="4" hidden="" data-multi="">
+        <legend class="step__q" data-i18n="app.qs.title">這些服務需要我們一併報價嗎？</legend>
+        <p class="step__sub" data-i18n="app.qs.sub">您的文件已在我們手上，不必為每一項服務另外找一家公司，與我們一個窗口對接即可。想了解價格的服務請勾選，不具任何義務，詢問也不收費。</p>
+        <div class="opts opts--multi">
+          <label class="opt">
+            <input type="checkbox" name="services" value="property">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a1">房產</span>
+              <span class="opt__d" data-i18n="app.qs.a1d">購屋、租賃或出租</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="insurance">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a2">保險</span>
+              <span class="opt__d" data-i18n="app.qs.a2d">醫療、壽險與住宅保險</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="education" id="svcEdu">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a3">子女教育</span>
+              <span class="opt__d" data-i18n="app.qs.a3d">選校與入學申請</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="banking">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a4">銀行服務</span>
+              <span class="opt__d" data-i18n="app.qs.a4d">開戶、定期存款安排與私人銀行</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="business">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a5">公司設立</span>
+              <span class="opt__d" data-i18n="app.qs.a5d">公司秘書、會計與稅務</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="remittance">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a6">國際匯款</span>
+              <span class="opt__d" data-i18n="app.qs.a6d">引介持牌服務商，含現金與數位資產管道</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="will">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a7">遺囑撰寫</span>
+              <span class="opt__d" data-i18n="app.qs.a7d">馬來西亞境內資產，由持牌事務所草擬</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="interior">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a8">室內設計</span>
+              <span class="opt__d" data-i18n="app.qs.a8d">交屋後的裝修與配置</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="other" id="svcOther">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a9">其他需求</span>
+              <span class="opt__d" data-i18n="app.qs.a9d">請告訴我們您需要什麼</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="none" data-exclusive="">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a10">目前只需要簽證</span>
+              <span class="opt__d" data-i18n="app.qs.a10d">其他部分之後再談</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="subq" id="eduLevels" hidden="">
+          <p class="subq__q" data-i18n="app.qs.edu">孩子目前就讀哪個階段？</p>
+          <div class="opts opts--multi opts--tight">
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="preschool">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">幼稚園</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="primary">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">國小</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="secondary">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">國中與高中</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="pre_university">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">大學先修（A-Level、IB 等）</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="university">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">大學</span></span>
+            </label>
+          </div>
+        </div>
+
+        <p class="field subq" id="otherWrap" hidden="">
+          <label for="fother" data-i18n="app.qs.otherq">還有什麼是我們可以協助的？</label>
+          <input id="fother" name="services_other" type="text" maxlength="200">
+        </p>
+      </fieldset>
+
+      <!-- ── 5 · contact ─────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="5" hidden="">
         <legend class="step__q" data-i18n="app.q4.title">我們該如何與您聯絡？</legend>
         <p class="step__sub" data-i18n="app.q4.sub">由一位顧問親自閱讀，並在一個工作天內回覆您。</p>
 
@@ -182,6 +293,13 @@
 
         <p class="consent" data-i18n="app.consent">這些資料僅用於回覆您的諮詢，我們不會出售或轉交給第三方。</p>
       </fieldset>
+
+      <!-- Not for people. A real visitor never sees this, so anything typed in
+           it came from a bot and the intake endpoint discards the submission. -->
+      <p class="hp" aria-hidden="true">
+        <label for="fcompany">Company</label>
+        <input id="fcompany" name="company" type="text" tabindex="-1" autocomplete="off">
+      </p>
 
       <!-- ── controls ────────────────────────────────────────────────── -->
       <div class="quiz__nav">

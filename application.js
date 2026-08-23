@@ -1,19 +1,25 @@
 /* ============================================================================
    Banco MM2H — application quiz.
 
-   DELIVERY. Set ENDPOINT to a URL and every enquiry is POSTed there as JSON.
-   Until you do, the form falls back to opening the visitor's mail client with
-   the answers filled in and addressed to INBOX. That is deliberately not a
-   silent no-op: every CTA on the site now points here, so an enquiry that goes
-   nowhere is a lost client. Set ENDPOINT when you have one and the fallback
-   stops being used.
+   DELIVERY. Enquiries are POSTed as JSON to Banco OS, which creates a lead
+   stamped source=website and emails the founders. The mailto fallback below is
+   still wired and still matters: it is what runs if the portal is down or the
+   request is blocked, and every CTA on the site points here, so an enquiry that
+   goes nowhere is a lost client.
    ========================================================================== */
 (function () {
   'use strict';
 
-  var ENDPOINT = null;                        // e.g. 'https://formspree.io/f/xxxxxxxx'
+  var ENDPOINT = 'https://app.bancomm2h.com/api/intake/website';
+  // Served locally (npm run serve) → talk to a local portal, so the whole
+  // journey can be walked through without posting test enquiries into the real
+  // leads table. Cannot fire in production: it keys off the hostname the page
+  // itself was loaded from.
+  if (location.hostname === 'localhost' || location.hostname === '127.0.0.1') {
+    ENDPOINT = 'http://localhost:3000/api/intake/website';
+  }
   var INBOX = 'hello@bancomm2h.my';           // used by the mailto fallback
-  var TOTAL_STEPS = 4;
+  var TOTAL_STEPS = 5;
 
   var form = document.getElementById('quiz');
   if (!form) return;
@@ -78,9 +84,29 @@
     });
   }
 
+  // Sub-questions belong to a tick above them, so they appear with it and are
+  // CLEARED when it goes away — a hidden checkbox that still submits would send
+  // school stages for a family that un-ticked schooling.
+  function reveal(wrapId, checkboxId) {
+    var wrap = document.getElementById(wrapId);
+    var box = document.getElementById(checkboxId);
+    if (!wrap || !box) return;
+    wrap.hidden = !box.checked;
+    if (box.checked) return;
+    [].forEach.call(wrap.querySelectorAll('input'), function (i) {
+      if (i.type === 'checkbox') i.checked = false; else i.value = '';
+    });
+  }
+
+  function syncSubQuestions() {
+    reveal('eduLevels', 'svcEdu');
+    reveal('otherWrap', 'svcOther');
+  }
+
   form.addEventListener('change', function (e) {
     if (e.target.type !== 'radio' && e.target.type !== 'checkbox') return;
     enforceExclusive(e.target);
+    syncSubQuestions();
     if (at >= TOTAL_STEPS) return;
 
     nextBtn.disabled = !answered(at);
@@ -145,15 +171,22 @@
 
   function payload() {
     var d = new FormData(form);
+    // "none" means "just the visa for now" — a UI convenience, not a service.
+    // Sending it would put the word "none" on the lead as a thing to quote.
+    var services = d.getAll('services').filter(function (v) { return v !== 'none'; });
     var body = {
       // multi-select: every checked box, comma separated
       pathway: d.getAll('pathway').join(', '),
       household: d.get('household') || '',
       timeline: d.get('timeline') || '',
+      services: services.join(', '),
+      education_levels: d.getAll('education_levels').join(', '),
+      services_other: (d.get('services_other') || '').trim(),
       name: (d.get('name') || '').trim(),
       email: (d.get('email') || '').trim(),
       phone: (d.get('phone') || '').trim(),
-      note: (d.get('note') || '').trim()
+      note: (d.get('note') || '').trim(),
+      company: (d.get('company') || '').trim()
     };
     var c = context();
     for (var k in c) body[k] = c[k];
@@ -186,6 +219,9 @@
       'Looking for: ' + (labels('pathway') || '—'),
       'Household:   ' + (labels('household') || '—'),
       'Timeline:    ' + (labels('timeline') || '—'),
+      'Quote for:   ' + (labels('services') || '—'),
+      labels('education_levels') ? 'School stage: ' + labels('education_levels') : '',
+      d.services_other ? 'Also:        ' + d.services_other : '',
       '',
       'Name:  ' + d.name,
       'Email: ' + d.email,
@@ -234,5 +270,6 @@
     });
   });
 
+  syncSubQuestions();
   show(1);
 })();

@@ -3,10 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- noindex while unlinked: the form has no delivery endpoint yet, so an
-     indexed form that drops submissions would cost real enquiries.
-     Remove once application.js has a working ENDPOINT. -->
-<meta name="robots" content="noindex, nofollow">
 <title data-i18n="app.meta.title">Begin your application · Banco MM2H</title>
 <meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="Four short questions so we can match you to the right MM2H pathway. No obligation.">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
@@ -46,9 +42,9 @@
           <span data-i18n="app.progress.step">Step</span>
           <b id="stepNow">1</b>
           <span data-i18n="app.progress.of">of</span>
-          <b>4</b>
+          <b>5</b>
         </p>
-        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="4" aria-valuenow="1"
+        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"
              aria-label="Application progress" id="bar"><i></i></div>
       </div>
 
@@ -146,8 +142,123 @@
         </div>
       </fieldset>
 
-      <!-- ── 4 · contact ─────────────────────────────────────────────── -->
-      <fieldset class="step" data-step="4" hidden>
+      <!-- ── 4 · services to quote ───────────────────────────────────────
+           Deliberately BEFORE the contact step, not after it. The form only
+           submits on the final screen, so a question placed last turns every
+           abandonment on it into a lost enquiry — asking here costs nothing and
+           warms them up for handing over their details. Keys are app.qs.* (not
+           app.q4.*) so the contact step keeps its existing translations even
+           though its number moved. -->
+      <fieldset class="step" data-step="4" hidden data-multi>
+        <legend class="step__q" data-i18n="app.qs.title">Would you like a quotation on any of these?</legend>
+        <p class="step__sub" data-i18n="app.qs.sub">We are already handling your documents, so you deal with one team rather than finding a separate firm for each. Tick anything you would like priced — no obligation, and asking costs nothing.</p>
+        <div class="opts opts--multi">
+          <label class="opt">
+            <input type="checkbox" name="services" value="property">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a1">Property</span>
+              <span class="opt__d" data-i18n="app.qs.a1d">Buying, leasing or letting a home</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="insurance">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a2">Insurance</span>
+              <span class="opt__d" data-i18n="app.qs.a2d">Medical, life and home cover</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="education" id="svcEdu">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a3">Children's education</span>
+              <span class="opt__d" data-i18n="app.qs.a3d">Choosing and applying to schools</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="banking">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a4">Banking</span>
+              <span class="opt__d" data-i18n="app.qs.a4d">Account opening, fixed deposit placement and premium banking</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="business">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a5">Business set-up</span>
+              <span class="opt__d" data-i18n="app.qs.a5d">Company secretary, accounting and tax</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="remittance">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a6">International money transfer</span>
+              <span class="opt__d" data-i18n="app.qs.a6d">Introductions to licensed providers, including cash and digital-asset routes</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="will">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a7">Will writing</span>
+              <span class="opt__d" data-i18n="app.qs.a7d">Malaysian assets, drafted by a licensed firm</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="interior">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a8">Interior design</span>
+              <span class="opt__d" data-i18n="app.qs.a8d">Fitting out the home once it is yours</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="other" id="svcOther">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a9">Something else</span>
+              <span class="opt__d" data-i18n="app.qs.a9d">Tell us what you need</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="checkbox" name="services" value="none" data-exclusive>
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qs.a10">Just the visa for now</span>
+              <span class="opt__d" data-i18n="app.qs.a10d">We can talk about the rest later</span>
+            </span>
+          </label>
+        </div>
+
+        <div class="subq" id="eduLevels" hidden>
+          <p class="subq__q" data-i18n="app.qs.edu">Which stage are your children at?</p>
+          <div class="opts opts--multi opts--tight">
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="preschool">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">Preschool / kindergarten</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="primary">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">Primary</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="secondary">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">Secondary</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="pre_university">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">Pre-university / college</span></span>
+            </label>
+            <label class="opt opt--sm">
+              <input type="checkbox" name="education_levels" value="university">
+              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">University</span></span>
+            </label>
+          </div>
+        </div>
+
+        <p class="field subq" id="otherWrap" hidden>
+          <label for="fother" data-i18n="app.qs.otherq">What else can we help with?</label>
+          <input id="fother" name="services_other" type="text" maxlength="200">
+        </p>
+      </fieldset>
+
+      <!-- ── 5 · contact ─────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="5" hidden>
         <legend class="step__q" data-i18n="app.q4.title">How should we reach you?</legend>
         <p class="step__sub" data-i18n="app.q4.sub">One advisor reads this and replies within one business day.</p>
 
@@ -180,6 +291,13 @@
 
         <p class="consent" data-i18n="app.consent">We use these details only to answer your enquiry. We do not sell or share them.</p>
       </fieldset>
+
+      <!-- Not for people. A real visitor never sees this, so anything typed in
+           it came from a bot and the intake endpoint discards the submission. -->
+      <p class="hp" aria-hidden="true">
+        <label for="fcompany">Company</label>
+        <input id="fcompany" name="company" type="text" tabindex="-1" autocomplete="off">
+      </p>
 
       <!-- ── controls ────────────────────────────────────────────────── -->
       <div class="quiz__nav">

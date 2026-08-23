@@ -172,6 +172,36 @@ body.app {
   background: var(--pine) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12.5l5.2 5.2L20 7'/%3E%3C/svg%3E") center / 12px no-repeat;
 }
 
+/* ── sub-questions ────────────────────────────────────────────────────
+   A follow-up that belongs to one tick above it (school stage under
+   children's education). Indented and rule-marked so it reads as a branch of
+   that answer rather than a new question competing with it. */
+.subq {
+  margin-top: 14px;
+  padding-left: 18px;
+  border-left: 2px solid var(--border-brand, var(--border-hairline));
+}
+.subq__q {
+  margin: 0 0 10px;
+  font-size: 14px; font-weight: 600; color: var(--text-strong);
+}
+
+/* Denser rows: these are short labels, and a stage list at full option size
+   would out-shout the service it hangs off. */
+.opts--tight { grid-template-columns: repeat(auto-fit, minmax(min(100%, 190px), 1fr)); gap: 8px; }
+.opt--sm .opt__b { padding: 12px 44px 12px 14px; }
+.opt--sm .opt__t { font-size: 15px; font-weight: 500; }
+.opt--sm .opt__b::after { width: 17px; height: 17px; margin-top: -8.5px; right: 14px; }
+
+/* Bot bait. Off-screen rather than display:none, because some bots skip
+   anything a browser would not render at all. Never focusable, never read
+   aloud: aria-hidden on the wrapper plus tabindex="-1" on the input. */
+.hp {
+  position: absolute !important;
+  left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+}
+
 /* ── fields ───────────────────────────────────────────────────────────── */
 .fields { display: grid; gap: 16px; }
 .field { margin: 0; display: grid; gap: 7px; }
