@@ -1178,3 +1178,60 @@ Banco 具體做什麼？
 
 [[tier.val.permitted]]
 可工作
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Client revisions, 2026-08-31.
+#   · the journey hero's second CTA now opens the application form
+#   · the video hero's "Explore now" is gone (vhero.cta.secondary unused)
+#   · the wordmark sub-line is the firm's name, so it stays English in every
+#     edition — same treatment as the footer lockup's "Advisory & Consultancy"
+#   · the FAQ standfirst is gone (faq.lead unused)
+#   · the four counted statistics are replaced by four values; the figures
+#     overstated a new firm. proof.stat.* unused.
+#   · floating WhatsApp button
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[hero.cta.secondary]]
+開始申請
+
+[[nav.brand.sub]]
+Advisory & Consultancy
+
+[[faq.h2]]
+MM2H 常見問題
+
+[[proof.h2]]
+我們統籌每一個主管機關、每一份簽署與每一個節點，<span class="u-script">不讓任何細節在轉譯之間遺失。</span>
+
+[[proof.val.1.k]]
+據實以告
+
+[[proof.val.1.v]]
+我們會說明這個計畫能做什麼、不能做什麼，包括答案是「不行」的時候。
+
+[[proof.val.2.k]]
+以官方規定為準
+
+[[proof.val.2.v]]
+申請條件由馬來西亞政府訂定，並會不時修訂。我們會確認適用於您的規定，並指引您查閱官方來源。
+
+[[proof.val.3.k]]
+由持牌合作夥伴遞交
+
+[[proof.val.3.v]]
+您的申請由我們的持牌 MM2H 合作夥伴遞交與處理。我們負責統籌，並逐份查核文件。
+
+[[proof.val.4.k]]
+全程同一位顧問
+
+[[proof.val.4.v]]
+從第一次諮詢到您落地的那一天，都是同一位顧問。
+
+[[ui.wa.aria]]
+透過 WhatsApp 與我們聯絡
+
+[[ui.wa.label]]
+WhatsApp 諮詢
+
+[[ui.cursor.whatsapp]]
+WhatsApp

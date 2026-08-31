@@ -324,3 +324,33 @@ a:hover{color:inherit}
 
 .supp__authrow figure:not(.supp__authtile){align-items:center;justify-content:center}
 .supp__authrow figure:not(.supp__authtile) img{height:72px}
+
+/* ── Why Banco · values ──────────────────────────────────────────────────────
+   Replaces the four counted statistics. Same 4-up grid and hairline rule as
+   the figures used, so the dark panel's rhythm is unchanged. */
+.statx__grid--vals{align-items:start}
+.statx__val{border-top:1px solid rgba(255,255,255,0.18);padding-top:20px}
+.statx__val .k{font-family:var(--font-display);font-weight:900;letter-spacing:-0.015em;
+  line-height:1.15;font-size:clamp(1.05rem,1.6vw,1.32rem);color:#FFFFFF;text-wrap:balance}
+.statx__val .v{font-size:15px;line-height:1.6;color:#AECBB8;margin-top:12px;max-width:34ch}
+@media (max-width:760px){.statx__val .v{font-size:14.5px}}
+
+/* ── floating WhatsApp ───────────────────────────────────────────────────────
+   Sits under the custom cursor (z-index 95) and the scroll progress bar (90),
+   above the fixed header (70). */
+.wa{position:fixed;right:clamp(16px,2.2vw,28px);bottom:clamp(16px,2.2vw,28px);z-index:80;
+  display:grid;place-items:center;width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:#FFFFFF;box-shadow:0 6px 22px rgba(14,24,18,0.28);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.wa:hover,.wa:focus-visible{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 30px rgba(14,24,18,0.36)}
+.wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wa svg{display:block}
+/* label unfurls on hover; hidden from pointer-less/narrow screens */
+.wa__tip{position:absolute;right:calc(100% + 12px);white-space:nowrap;
+  font-size:13px;font-weight:600;letter-spacing:0.01em;color:#FFFFFF;
+  background:var(--ink);padding:8px 12px;border-radius:8px;
+  opacity:0;transform:translateX(6px);pointer-events:none;
+  transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.wa:hover .wa__tip,.wa:focus-visible .wa__tip{opacity:1;transform:translateX(0)}
+@media (max-width:700px){.wa{width:52px;height:52px}.wa__tip{display:none}}
+@media (prefers-reduced-motion:reduce){.wa,.wa__tip{transition:none}}

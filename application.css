@@ -332,3 +332,16 @@ body.app {
   .quiz__bar > i { transition: none; }
   .cta:hover:not(:disabled), .opt:hover .opt__b { transform: none; }
 }
+
+/* ── floating WhatsApp ───────────────────────────────────────────────────────
+   Mirrors the marketing site's button. Defined here too because this page does
+   not load refine.css. */
+.wa{position:fixed;right:clamp(16px,2.2vw,28px);bottom:clamp(16px,2.2vw,28px);z-index:80;
+  display:grid;place-items:center;width:56px;height:56px;border-radius:50%;
+  background:#25D366;color:#FFFFFF;box-shadow:0 6px 22px rgba(14,24,18,0.28);
+  transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
+.wa:hover,.wa:focus-visible{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 30px rgba(14,24,18,0.36)}
+.wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wa svg{display:block}
+@media (max-width:700px){.wa{width:52px;height:52px}}
+@media (prefers-reduced-motion:reduce){.wa{transition:none}}

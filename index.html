@@ -32,7 +32,7 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
   <header class="nav">
     <a class="brand" href="#top" data-scroll-to="#top" data-cursor="Top">
       <img class="brand__mark" src="assets/logo-mark.png" alt="Banco MM2H" width="38" height="38">
-      <span class="brand__txt"><span class="brand__name">BANCO</span><span class="brand__sub">MM2H · MALAYSIA</span></span>
+      <span class="brand__txt"><span class="brand__name">BANCO</span><span class="brand__sub">Advisory &amp; Consultancy</span></span>
     </a>
     <nav class="nav__links">
       <a href="#hub" data-scroll-to="#hub">Our hub</a>
@@ -69,7 +69,7 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
               <p class="jlead__sub">Scroll to descend, from Earth to Kuala Lumpur. One eco-system hub for visas, property, schooling, banking and tax, all the way down.</p>
               <div class="jlead__ctas">
                 <a class="btn btn--primary magnetic" data-strength="0.5" href="#welcome" data-scroll-to="#welcome" data-cursor="Descend"><span class="btn__l">Begin your descent <span class="btn__arrow">↓</span></span></a>
-                <a class="btn btn--ghost btn--on-dark magnetic" data-strength="0.4" href="#hub" data-scroll-to="#hub"><span class="btn__l">Explore the hub</span></a>
+                <a class="btn btn--ghost btn--on-dark magnetic" data-strength="0.4" href="/application/?src=hero-journey" data-cursor="Apply"><span class="btn__l">Begin application</span></a>
               </div>
             </div>
           </div>
@@ -112,7 +112,7 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
       <nav class="vnav">
         <a class="brand vnav__brand" href="#top" data-scroll-to="#top" data-cursor="Top">
           <img class="brand__mark" src="assets/logo-mark.png" alt="Banco MM2H" width="32" height="32">
-          <span class="brand__txt"><span class="brand__name">BANCO</span><span class="brand__sub">MM2H · MALAYSIA</span></span>
+          <span class="brand__txt"><span class="brand__name">BANCO</span><span class="brand__sub">Advisory &amp; Consultancy</span></span>
         </a>
         <div class="vnav__links">
           <a href="#hub" data-scroll-to="#hub">Our hub</a>
@@ -136,7 +136,6 @@ in Malaysia</h1>
           <p class="vsub" data-vfade="800">A calmer, well-arranged life in Malaysia. Visas, property, schooling and banking, handled end to end by one advisor.</p>
           <div class="vbtns" data-vfade="1200">
             <a class="vbtn vbtn--solid" href="/application/?src=hero">Begin application</a>
-            <a class="vbtn vbtn--glass liquid-glass" href="#hub" data-scroll-to="#hub">Explore now</a>
           </div>
         </div>
       </div>
@@ -479,13 +478,13 @@ in Malaysia</h1>
     <div class="statx__wrap">
       <div class="statx__head">
         <span class="u-eyebrow on-dark reveal">Why Banco</span>
-        <h2 class="clip-line">A licensed advisory that handles every authority, signature and milestone, so <span class="u-script">nothing is lost in translation.</span></h2>
+        <h2 class="clip-line">We coordinate every authority, signature and milestone, so <span class="u-script">nothing is lost in translation.</span></h2>
       </div>
-      <div class="statx__grid">
-        <div class="statx__cell reveal"><div class="n"><span class="text-grad" data-count="2400" data-suffix="+">0</span></div><div class="l">Families relocated since 2014</div></div>
-        <div class="statx__cell reveal" data-delay="80"><div class="n"><span class="text-grad" data-count="98" data-suffix="%">0</span></div><div class="l">Application approval rate</div></div>
-        <div class="statx__cell reveal" data-delay="160"><div class="n"><span class="text-grad" data-count="12">0</span></div><div class="l">Government &amp; legal partners</div></div>
-        <div class="statx__cell reveal" data-delay="240"><div class="n"><span class="text-grad" data-count="4.9" data-dec="1">0</span></div><div class="l">Average client rating</div></div>
+      <div class="statx__grid statx__grid--vals">
+        <div class="statx__val reveal"><div class="k">Plain answers</div><div class="v">We tell you what the programme does and does not do, including when the answer is no.</div></div>
+        <div class="statx__val reveal" data-delay="80"><div class="k">Official sources first</div><div class="v">Requirements are set by the Government of Malaysia and revised from time to time. We confirm what applies to you, and point you to the official rules.</div></div>
+        <div class="statx__val reveal" data-delay="160"><div class="k">Lodged by a licensed partner</div><div class="v">Your application is lodged and processed by our licensed MM2H partner. We coordinate them and check every document.</div></div>
+        <div class="statx__val reveal" data-delay="240"><div class="k">One advisor, start to finish</div><div class="v">The same person from your first enquiry to the day you land.</div></div>
       </div>
     </div>
   </section>
@@ -495,8 +494,7 @@ in Malaysia</h1>
     <div class="faqx__grid">
       <div class="faqx__head">
         <span class="u-eyebrow reveal">Good to know</span>
-        <h2 class="clip-line">MM2H, answered <span class="u-script">plainly.</span></h2>
-        <p>The honest version. What the programme is, what it lets you do, and where the official rules live.</p>
+        <h2 class="clip-line">MM2H Frequently asked questions</h2>
       </div>
       <div class="faqx__list reveal">
         <details><summary><span class="qn">01</span><span class="q">Who is MM2H for?</span><span class="pm">+</span></summary><div class="a"><p>Malaysia My Second Home is a long-stay visa for foreigners who want to live in Malaysia without giving up their citizenship: retirees, families, remote professionals and investors. It is renewable, and your spouse, children and, in many cases, parents can join you as dependents.</p></div></details>
@@ -593,6 +591,15 @@ in Malaysia</h1>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="./image-slot.js"></script>
+  <!-- floating WhatsApp — same number as the footer -->
+  <a class="wa" href="https://wa.me/60162880300" target="_blank" rel="noopener noreferrer"
+     aria-label="Chat with us on WhatsApp" data-cursor="WhatsApp">
+    <svg viewBox="0 0 24 24" width="27" height="27" fill="currentColor" aria-hidden="true" focusable="false">
+      <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 1.67c2.2 0 4.27.86 5.83 2.42a8.2 8.2 0 0 1 2.41 5.82c0 4.54-3.7 8.24-8.24 8.24a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24Zm-2.4 4.1c-.16 0-.42.06-.64.3-.22.24-.85.83-.85 2.02s.87 2.34.99 2.5c.12.16 1.7 2.6 4.13 3.64.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.44-.59 1.64-1.16.2-.57.2-1.05.14-1.16-.06-.1-.22-.16-.46-.28-.24-.12-1.44-.71-1.66-.79-.22-.08-.38-.12-.54.12-.16.24-.62.79-.76.95-.14.16-.28.18-.52.06-.24-.12-1.03-.38-1.96-1.21a7.3 7.3 0 0 1-1.35-1.68c-.14-.24-.02-.37.1-.49.11-.11.24-.28.36-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.19-.46-.39-.4-.54-.41h-.46Z"/>
+    </svg>
+    <span class="wa__tip">Chat on WhatsApp</span>
+  </a>
+
   <script src="./site.js"></script>
   <script src="./upgrade.js"></script>
   <script src="./refine.js"></script>

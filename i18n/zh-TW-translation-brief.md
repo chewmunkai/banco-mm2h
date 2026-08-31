@@ -205,7 +205,7 @@ Chinese runs roughly 50–60% the character count of English, but some slots are
 | `nav.life` | Life here | ≤ 5 chars |
 | `nav.faq` | FAQ | May stay as FAQ, or 常見問題 |
 | `nav.cta` | Begin application | ≤ 8 chars. Appears on every screen |
-| `nav.brand.sub` | MM2H · MALAYSIA | Under the BANCO wordmark. Keep MM2H + `·` |
+| `nav.brand.sub` | Advisory & Consultancy | Under the BANCO wordmark. The firm’s name — keep it English in every edition |
 | `nav.burger.aria` | Open menu | Screen-reader label, not visible |
 
 ### 9.3 Opening journey (Earth → Kuala Lumpur)
@@ -233,7 +233,7 @@ Scroll to descend, from Earth to Kuala Lumpur. One eco-system hub for visas, pro
 Begin your descent
 
 [[hero.cta.secondary]]
-Explore the hub
+Begin application
 
 [[hero.side.left]]
 MM2H · Est. 2014
@@ -675,7 +675,7 @@ Captions — each ≤ 12 characters, keep the `·`:
 Why Banco
 
 [[proof.h2]]
-A licensed advisory that handles every authority, signature and milestone, so <span class="u-script">nothing is lost in translation.</span>
+We coordinate every authority, signature and milestone, so <span class="u-script">nothing is lost in translation.</span>
 
 [[proof.stat.1]]
 Families relocated since 2014
@@ -699,7 +699,7 @@ The numbers (2400+, 98%, 12, 4.9) are animated separately and are **not** transl
 Good to know
 
 [[faq.h2]]
-MM2H, answered <span class="u-script">plainly.</span>
+MM2H Frequently asked questions
 
 [[faq.lead]]
 The honest version. What the programme is, what it lets you do, and where the official rules live.

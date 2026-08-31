@@ -104,7 +104,8 @@ T('.vnav__cta', 'nav.cta');
 $('.vhead').text(t['vhero.title'].replace(/⏎\s*/g, '\n'));
 T('.vsub', 'vhero.sub');
 T('.vbtn--solid', 'vhero.cta.primary');
-T('.vbtn--glass', 'vhero.cta.secondary');
+// The video hero's second "Explore now" button was removed; vhero.cta.secondary
+// stays in the json unused, like vhero.tag, in case it returns.
 // .vtag (the "Live. Invest. Belong." promise mark) was removed by the design;
 // vhero.tag stays in zh-TW.json unused in case it returns.
 
@@ -257,12 +258,18 @@ $('.film__item').each((_, fig) => {
 // ─── proof ───────────────────────────────────────────────────────────────────
 T('.statx__head .u-eyebrow', 'proof.eyebrow');
 H('.statx__head h2', 'proof.h2');
-$('.statx__cell .l').each((i, el) => $(el).text(t[`proof.stat.${i + 1}`]));
+// The four counted statistics were replaced by four values — the firm is new
+// and the figures overstated it. proof.stat.* stay in the json, unused.
+$('.statx__val').each((i, el) => {
+  const n = i + 1, v = $(el);
+  v.find('.k').text(t[`proof.val.${n}.k`]);
+  v.find('.v').text(t[`proof.val.${n}.v`]);
+});
 
 // ─── faq ─────────────────────────────────────────────────────────────────────
 T('.faqx__head .u-eyebrow', 'faq.eyebrow');
 H('.faqx__head h2', 'faq.h2');
-T('.faqx__head p', 'faq.lead');
+// The standfirst under the FAQ heading was removed; faq.lead stays unused.
 $('.faqx__list details').each((i, el) => {
   const n = i + 1, d = $(el);
   d.find('.q').text(t[`faq.${n}.q`]);
@@ -288,6 +295,10 @@ T('.foot__row span', 'footer.legal', 0);
 T('.foot__row a', 'footer.privacy', 0);
 T('.foot__row a', 'footer.terms', 1);
 T('.foot__credits summary', 'footer.credits.summary');
+
+// ─── floating WhatsApp ───────────────────────────────────────────────────────
+ATTR('.wa', 'aria-label', 'ui.wa.aria');
+T('.wa__tip', 'ui.wa.label');
 // credits body stays English: photographer names and licence codes (brief §7)
 
 // The design's expanded footer.
@@ -324,6 +335,7 @@ const CURSOR = {
   Banking: 'ui.cursor.banking', Retirement: 'ui.cursor.retirement',
   Business: 'ui.cursor.business', Education: 'ui.cursor.education', Drag: 'ui.cursor.drag',
   Privacy: 'ui.cursor.privacy', Terms: 'ui.cursor.terms', Email: 'ui.cursor.email',
+  WhatsApp: 'ui.cursor.whatsapp',
 };
 $('[data-cursor]').each((_, el) => {
   const k = CURSOR[$(el).attr('data-cursor')];
