@@ -19,7 +19,7 @@
     ENDPOINT = 'http://localhost:3000/api/intake/website';
   }
   var INBOX = 'hello@bancomm2h.my';           // used by the mailto fallback
-  var TOTAL_STEPS = 5;
+  var TOTAL_STEPS = 6;
 
   var form = document.getElementById('quiz');
   if (!form) return;
@@ -197,6 +197,7 @@
       pathway: d.getAll('pathway').join(', '),
       household: d.get('household') || '',
       timeline: d.get('timeline') || '',
+      plan: d.get('plan') || '',
       services: services.join(', '),
       education_levels: d.getAll('education_levels').join(', '),
       services_other: (d.get('services_other') || '').trim(),
@@ -237,6 +238,7 @@
       'Looking for: ' + (labels('pathway') || '—'),
       'Household:   ' + (labels('household') || '—'),
       'Timeline:    ' + (labels('timeline') || '—'),
+      'Plan:        ' + (labels('plan') || '—'),
       'Quote for:   ' + (labels('services') || '—'),
       labels('education_levels') ? 'School stage: ' + labels('education_levels') : '',
       d.services_other ? 'Also:        ' + d.services_other : '',

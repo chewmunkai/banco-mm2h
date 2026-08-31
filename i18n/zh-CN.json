@@ -259,7 +259,7 @@
   "footer.talk.cities": "吉隆坡 · 槟城 · 柔佛",
   "footer.talk.hours": "周一至周五 9:00–18:00（马来西亚时间）",
   "app.meta.title": "开始申请 · Banco MM2H",
-  "app.meta.desc": "四个简单问题，让我们为您找到最合适的 MM2H 方案。完全无需承诺。",
+  "app.meta.desc": "几个简单问题，让我们为您找到最合适的 MM2H 方案。完全无需承诺。",
   "app.notice": "预览模式，表单尚未连接，送出的资料不会被储存。",
   "app.progress.step": "第",
   "app.progress.of": "步，共",
@@ -367,5 +367,17 @@
   "app.qs.otherph": "宠物搬迁、汽车进口、家庭帮佣签证——任何需求都可以告诉我们。",
   "app.foot.partner": "STF (Revenue) MM2H 与 Banco Advisory & Consultancy 合作提供",
   "app.og.title": "开始您的 MM2H 申请",
-  "app.og.desc": "五个简短问题，让我们为您配对合适的 MM2H 方案。没有任何义务，专属顾问将于一个工作日内回复。"
+  "app.og.desc": "几个简短问题，让我们为您配对合适的 MM2H 方案。没有任何义务，专属顾问将于一个工作日内回复。",
+  "app.qp.title": "您对哪一个方案有兴趣？",
+  "app.qp.sub": "大致的方向就足够。在正式递件之前，我们会确认您实际符合的资格。",
+  "app.qp.a1": "MM2H 银级",
+  "app.qp.a1d": "入门等级，承诺最轻。",
+  "app.qp.a2": "MM2H 金级",
+  "app.qp.a2d": "更长的居留权利，也有全家同行的空间。",
+  "app.qp.a3": "MM2H 白金级",
+  "app.qp.a3d": "最长的期限与最完整的权益。",
+  "app.qp.a4": "顶级签证（PVIP）",
+  "app.qp.a4d": "为高收入者而设的长期签证，无需定期存款。",
+  "app.qp.a5": "我还不确定",
+  "app.qp.a5d": "告诉我们您的状况，由我们建议合适的等级。"
 }

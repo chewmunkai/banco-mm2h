@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="app.meta.title">開始申請 · Banco MM2H</title>
-<meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="四個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。">
+<meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="幾個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。">
 <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png">
@@ -25,7 +25,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="STF (Revenue) MM2H">
 <meta property="og:title" data-i18n="app.og.title" data-i18n-attr="content" content="開始您的 MM2H 申請">
-<meta property="og:description" data-i18n="app.og.desc" data-i18n-attr="content" content="五個簡短問題，讓我們為您配對合適的 MM2H 方案。沒有任何義務，專屬顧問將於一個工作天內回覆。">
+<meta property="og:description" data-i18n="app.og.desc" data-i18n-attr="content" content="幾個簡短問題，讓我們為您配對合適的 MM2H 方案。沒有任何義務，專屬顧問將於一個工作天內回覆。">
 <meta property="og:url" content="https://bancomm2h.com/zh/application/">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://bancomm2h.com/assets/og-application.jpg">
@@ -34,7 +34,7 @@
 <meta property="og:image:alt" data-i18n="app.og.title" data-i18n-attr="content" content="開始您的 MM2H 申請">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" data-i18n="app.og.title" data-i18n-attr="content" content="開始您的 MM2H 申請">
-<meta name="twitter:description" data-i18n="app.og.desc" data-i18n-attr="content" content="五個簡短問題，讓我們為您配對合適的 MM2H 方案。沒有任何義務，專屬顧問將於一個工作天內回覆。">
+<meta name="twitter:description" data-i18n="app.og.desc" data-i18n-attr="content" content="幾個簡短問題，讓我們為您配對合適的 MM2H 方案。沒有任何義務，專屬顧問將於一個工作天內回覆。">
 <meta name="twitter:image" content="https://bancomm2h.com/assets/og-application.jpg">
 
 <link rel="alternate" hreflang="en" href="../../application/index.html">
@@ -63,9 +63,9 @@
           <span data-i18n="app.progress.step">第</span>
           <b id="stepNow">1</b>
           <span data-i18n="app.progress.of">步，共</span>
-          <b>5</b>
+          <b>6</b>
         </p>
-        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1" aria-label="Application progress" id="bar"><i></i></div>
+        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1" aria-label="Application progress" id="bar"><i></i></div>
       </div>
 
       <!-- announced to screen readers when the step changes -->
@@ -162,14 +162,62 @@
         </div>
       </fieldset>
 
-      <!-- ── 4 · services to quote ───────────────────────────────────────
+      <!-- ── 4 · which tier ──────────────────────────────────────────────
+           After the timeline, not before it: by this point they have said why,
+           who and when, which is what makes a tier answerable at all. "Not sure
+           yet" is a real answer rather than a cop-out — most people genuinely
+           do not know, and a forced guess is worse for the advisor than a
+           blank. Single select: you apply under one tier. -->
+      <fieldset class="step" data-step="4" hidden="">
+        <legend class="step__q" data-i18n="app.qp.title">您對哪一個方案有興趣？</legend>
+        <p class="step__sub" data-i18n="app.qp.sub">大致的方向就足夠。在正式遞件之前，我們會確認您實際符合的資格。</p>
+        <div class="opts">
+          <label class="opt">
+            <input type="radio" name="plan" value="silver">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a1">MM2H 銀級</span>
+              <span class="opt__d" data-i18n="app.qp.a1d">入門等級，承諾最輕。</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="gold">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a2">MM2H 金級</span>
+              <span class="opt__d" data-i18n="app.qp.a2d">更長的居留權利，也有全家同行的空間。</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="platinum">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a3">MM2H 白金級</span>
+              <span class="opt__d" data-i18n="app.qp.a3d">最長的期限與最完整的權益。</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="pvip">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a4">頂級簽證（PVIP）</span>
+              <span class="opt__d" data-i18n="app.qp.a4d">為高收入者而設的長期簽證，無需定期存款。</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="unsure">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a5">我還不確定</span>
+              <span class="opt__d" data-i18n="app.qp.a5d">告訴我們您的狀況，由我們建議合適的等級。</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ── 5 · services to quote ───────────────────────────────────────
            Deliberately BEFORE the contact step, not after it. The form only
            submits on the final screen, so a question placed last turns every
            abandonment on it into a lost enquiry — asking here costs nothing and
            warms them up for handing over their details. Keys are app.qs.* (not
            app.q4.*) so the contact step keeps its existing translations even
            though its number moved. -->
-      <fieldset class="step" data-step="4" hidden="" data-multi="">
+      <fieldset class="step" data-step="5" hidden="" data-multi="">
         <legend class="step__q" data-i18n="app.qs.title">這些服務需要我們一併報價嗎？</legend>
         <p class="step__sub" data-i18n="app.qs.sub">您的文件已在我們手上，不必為每一項服務另外找一家公司，與我們一個窗口對接即可。想了解價格的服務請勾選，不具任何義務，詢問也不收費。</p>
         <div class="opts opts--multi">
@@ -273,8 +321,8 @@
 
       </fieldset>
 
-      <!-- ── 5 · contact ─────────────────────────────────────────────── -->
-      <fieldset class="step" data-step="5" hidden="">
+      <!-- ── 6 · contact ─────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="6" hidden="">
         <legend class="step__q" data-i18n="app.q4.title">我們該如何與您聯絡？</legend>
         <p class="step__sub" data-i18n="app.q4.sub">由一位顧問親自閱讀，並在一個工作天內回覆您。</p>
 

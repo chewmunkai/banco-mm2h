@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title data-i18n="app.meta.title">Begin your application · Banco MM2H</title>
-<meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="Four short questions so we can match you to the right MM2H pathway. No obligation.">
+<meta name="description" data-i18n-attr="content" data-i18n="app.meta.desc" content="A few short questions so we can match you to the right MM2H pathway. No obligation.">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
@@ -27,7 +27,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="STF (Revenue) MM2H">
 <meta property="og:title" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
-<meta property="og:description" data-i18n="app.og.desc" data-i18n-attr="content" content="Five short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
+<meta property="og:description" data-i18n="app.og.desc" data-i18n-attr="content" content="A few short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
 <meta property="og:url" content="https://bancomm2h.com/application/">
 <meta property="og:locale" content="en_MY">
 <meta property="og:image" content="https://bancomm2h.com/assets/og-application.jpg">
@@ -36,7 +36,7 @@
 <meta property="og:image:alt" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
-<meta name="twitter:description" data-i18n="app.og.desc" data-i18n-attr="content" content="Five short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
+<meta name="twitter:description" data-i18n="app.og.desc" data-i18n-attr="content" content="A few short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
 <meta name="twitter:image" content="https://bancomm2h.com/assets/og-application.jpg">
 </head>
 <body class="app">
@@ -60,9 +60,9 @@
           <span data-i18n="app.progress.step">Step</span>
           <b id="stepNow">1</b>
           <span data-i18n="app.progress.of">of</span>
-          <b>5</b>
+          <b>6</b>
         </p>
-        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="5" aria-valuenow="1"
+        <div class="quiz__bar" role="progressbar" aria-valuemin="1" aria-valuemax="6" aria-valuenow="1"
              aria-label="Application progress" id="bar"><i></i></div>
       </div>
 
@@ -160,14 +160,62 @@
         </div>
       </fieldset>
 
-      <!-- ── 4 · services to quote ───────────────────────────────────────
+      <!-- ── 4 · which tier ──────────────────────────────────────────────
+           After the timeline, not before it: by this point they have said why,
+           who and when, which is what makes a tier answerable at all. "Not sure
+           yet" is a real answer rather than a cop-out — most people genuinely
+           do not know, and a forced guess is worse for the advisor than a
+           blank. Single select: you apply under one tier. -->
+      <fieldset class="step" data-step="4" hidden>
+        <legend class="step__q" data-i18n="app.qp.title">Which plan are you interested in?</legend>
+        <p class="step__sub" data-i18n="app.qp.sub">A rough idea is enough. We confirm what you actually qualify for before anything is lodged.</p>
+        <div class="opts">
+          <label class="opt">
+            <input type="radio" name="plan" value="silver">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a1">MM2H Silver</span>
+              <span class="opt__d" data-i18n="app.qp.a1d">The entry tier, with the lightest commitment</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="gold">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a2">MM2H Gold</span>
+              <span class="opt__d" data-i18n="app.qp.a2d">Longer stay rights, and room for the whole family</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="platinum">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a3">MM2H Platinum</span>
+              <span class="opt__d" data-i18n="app.qp.a3d">The longest horizon and the widest privileges</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="pvip">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a4">Premium visa (PVIP)</span>
+              <span class="opt__d" data-i18n="app.qp.a4d">A long horizon for high earners, with no fixed deposit</span>
+            </span>
+          </label>
+          <label class="opt">
+            <input type="radio" name="plan" value="unsure">
+            <span class="opt__b">
+              <span class="opt__t" data-i18n="app.qp.a5">I'm not sure yet</span>
+              <span class="opt__d" data-i18n="app.qp.a5d">Tell us about your situation and we'll advise which fits</span>
+            </span>
+          </label>
+        </div>
+      </fieldset>
+
+      <!-- ── 5 · services to quote ───────────────────────────────────────
            Deliberately BEFORE the contact step, not after it. The form only
            submits on the final screen, so a question placed last turns every
            abandonment on it into a lost enquiry — asking here costs nothing and
            warms them up for handing over their details. Keys are app.qs.* (not
            app.q4.*) so the contact step keeps its existing translations even
            though its number moved. -->
-      <fieldset class="step" data-step="4" hidden data-multi>
+      <fieldset class="step" data-step="5" hidden data-multi>
         <legend class="step__q" data-i18n="app.qs.title">Would you like a quotation on any of these?</legend>
         <p class="step__sub" data-i18n="app.qs.sub">We are already handling your documents, so you deal with one team rather than finding a separate firm for each. Tick anything you would like priced — no obligation, and asking costs nothing.</p>
         <div class="opts opts--multi">
@@ -273,8 +321,8 @@
 
       </fieldset>
 
-      <!-- ── 5 · contact ─────────────────────────────────────────────── -->
-      <fieldset class="step" data-step="5" hidden>
+      <!-- ── 6 · contact ─────────────────────────────────────────────── -->
+      <fieldset class="step" data-step="6" hidden>
         <legend class="step__q" data-i18n="app.q4.title">How should we reach you?</legend>
         <p class="step__sub" data-i18n="app.q4.sub">One advisor reads this and replies within one business day.</p>
 

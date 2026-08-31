@@ -1338,3 +1338,53 @@ STF (Revenue) MM2H 與 Banco Advisory & Consultancy 合作提供
 
 [[vhero.title]]
 您的第二個家⏎在馬來西亞
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Application form gains a tier step (step 4 of 6), between the timeline and
+# the quotation question. Tier names follow the footer's existing forms —
+# 銀級 / 金級 / 白金級 / 頂級簽證（PVIP）. The two meta descriptions counted the
+# questions ("four", "five"), which the new step made wrong; they no longer
+# count, so a future step will not date them again.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[app.meta.desc]]
+幾個簡單問題，讓我們為您找到最合適的 MM2H 方案。完全無需承諾。
+
+[[app.og.desc]]
+幾個簡短問題，讓我們為您配對合適的 MM2H 方案。沒有任何義務，專屬顧問將於一個工作天內回覆。
+
+[[app.qp.title]]
+您對哪一個方案有興趣？
+
+[[app.qp.sub]]
+大致的方向就足夠。在正式遞件之前，我們會確認您實際符合的資格。
+
+[[app.qp.a1]]
+MM2H 銀級
+
+[[app.qp.a1d]]
+入門等級，承諾最輕。
+
+[[app.qp.a2]]
+MM2H 金級
+
+[[app.qp.a2d]]
+更長的居留權利，也有全家同行的空間。
+
+[[app.qp.a3]]
+MM2H 白金級
+
+[[app.qp.a3d]]
+最長的期限與最完整的權益。
+
+[[app.qp.a4]]
+頂級簽證（PVIP）
+
+[[app.qp.a4d]]
+為高收入者而設的長期簽證，無需定期存款。
+
+[[app.qp.a5]]
+我還不確定
+
+[[app.qp.a5d]]
+告訴我們您的狀況，由我們建議合適的等級。
