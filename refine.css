@@ -457,3 +457,78 @@ a:hover{color:inherit}
   .vnav .langsw { margin-left: auto; }
   .vnav__brand .brand__mark { width: 30px; height: 30px; }
 }
+
+/* ══ MOBILE AUDIT FIXES ═══════════════════════════════════════════════════ */
+
+/* The language switcher moves into the drop-down at this width (upgrade.js),
+   so the bar fits and the burger stays on screen. Style it as a menu row. */
+@media (max-width: 860px) {
+  .nav.menu-open .nav__links .langsw {
+    display: flex; margin: 14px 4px 2px; align-self: flex-start;
+    border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.06);
+  }
+  .nav.menu-open .nav__links .langsw__opt { font-size: 14px; padding: 10px 16px; color: #EEF2EC; }
+  .nav.menu-open .nav__links .langsw__opt.is-on { color: #0C1510; background: var(--gold-soft); }
+  /* keep the bar from ever pushing its own controls out of view again */
+  .nav__right { min-width: 0; flex-wrap: nowrap; }
+  .nav .brand__txt { min-width: 0; }
+  .nav .brand__sub { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+
+@media (max-width: 760px) {
+  /* "Why Banco" values were two columns at 375px, leaving a 157px measure —
+     about nine Chinese characters a line, which stacks into a choppy column.
+     One value per row instead, the same call refine.css already makes for the
+     hub rows. */
+  .statx__grid--vals { grid-template-columns: 1fr; gap: 1.5rem; }
+  .statx__val .v { max-width: none; }
+}
+
+/* Tap targets. The switcher sat at 43x24 on every page, including the
+   application form — well under the 44px minimum. */
+@media (max-width: 860px) {
+  .langsw__opt { min-height: 38px; display: inline-flex; align-items: center; font-size: 12.5px; }
+  .app .langsw__opt, .vnav .langsw__opt { min-height: 36px; }
+  .foot__col a, .foot__row a { display: inline-block; padding-block: 7px; }
+}
+
+/* Two faults the reachable burger exposed.
+
+   1. refine.css's own ".nav.scrolled .nav__links a { color: var(--ink) }"
+      loads after site.css's menu-open rule and matches at equal specificity,
+      so with the menu open over a scrolled page every link was Blackwood ink
+      on the near-black panel — invisible. Raised above it here.
+   2. The brand sub-line is 153px wide, which squeezed the CTA to 60px and
+      clipped it to "Begin ap". The mark plus BANCO identifies the site well
+      enough in a phone bar; the sub-line returns above the breakpoint. */
+@media (max-width: 860px) {
+  .nav.scrolled.menu-open .nav__links a,
+  .nav.menu-open .nav__links a { color: #EEF2EC; }
+  .nav.scrolled.menu-open .nav__links a:hover,
+  .nav.menu-open .nav__links a:hover { color: var(--gold-soft); }
+  .nav.scrolled.menu-open .brand__name { color: #FFFFFF; }
+
+  .nav .brand__sub { display: none; }
+  .nav .btn--primary { flex: none; }
+}
+
+/* Micro-labels. The brand sets mono eyebrows at 10–11px, which holds up on a
+   desktop canvas but sits under the ~12px floor where small text stays
+   comfortably legible on a phone. Raised here only — the desktop scale is
+   untouched. */
+@media (max-width: 860px) {
+  .ptier__ey, .ptier__lab, .ptier__flag, .ptier__hint { font-size: 12px; }
+  .langsw__opt, .langsw--hero .langsw__opt, .vnav .langsw__opt { font-size: 12.5px; }
+  .brand__sub { font-size: 11px; letter-spacing: .16em; }
+  .film__item .cap { font-size: 12px; }
+}
+
+/* Last of the sub-12px labels on a phone: the feature badge's second line,
+   the process step's timing, the filmstrip's drag hint and the footer's
+   credits summary. Desktop keeps the smaller setting. */
+@media (max-width: 860px) {
+  .feat__badge .s { font-size: 12px; }
+  .proc__step .when { font-size: 12px; }
+  .film__drag { font-size: 12px; }
+  .foot__credits summary { font-size: 12.5px; }
+}

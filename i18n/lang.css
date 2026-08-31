@@ -270,3 +270,17 @@ html[lang^="zh"] .jside {
   letter-spacing: .16em;
   font-family: var(--zh-sans);
 }
+
+/* This sheet loads after refine.css, so the mobile legibility floor for the
+   switcher has to live here or it is overridden. 11px is under the ~12px
+   floor where small UI text stays comfortable on a phone, and the option is
+   a tap target as well as a label. */
+@media (max-width: 860px) {
+  .langsw__opt { font-size: 12.5px; min-height: 38px; display: inline-flex; align-items: center; }
+}
+
+/* The video hero's switcher has its own 11px rule below 620px at higher
+   specificity, which the floor above cannot reach. Matched here. */
+@media (max-width: 620px) {
+  .langsw--v .langsw__opt, .langsw--hero .langsw__opt { font-size: 12.5px; }
+}

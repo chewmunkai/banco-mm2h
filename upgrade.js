@@ -193,6 +193,24 @@
   function initNavMenu(){
     const nav = document.querySelector('.nav'); if (!nav) return;
     const burger = nav.querySelector('.nav__burger'); if (!burger) return;
+
+    // The bar holds brand + language switcher + CTA + burger. Below ~860px
+    // that is wider than the phone, and since .nav is fixed it overflows
+    // silently rather than scrolling: the burger ended up off-screen entirely,
+    // and because .nav__links is display:none at this width, there was then no
+    // way to reach the navigation at all. Move the switcher into the drop-down,
+    // which leaves brand + CTA + burger — a width that fits.
+    const links = nav.querySelector('.nav__links');
+    const sw = nav.querySelector('.nav__right .langsw');
+    const mq = window.matchMedia('(max-width: 860px)');
+    const placeSwitcher = () => {
+      if (!links || !sw) return;
+      if (mq.matches) { if (sw.parentNode !== links) links.appendChild(sw); }
+      else { const right = nav.querySelector('.nav__right'); if (right && sw.parentNode !== right) right.prepend(sw); }
+    };
+    placeSwitcher();
+    mq.addEventListener ? mq.addEventListener('change', placeSwitcher) : mq.addListener(placeSwitcher);
+
     const setOpen = (o)=>{ nav.classList.toggle('menu-open', o); burger.setAttribute('aria-expanded', o?'true':'false'); };
     burger.addEventListener('click', ()=> setOpen(!nav.classList.contains('menu-open')));
     nav.querySelectorAll('.nav__links a').forEach(a=> a.addEventListener('click', ()=> setOpen(false)));
