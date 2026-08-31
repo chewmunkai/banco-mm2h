@@ -74,10 +74,45 @@
     });
   }
 
-  /* ---- PATHWAYS (mobile) · vertical scroll choreography ------------- */
+  /* ---- PATHWAYS (mobile) · swipeable carousel ------------------------
+     Stacked vertically the three routes ran to about three screens, and the
+     desktop pin cannot be used at this width. Wrapping the panels in their own
+     scroll-snap track keeps the section to roughly one screen and matches how
+     a phone expects to browse a small set of cards. The intro stays put above
+     it so the section keeps its heading. */
+  function buildPathwaysCarousel(sec){
+    const panels = [...sec.querySelectorAll('.phz__panel')];
+    if (panels.length < 2 || sec.querySelector('.phz__carousel')) return null;
+    const box = document.createElement('div');
+    box.className = 'phz__carousel';
+    panels[0].parentNode.insertBefore(box, panels[0]);
+    panels.forEach(p => box.appendChild(p));
+    sec.classList.add('has-carousel');
+    return box;
+  }
+
   function initPathwaysMobile(sec){
+    const carousel = buildPathwaysCarousel(sec);
     const intro = sec.querySelector('.phz__intro');
     const hintBar = sec.querySelector('.phz__hint .bar i');
+    if (carousel) {
+      // the hint bar now tracks horizontal position through the deck
+      if (hintBar) {
+        const sync = () => {
+          const max = carousel.scrollWidth - carousel.clientWidth;
+          hintBar.style.transform = 'scaleX(' + (max > 0 ? carousel.scrollLeft / max : 0) + ')';
+        };
+        carousel.addEventListener('scroll', sync, { passive: true });
+        sync();
+      }
+      // entrance only: the per-panel parallax below is keyed to vertical
+      // scroll, which every panel now shares, so it would move them in unison.
+      if (intro) G.from([...intro.children], {y:26,opacity:0,duration:.7,stagger:.08,ease:'expo.out',
+        scrollTrigger:{trigger:intro,start:'top 85%',once:true}});
+      G.from(carousel,{y:34,opacity:0,duration:.8,ease:'expo.out',
+        scrollTrigger:{trigger:carousel,start:'top 88%',once:true}});
+      return;
+    }
     if (intro) G.from([...intro.children], {y:30,opacity:0,duration:.7,stagger:.08,ease:'expo.out',
       scrollTrigger:{trigger:intro,start:'top 85%',once:true}});
     if (hintBar) G.fromTo(hintBar,{scaleX:0},{scaleX:1,ease:'none',

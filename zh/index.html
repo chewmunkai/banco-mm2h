@@ -626,15 +626,15 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
   <script src="../site.js"></script>
   <script src="../upgrade.js"></script>
   <script src="../refine.js"></script>
-  <script>/* Hero clip. Phones keep the poster frame — 2.7 MB of video plus continuous
-   decode is not worth it there, and the still reads the same. On desktop we
-   promote data-src, then fall back to a blob if the host serves the mp4 without
-   byte-range support, which otherwise stalls <video> indefinitely. */
+  <script>/* Hero clip, on every screen size. The poster still carries the first
+   paint — it is already decoded when the markup parses — and the video takes
+   over behind it once it can play, so the 2.7 MB never blocks anything. Then
+   fall back to a blob if the host serves the mp4 without byte-range support,
+   which otherwise stalls <video> indefinitely. */
 (function(){
   var v=document.querySelector('.vhero__bg');if(!v)return;
   var s=v.querySelector('source');if(!s)return;
   var url=s.getAttribute('data-src');if(!url)return;
-  if(window.matchMedia('(max-width: 820px)').matches)return;
   s.setAttribute('src',url);v.preload='auto';v.load();
   var p0=v.play();if(p0&&p0.catch)p0.catch(function(){});
   setTimeout(function(){if(v.readyState>0)return;fetch(url).then(function(r){return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);v.load();var p=v.play();if(p&&p.catch)p.catch(function(){})}).catch(function(){})},1800);
