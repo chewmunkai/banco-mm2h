@@ -1,5 +1,5 @@
 /* ── Banco MM2H · Spacing & Layout ───────────────────────────────────────
-   4px base unit. Generous rhythm — premium brands breathe. */
+   4px base unit. Generous rhythm — the brand is unhurried. */
 
 :root {
   --space-0:  0;
@@ -21,4 +21,11 @@
   --container-xl:  1280px;
   --gutter:        clamp(1.25rem, 4vw, 4rem); /* @kind spacing */
   --section-y:     clamp(4rem, 9vw, 8rem); /* @kind spacing */
+
+  /* Controls */
+  --control-h-sm: 36px;
+  --control-h-md: 44px;
+  --control-h-lg: 52px;
+  --field-pad-x:  14px;
+  --field-pad-y:  11px;
 }

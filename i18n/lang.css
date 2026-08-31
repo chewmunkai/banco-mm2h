@@ -30,8 +30,8 @@
 .langsw__opt:hover { color: #fff; }
 
 .langsw__opt.is-on {
-  color: #0F2C1E;
-  background: #E9E4D4;
+  color: #16241C;
+  background: #EEF2EC;
   font-weight: 600;
 }
 
@@ -40,15 +40,15 @@
    `.is-solid` matched nothing, so these rules never applied. */
 .nav.scrolled .langsw,
 .nojourney .nav .langsw {
-  border-color: rgba(15, 44, 30, .16);
-  background: rgba(15, 44, 30, .04);
+  border-color: rgba(22,36,28, .16);
+  background: rgba(22,36,28, .04);
 }
 .nav.scrolled .langsw__opt,
-.nojourney .nav .langsw__opt { color: rgba(15, 44, 30, .55); }
+.nojourney .nav .langsw__opt { color: rgba(22,36,28, .55); }
 .nav.scrolled .langsw__opt:hover,
-.nojourney .nav .langsw__opt:hover { color: #0F2C1E; }
+.nojourney .nav .langsw__opt:hover { color: #16241C; }
 .nav.scrolled .langsw__opt.is-on,
-.nojourney .nav .langsw__opt.is-on { color: #FFF; background: #0F2C1E; }
+.nojourney .nav .langsw__opt.is-on { color: #FFF; background: #16241C; }
 
 .langsw--v { margin-left: 14px; }
 

@@ -70,10 +70,13 @@ ATTR('.nav__burger', 'aria-label', 'nav.burger.aria');
 $('.brand__sub').each((_, el) => $(el).text(t['nav.brand.sub']));
 
 // ─── journey hero ────────────────────────────────────────────────────────────
+// v3 re-laid the hero as one left column: an eyebrow above a two-line title,
+// and the italic "script" fragment is gone (v3 has no serif face), so
+// hero.title.script is retired — kept in the json in case the face returns.
+T('.jeyebrow', 'hero.eyebrow');
 const topLines = t['hero.title.top'].split('⏎');
 $('.jtitle--top span[data-split]').each((i, el) => { if (topLines[i]) $(el).text(topLines[i]); });
 T('.jtitle--bottom span[data-split]', 'hero.title.bottom', 0);
-T('.jtitle--bottom span.script', 'hero.title.script');
 T('.jlead__sub', 'hero.lead');
 LEAD('.jlead__ctas .btn--primary .btn__l', 'hero.cta.primary');
 T('.jlead__ctas .btn--ghost .btn__l', 'hero.cta.secondary');
@@ -203,6 +206,19 @@ $('.ptier').each((i, el) => {
 $('image-slot#edu-feature').attr('placeholder', t['ui.ph.educampus']);
 $('image-slot#property-feature').attr('placeholder', t['ui.ph.propres']);
 
+// ─── support · everything around the visa (added in v3) ──────────────────────
+T('.supp__head .u-eyebrow', 'supp.eyebrow');
+H('.supp__head h2', 'supp.h2');
+T('.supp__head p', 'supp.lead');
+$('.supp__card').each((i, el) => {
+  const n = i + 1, c = $(el);
+  c.find('h3').text(t[`supp.${n}.title`]);
+  c.find('p').text(t[`supp.${n}.body`]);
+});
+T('.supp__authcap', 'supp.authcap');
+// The compliance line: Banco coordinates, a licensed MM2H partner lodges.
+T('.supp__authnote', 'supp.authnote');
+
 // ─── process ─────────────────────────────────────────────────────────────────
 T('.proc__sticky .u-eyebrow', 'proc.eyebrow');
 H('.proc__sticky h2', 'proc.h2');
@@ -262,7 +278,10 @@ LEAD('.btn--gold .btn__l', 'cta.button');
 LEAD('.ctax__phone', 'cta.phone');               // keeps the svg + <b>number</b>
 
 // ─── footer ──────────────────────────────────────────────────────────────────
-ATTR('.foot__logo', 'alt', 'footer.logo.alt');
+// v3 replaced the lockup image with a mark + live wordmark, so the old
+// footer.logo.alt has nothing to hang on. The tagline beneath it is real copy
+// and carries a <span>, so it goes through H.
+H('.foot__tag', 'footer.tagline');
 T('.foot__row span', 'footer.legal', 0);
 // data-cursor is gone from these links (refine.js removed the custom cursor),
 // so match them by position within the footer's legal row instead.

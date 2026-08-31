@@ -29,17 +29,17 @@ h1, h2, h3, h4 {
 p { margin: 0; text-wrap: pretty; }
 
 a { color: var(--text-link); text-decoration: none; }
-a:hover { text-decoration: underline; text-underline-offset: 2px; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
 
-::selection { background: var(--green-200); color: var(--green-900); }
+::selection { background: var(--gold-200); color: var(--ink-900); }
 
 :focus-visible { outline: none; box-shadow: var(--shadow-focus); border-radius: var(--radius-sm); }
 
-/* Tabular figures helper for tables / numerals */
-.mm-tabular { font-variant-numeric: tabular-nums; }
+/* Tabular figures helper — every figure in the brand is tabular */
+.mm-tabular { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
 
 /* Hairline divider */
 .mm-rule { border: 0; border-top: 1px solid var(--border-hairline); margin: 0; }
 
-/* Gold decorative rule used under eyebrows / section heads */
-.mm-rule-gold { width: 40px; height: 2px; background: var(--accent); border: 0; border-radius: 2px; }
+/* The 40×2 brass rule — the brand's punctuation mark */
+.mm-rule-gold { width: var(--rule-brass-width); height: var(--rule-brass-height); background: var(--brass); border: 0; border-radius: 0; }

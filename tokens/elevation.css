@@ -1,40 +1,45 @@
-/* ── Banco MM2H · Radii, Borders, Shadows ────────────────────────────────
-   Soft, restrained radii. Layered low-contrast shadows tinted with the
-   brand green rather than pure black — keeps surfaces warm. */
+/* ── Banco MM2H · Radii, Borders, Shadows, Motion ────────────────────────
+   Separation is a hairline first, shadow second. Shadows are tinted with
+   Blackwood ink rather than pure black. Never a shadow on the logo. */
 
 :root {
-  /* Corner radii */
+  /* Corner radii — cards 14, controls and fields 8. The tile squircle
+     belongs to the mark and is never applied to a container. */
   --radius-xs: 4px;
-  --radius-sm: 8px;
-  --radius-md: 12px;   /* buttons, inputs */
-  --radius-lg: 16px;   /* cards */
-  --radius-xl: 24px;   /* feature panels */
+  --radius-sm: 6px;
+  --radius-md: 8px;    /* buttons, inputs */
+  --radius-lg: 14px;   /* cards */
+  --radius-xl: 20px;   /* feature panels */
   --radius-pill: 999px;
   --radius-circle: 50%;
 
   /* Borders */
   --border-width: 1px;
-  --border-width-strong: 1.5px;
+  --border-width-strong: 2px;
 
-  /* Shadows — green-tinted, multi-layer */
-  --shadow-xs: 0 1px 2px rgba(7, 42, 32, 0.06);
-  --shadow-sm: 0 1px 2px rgba(7, 42, 32, 0.06),
-               0 2px 6px rgba(7, 42, 32, 0.05);
-  --shadow-md: 0 2px 4px rgba(7, 42, 32, 0.05),
-               0 6px 16px rgba(7, 42, 32, 0.08);
-  --shadow-lg: 0 4px 8px rgba(7, 42, 32, 0.06),
-               0 16px 36px rgba(7, 42, 32, 0.11);
-  --shadow-xl: 0 8px 16px rgba(7, 42, 32, 0.08),
-               0 32px 64px rgba(7, 42, 32, 0.16);
+  /* Shadows — ink-tinted, multi-layer, restrained */
+  --shadow-xs: 0 1px 2px rgba(14, 24, 18, 0.05);
+  --shadow-sm: 0 1px 2px rgba(14, 24, 18, 0.05),
+               0 2px 6px rgba(14, 24, 18, 0.04);
+  --shadow-md: 0 1px 2px rgba(14, 24, 18, 0.04),
+               0 8px 24px -12px rgba(14, 24, 18, 0.10);
+  --shadow-lg: 0 2px 4px rgba(14, 24, 18, 0.05),
+               0 18px 42px -18px rgba(14, 24, 18, 0.16);
+  --shadow-xl: 0 32px 80px -24px rgba(6, 12, 9, 0.38);
 
   /* Focus + inset */
   --shadow-focus: 0 0 0 3px var(--focus-ring);
-  --shadow-inset: inset 0 1px 2px rgba(7, 42, 32, 0.07);
+  --shadow-inset: inset 0 1px 2px rgba(14, 24, 18, 0.06);
 
-  /* Motion */
-  --ease-standard: cubic-bezier(0.32, 0.72, 0.24, 1); /* @kind other */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
-  --dur-fast: 120ms; /* @kind other */
-  --dur-base: 200ms; /* @kind other */
+  /* Veil + scrim — the only two places blur is used */
+  --blur-veil: 14px;
+  --scrim-dark: rgba(6, 12, 9, 0.62);
+
+  /* Motion — calm, precise, unhurried. No bounce, no spring, no overshoot. */
+  --ease-standard: cubic-bezier(0.2, 0.6, 0.2, 1); /* @kind other */
+  --ease-out: cubic-bezier(0, 0.55, 0.45, 1); /* @kind other */
+  --dur-fast: 140ms; /* @kind other */
+  --dur-base: 220ms; /* @kind other */
   --dur-slow: 360ms; /* @kind other */
+  --press-scale: 0.99; /* @kind other */
 }

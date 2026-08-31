@@ -135,9 +135,17 @@
     // continuous dolly from orbit toward Malaysia; we stop at a crisp full-disc
     // approach (not skimming the surface, which read as a blank void) — the
     // final hand-off to the city is carried by the warm light bloom + photo.
-    const dist = mix(9.6, 1.9, e);
-    camera.position.set(px * par, py * par, dist);
-    _l.set(px * par * 0.4, py * par * 0.4, 0);
+    const dist = mix(9.0, 1.9, e);
+    // on wide screens the globe sits right of frame so the hero copy owns the left
+    // column; the pan decays to centre as the descent begins.
+    const w = canvas.clientWidth || innerWidth, hgt = canvas.clientHeight || innerHeight;
+    // centre the globe inside the layout's right column (the hero copy owns the
+    // left 52.5%); the pan decays to frame centre as the descent begins.
+    const asp = w / hgt, halfW = Math.tan(22.5 * Math.PI / 180) * dist * asp;
+    const wanted = 0.525 * halfW;                     // right-column centre
+    const shift = (asp > 1.15) ? mix(Math.min(wanted, halfW - 1.7), 0, e) : 0;
+    camera.position.set(px * par - shift, py * par, dist);
+    _l.set(px * par * 0.4 - shift, py * par * 0.4, 0);
     camera.lookAt(_l);
 
     // a dense field of clouds streams toward + past the camera as we drop — each

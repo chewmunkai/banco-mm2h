@@ -1,32 +1,34 @@
 /* ── Banco MM2H · Typography ─────────────────────────────────────────────
-   Bricolage Grotesque (display) carries a modern, characterful authority.
-   Hanken Grotesk (sans) does the working text. Warm, humanist scale. */
+   Satoshi for authority, Hanken Grotesk for warmth, Spline Sans Mono for
+   the numbers a client verifies. 1.25 major third. 12px is the floor. */
 
 :root {
-  --font-display: 'Bricolage Grotesque', -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Satoshi', 'Hanken Grotesk', -apple-system, 'Segoe UI', sans-serif;
   --font-sans:    'Hanken Grotesk', -apple-system, 'Segoe UI', sans-serif;
   --font-mono:    'Spline Sans Mono', ui-monospace, 'SF Mono', monospace;
-  /* legacy alias — older specimens referenced --font-serif for display */
+  /* legacy aliases — v3 has no serif or script face; both resolve to display */
   --font-serif:   var(--font-display);
+  --font-accent:  var(--font-display);
 
-  /* Type scale (1.250 major-third, rounded) */
-  --text-xs:   0.75rem;   /* 12 */
-  --text-sm:   0.875rem;  /* 14 */
-  --text-base: 1rem;      /* 16 */
-  --text-md:   1.125rem;  /* 18 */
-  --text-lg:   1.375rem;  /* 22 */
-  --text-xl:   1.75rem;   /* 28 */
-  --text-2xl:  2.25rem;   /* 36 */
-  --text-3xl:  2.9375rem; /* 47 */
-  --text-4xl:  3.8125rem; /* 61 */
-  --text-5xl:  5rem;      /* 80 */
+  /* Type scale (1.250 major-third) */
+  --text-xs:   0.75rem;   /* 12 — caption & eyebrow, the floor */
+  --text-sm:   0.875rem;  /* 14 — labels & UI */
+  --text-base: 1rem;      /* 16 — body */
+  --text-md:   1.125rem;  /* 18 — lede */
+  --text-lg:   1.375rem;  /* 22 — subhead */
+  --text-xl:   1.75rem;   /* 28 — headline */
+  --text-2xl:  2.25rem;   /* 36 — headline */
+  --text-3xl:  2.9375rem; /* 47 — display */
+  --text-4xl:  3.8125rem; /* 61 — display */
+  --text-5xl:  5rem;      /* 80 — statement */
 
-  /* Weights */
+  /* Weights — Satoshi ships 500/700/900 only. 400 is Hanken Grotesk;
+     a light headline undercuts the brand's authority. */
   --weight-regular: 400;
   --weight-medium:  500;
   --weight-semibold: 600;
   --weight-bold:    700;
-  --weight-black:   800;
+  --weight-black:   900;
 
   /* Line heights */
   --leading-tight:  1.08;
@@ -34,11 +36,12 @@
   --leading-normal: 1.5;
   --leading-relaxed: 1.65;
 
-  /* Tracking */
+  /* Tracking — −0.025em display, −0.01em under 28px, 0 body */
   --tracking-tight:  -0.025em;
+  --tracking-heading: -0.01em;
   --tracking-normal: 0;
   --tracking-wide:   0.04em;
-  --tracking-caps:   0.16em;  /* eyebrows */
+  --tracking-caps:   0.16em;  /* eyebrows — the only uppercase in the brand */
 
   /* Semantic roles */
   --display-font:   var(--font-display);
@@ -47,9 +50,13 @@
   --body-font:      var(--font-sans);
   --label-font:     var(--font-sans);
   --eyebrow-font:   var(--font-sans);
+
+  /* The eyebrow rule: 40 × 2, brass */
+  --rule-brass-width:  40px;
+  --rule-brass-height: 2px;
 }
 
-/* Eyebrow / overline — uppercase brand convention */
+/* Eyebrow / overline — 12px semibold, 0.16em tracking, brass rule */
 .mm-eyebrow {
   font-family: var(--eyebrow-font);
   font-size: var(--text-xs);

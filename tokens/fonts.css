@@ -1,9 +1,10 @@
 /* ── Banco MM2H · Webfonts ──────────────────────────────────────────────
-   Bricolage Grotesque — characterful modern display for headings.
-   Hanken Grotesk — warm humanist sans for UI + body.
-   Spline Sans Mono — figures, reference codes, technical metadata.
+   Satoshi — display face, weights 500/700/900 only (400 belongs to Hanken).
+   Hanken Grotesk — UI, body, labels, forms. 400–700.
+   Spline Sans Mono — every figure and reference, tabular.
 
-   NOTE: served from Google Fonts CDN. For fully-offline binaries, ask and
-   we'll vendor the .woff2 files + local @font-face rules. */
+   Satoshi is served by Fontshare (the foundry's own CDN), not Google Fonts.
+   For offline binaries, vendor the .woff2 files and swap in @font-face. */
 
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Spline+Sans+Mono:wght@400;500&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=satoshi@500,700,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap');

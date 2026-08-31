@@ -214,10 +214,10 @@ This is an animated scroll sequence. The headline is split across two blocks tha
 
 ```
 [[hero.title.top]]
-A second⏎home in
+A second home
 
 [[hero.title.bottom]]
-Malaysia
+In Malaysia
 
 [[hero.title.script]]
 thoughtfully
@@ -227,7 +227,7 @@ Note on `hero.title.bottom` + `hero.title.script`: together they read *"Malaysia
 
 ```
 [[hero.lead]]
-Scroll to descend — from Earth to Kuala Lumpur. One eco-system hub for visas, property, schooling, banking and tax, all the way down.
+Scroll to descend, from Earth to Kuala Lumpur. One eco-system hub for visas, property, schooling, banking and tax, all the way down.
 
 [[hero.cta.primary]]
 Begin your descent
@@ -269,10 +269,10 @@ Scroll to descend
 
 ```
 [[vhero.title]]
-Your second home,⏎in Kuala Lumpur.
+Your second home,⏎in Malaysia
 
 [[vhero.sub]]
-A calmer, well-arranged life in Malaysia — visas, property, schooling and banking, handled end to end by one advisor.
+A calmer, well-arranged life in Malaysia. Visas, property, schooling and banking, handled end to end by one advisor.
 
 [[vhero.cta.primary]]
 Begin application
@@ -293,25 +293,25 @@ Live. Invest. Belong.
 Malaysia, thoughtfully arranged
 
 [[manifesto.h2]]
-Relocating a life takes a hundred decisions. <span class="dim">We make them</span> <span class="u-script">feel like one.</span>
+A new country.<br>Hundreds of decisions.<br><span class="u-script">We make them simple and transparent.</span>
 
 [[manifesto.1.k]]
 One advisor
 
 [[manifesto.1.v]]
-A single point of contact from first enquiry to the day you land — never a queue, never a hand-off.
+A single point of contact from first enquiry to the day you land. Never a queue, never a hand-off.
 
 [[manifesto.2.k]]
 End to end
 
 [[manifesto.2.v]]
-Visa, property, schooling, banking and tax — arranged together, in the right order, on one timeline.
+Visa, property, schooling, banking and tax, arranged together, in the right order, on one timeline.
 
 [[manifesto.3.k]]
-Licensed
+Licensed partners
 
 [[manifesto.3.v]]
-A registered MM2H advisory that lodges with the authorities for you and tracks every milestone.
+Your application is lodged by a licensed MM2H partner. We coordinate them, check every document and track every milestone for you.
 ```
 
 `manifesto.h2` is the brand's signature line — spend the most time here. The `<span class="u-script">` portion is set in italic serif; it should be the emotional payoff of the sentence. Keep both spans, keep their order.
@@ -339,10 +339,10 @@ One hub, every step
 Everything a second home needs, <span class="u-script">under one roof.</span>
 
 [[hub.1.title]]
-Visa &amp; residency
+Visa & residency
 
 [[hub.1.body]]
-We assess your tier, prepare every document and lodge your MM2H application with the authorities — then track each milestone to endorsement and beyond.
+We assess your tier and prepare and check every document; your licensed MM2H partner lodges it with the authorities. We track each milestone to endorsement and beyond.
 
 [[hub.1.tag.1]]
 MM2H application
@@ -357,7 +357,7 @@ Renewals
 Property concierge
 
 [[hub.2.body]]
-Curated homes to buy or lease across Kuala Lumpur, Penang and Johor — with independent title checks and financing partners arranged.
+Curated homes to buy or lease across Kuala Lumpur, Penang and Johor, with independent title checks and financing partners arranged.
 
 [[hub.2.tag.1]]
 Buy or lease
@@ -369,10 +369,10 @@ Title checks
 Financing
 
 [[hub.3.title]]
-Schools &amp; education
+Schools & education
 
 [[hub.3.body]]
-International school placement — British, IB, American and more — with dependent and student passes lodged alongside your application.
+International school placement across British, IB, American and more, with dependent and student passes arranged alongside your application.
 
 [[hub.3.tag.1]]
 Placement
@@ -384,10 +384,10 @@ Student passes
 University routes
 
 [[hub.4.title]]
-Banking &amp; tax
+Banking & tax
 
 [[hub.4.body]]
-Local accounts, fixed deposits and tax structuring with vetted advisors — so your money is set up correctly from the first week.
+Local accounts, fixed deposits and tax structuring with vetted advisors, so your money is set up correctly from the first week.
 
 [[hub.4.tag.1]]
 Local accounts
@@ -411,7 +411,7 @@ Choose your pathway
 Three routes to a <span class="u-script">second home.</span>
 
 [[path.lead]]
-Retirement, business or education — the same calm, end-to-end process, shaped around why you're moving.
+Retirement, business or education. The same calm, end-to-end process, shaped around why you're moving.
 
 [[path.hint]]
 Scroll to explore
@@ -494,22 +494,22 @@ Pathways to residency
 Find the route<br>that <span class="u-script">fits your plans.</span>
 
 [[tiers.lead]]
-Malaysia offers tiered long-stay programmes. Below are the headline figures — we confirm the exact, current requirements for your situation before you commit.
+Malaysia offers tiered long-stay programmes. Below are the headline figures. We confirm the exact, current requirements for your situation before you commit.
 
 [[tier.silver.desc]]
-The entry tier — a calm, affordable base with the lightest commitment.
+The entry tier. A calm, affordable base with the lightest commitment.
 
 [[tier.gold.desc]]
-The balanced choice — longer stay rights and room for the whole family.
+The balanced choice. Longer stay rights and room for the whole family.
 
 [[tier.platinum.desc]]
-The premium tier — the longest horizon and the widest privileges.
+The premium tier. The longest horizon and the widest privileges.
 
 [[tier.pvip.desc]]
-Malaysia's Premium Visa Programme — a long horizon for high earners, with no fixed deposit.
+Malaysia's Premium Visa Programme. A long horizon for high earners, with no fixed deposit.
 
 [[tiers.note]]
-Figures are indicative and set by the Government of Malaysia — they are revised periodically and differ by tier and by state (Sarawak and Sabah run their own programmes). Up to <b>50%</b> of a fixed deposit may later be applied to an approved property, education or medical use. We confirm the current requirements for your exact situation. Official rules: <a href="#faq">see the FAQ</a> for where to verify.
+<span class="i">ⓘ</span><span>Figures are indicative and set by the Government of Malaysia. They are revised periodically and differ by tier and by state (Sarawak and Sabah run their own programmes). Up to <b>50%</b> of a fixed deposit may later be applied to an approved property, education or medical use. We confirm the current requirements for your exact situation. Official rules: <a href="#faq" data-scroll-to="#faq">see the FAQ</a> for where to verify.</span>
 ```
 
 `tiers.h2` — keep the `<br>` where it is. `tiers.note` is the most compliance-sensitive string on the page: **every** qualification must survive, and the `<b>50%</b>` and `<a>` tags must be preserved exactly. The tier descriptions are where you may add the Chinese gloss for Silver / Gold / Platinum if it reads naturally.
@@ -518,13 +518,13 @@ Figures are indicative and set by the Government of Malaysia — they are revise
 
 ```
 [[edu.eyebrow]]
-Children &amp; schooling
+Children & schooling
 
 [[edu.h2]]
 Your children, settled and <span class="u-script">thriving.</span>
 
 [[edu.lead]]
-Malaysia is one of Asia's most established homes for international education — and your children can enrol on a dependent or student pass arranged right alongside your MM2H application.
+Malaysia is one of Asia's most established homes for international education, and your children can enrol on a dependent or student pass arranged right alongside your MM2H application.
 
 [[edu.li.1]]
 <b>Curricula on your doorstep</b>British (IGCSE &amp; A-Levels), International Baccalaureate, American, Australian and Canadian programmes across Kuala Lumpur, Penang and Iskandar Puteri.
@@ -533,7 +533,7 @@ Malaysia is one of Asia's most established homes for international education —
 <b>Day schools to boarding names</b>We shortlist by curriculum, commute and budget, then arrange the visits so you can choose with confidence.
 
 [[edu.li.3]]
-<b>Passes for every child</b>Dependent and student passes lodged with your application and renewed in step with your stay.
+<b>Passes for every child</b>Dependent and student passes prepared alongside your application and renewed in step with your stay.
 
 [[edu.li.4]]
 <b>A clear path to university</b>Branch campuses of UK and Australian universities, with onward routes to the UK, US and beyond.
@@ -545,7 +545,7 @@ We handle placement, registration and the paperwork; you choose the school that 
 Student passes
 
 [[edu.badge.s]]
-Lodged with MM2H
+Alongside MM2H
 ```
 
 In `edu.li.*` the `<b>` lead-in is a bold mini-heading with **no space or punctuation** before the body text that follows — reproduce that structure exactly. Bold lead-ins ≤ 10 characters. `edu.badge.*` ≤ 8 characters.
@@ -554,31 +554,31 @@ In `edu.li.*` the `<b>` lead-in is a bold mini-heading with **no space or punctu
 
 ```
 [[prop.eyebrow]]
-Property &amp; ownership
+Property & ownership
 
 [[prop.h2]]
 A home to buy, or a place to <span class="u-script">lease.</span>
 
 [[prop.lead]]
-Foreigners can own property in Malaysia in their own name — most homes are freehold or long leasehold. We make the search, the checks and the financing feel effortless.
+Foreigners can own property in Malaysia in their own name. Most homes are freehold or long leasehold. We make the search, the checks and the financing feel effortless.
 
 [[prop.li.1]]
-<b>Own above a state minimum</b>Each state sets a minimum purchase price (commonly around RM&nbsp;1,000,000, lower in some states and zones). We confirm what applies to you.
+<b>Freehold, in your own name</b>
 
 [[prop.li.2]]
-<b>Buy or lease</b>Curated condominiums and landed homes in KL, Penang and Iskandar Puteri — with rentals while you settle in.
+<b>Rent first, buy when you're sure</b>
 
 [[prop.li.3]]
-<b>Verified before you sign</b>Independent title checks and a vetted conveyancing lawyer on every purchase.
+<b>Shortlists in KL, Penang and Iskandar Puteri</b>
 
 [[prop.li.4]]
-<b>Financing for non-residents</b>Through our banking partners, with clear guidance on the categories foreigners cannot buy.
+<b>Title checked by an independent lawyer</b>
 
 [[prop.note]]
-Property and visa rules are set by the government and revised from time to time — we verify the current thresholds before you commit.
+Property and visa rules are set by the government and revised from time to time. We verify the current thresholds before you commit.
 
 [[prop.badge.t]]
-Freehold &amp; title
+Freehold & title
 
 [[prop.badge.s]]
 Checked before you sign
@@ -596,34 +596,34 @@ How it works
 From first call to <span class="u-script">touchdown.</span>
 
 [[proc.1.title]]
-Discovery &amp; eligibility
+Discovery & eligibility
 
 [[proc.1.body]]
-We learn why you're moving, recommend the tier that fits your goals and budget, and map a realistic timeline — no obligation.
+We learn why you're moving, recommend the tier that fits your goals and budget, and map a realistic timeline, with no obligation.
 
 [[proc.1.when]]
 Week one
 
 [[proc.2.title]]
-Documents &amp; preparation
+Documents & preparation
 
 [[proc.2.body]]
-Passport, medical, police clearance and financials — prepared and checked by us so nothing bounces back from the authorities.
+Passport, medical, police clearance and financials, prepared and checked by us so nothing bounces back from the authorities.
 
 [[proc.2.when]]
 Weeks 2–5
 
 [[proc.3.title]]
-Lodge &amp; conditional approval
+Lodgement & conditional approval
 
 [[proc.3.body]]
-We submit your application to the MM2H centre and track every milestone, so you always know exactly where things stand.
+Your licensed MM2H partner submits the application to the MM2H centre. We track every milestone, so you always know exactly where things stand.
 
 [[proc.3.when]]
 Months 1–4
 
 [[proc.4.title]]
-Endorsement &amp; fixed deposit
+Endorsement & fixed deposit
 
 [[proc.4.body]]
 You place the fixed deposit, complete the medical and insurance, and the visa is endorsed in your passport on arrival.
@@ -632,10 +632,10 @@ You place the fixed deposit, complete the medical and insurance, and the visa is
 On approval
 
 [[proc.5.title]]
-Property &amp; settling in
+Property & settling in
 
 [[proc.5.body]]
-Property, schools, banking and arrival support — your advisor stays with you well past the day the visa lands.
+Property, schools, banking and arrival support. Your advisor stays with you well past the day the visa lands.
 
 [[proc.5.when]]
 Ongoing
@@ -675,7 +675,7 @@ Captions — each ≤ 12 characters, keep the `·`:
 Why Banco
 
 [[proof.h2]]
-A licensed advisory that handles every authority, signature and milestone — so <span class="u-script">nothing is lost in translation.</span>
+A licensed advisory that handles every authority, signature and milestone, so <span class="u-script">nothing is lost in translation.</span>
 
 [[proof.stat.1]]
 Families relocated since 2014
@@ -684,7 +684,7 @@ Families relocated since 2014
 Application approval rate
 
 [[proof.stat.3]]
-Government &amp; legal partners
+Government & legal partners
 
 [[proof.stat.4]]
 Average client rating
@@ -702,37 +702,37 @@ Good to know
 MM2H, answered <span class="u-script">plainly.</span>
 
 [[faq.lead]]
-The honest version — what the programme is, what it lets you do, and where the official rules live.
+The honest version. What the programme is, what it lets you do, and where the official rules live.
 
 [[faq.1.q]]
 Who is MM2H for?
 
 [[faq.1.a]]
-Malaysia My Second Home is a long-stay visa for foreigners who want to live in Malaysia without giving up their citizenship — retirees, families, remote professionals and investors. It is renewable, and your spouse, children and, in many cases, parents can join you as dependents.
+Malaysia My Second Home is a long-stay visa for foreigners who want to live in Malaysia without giving up their citizenship: retirees, families, remote professionals and investors. It is renewable, and your spouse, children and, in many cases, parents can join you as dependents.
 
 [[faq.2.q]]
 Can my children study in Malaysia?
 
 [[faq.2.a]]
-Yes. Children join on a dependent or student pass and attend Malaysia's international and private schools — British, IB, American, Australian and more. We arrange placement and the pass paperwork. See <a href="#education">Children &amp; schooling</a> above.
+Yes. Children join on a dependent or student pass and attend Malaysia's international and private schools: British, IB, American, Australian and more. We arrange placement and the pass paperwork. See <a href="#education" data-scroll-to="#education">Children &amp; schooling</a> above.
 
 [[faq.3.q]]
-Can I buy a home — and what can foreigners own?
+Can I buy a home, and what can foreigners own?
 
 [[faq.3.a]]
-Foreigners can own property in their own name above a minimum purchase price set by each state (commonly around RM&nbsp;1,000,000, with variations). Some categories — such as Malay-reserved land and certain low-cost units — are not open to foreign buyers. You can also lease while you settle. See <a href="#property">Property &amp; ownership</a>.
+Foreigners can own property in their own name above a minimum purchase price set by each state (commonly around RM&nbsp;1,000,000, with variations). Some categories, such as Malay-reserved land and certain low-cost units, are not open to foreign buyers. You can also lease while you settle. See <a href="#property" data-scroll-to="#property">Property &amp; ownership</a>.
 
 [[faq.4.q]]
 Can I work or run a business on MM2H?
 
 [[faq.4.a]]
-The national Silver and Gold tiers are residency visas, not work permits. The Platinum tier permits work and business, and the SEZ pathway suits remote professionals. Employment and business each have their own rules, which change from time to time — we advise on the right structure for your plans.
+The national Silver and Gold tiers are residency visas, not work permits. The Platinum tier permits work and business, and the SEZ pathway suits remote professionals. Employment and business each have their own rules, which change from time to time. We advise on the right structure for your plans.
 
 [[faq.5.q]]
 What are the financial requirements?
 
 [[faq.5.a]]
-Since the 2024 relaunch, fixed-deposit and property thresholds are set per tier — from US$65k (SEZ) up to US$1M (Platinum). They are revised periodically and differ by state; Sarawak and Sabah run their own programmes. Rather than quote a figure that may already be out of date, we confirm the current requirements for your exact situation and point you to the official sources.
+Since the 2024 relaunch, fixed-deposit and property thresholds are set per tier, from US$65k (SEZ) up to US$1M (Platinum). They are revised periodically and differ by state; Sarawak and Sabah run their own programmes. Rather than quote a figure that may already be out of date, we confirm the current requirements for your exact situation and point you to the official sources.
 
 [[faq.6.q]]
 How is healthcare in Malaysia?
@@ -744,22 +744,22 @@ Malaysia's private hospitals are excellent and far more affordable than in the W
 How are taxes handled?
 
 [[faq.7.a]]
-Malaysia generally taxes income sourced in Malaysia, and the treatment of foreign-sourced income has its own rules that have changed in recent years. We connect you with vetted tax advisors so your situation is structured correctly — we don't make one-size-fits-all tax promises.
+Malaysia generally taxes income sourced in Malaysia, and the treatment of foreign-sourced income has its own rules that have changed in recent years. We connect you with vetted tax advisors so your situation is structured correctly. We don't make one-size-fits-all tax promises.
 
 [[faq.8.q]]
 How long does approval take?
 
 [[faq.8.a]]
-Timelines vary with the tier and your paperwork and are typically measured in months. We prepare and lodge everything, then track each milestone so you always know where things stand.
+Timelines vary with the tier and your paperwork and are typically measured in months. We prepare and check everything, your licensed MM2H partner lodges it, and we track each milestone so you always know where things stand.
 
 [[faq.9.q]]
 What does Banco actually do?
 
 [[faq.9.a]]
-Everything, in one place: eligibility, documents, lodging your application, property, schooling, banking, tax introductions and settling-in support — one dedicated advisor from first enquiry to arrivals.
+Everything, in one place: eligibility, documents, coordinating the licensed MM2H partner who lodges your application, property, schooling, banking, tax introductions and settling-in support, with one dedicated advisor from first enquiry to arrivals.
 
 [[faq.note]]
-Official requirements rest with the Government of Malaysia. For the current programme rules, see the official MM2H portal and the Immigration Department of Malaysia — we'll confirm everything that applies to your situation.
+Official requirements rest with the Government of Malaysia. For the current programme rules, see the official MM2H portal and the Immigration Department of Malaysia. We'll confirm everything that applies to your situation.
 ```
 
 FAQ notes:
@@ -803,7 +803,7 @@ Add us on LINE
 Banco MM2H — Your journey. Our expertise. Your new home.
 
 [[footer.legal]]
-© 2026 Banco MM2H Sdn Bhd · Licensed relocation advisory · Kuala Lumpur · Penang · Johor
+© 2026 Banco Advisory & Consultancy · MM2H relocation advisory
 
 [[footer.privacy]]
 Privacy
@@ -812,7 +812,7 @@ Privacy
 Terms
 
 [[footer.credits.summary]]
-Image credits &amp; attribution
+Image credits & attribution
 ```
 
 `footer.logo.alt` is the brand's three-beat tagline (image alt text): *Your journey. Our expertise. Your new home.* Preserve the three-beat rhythm. `footer.legal` keeps `© 2026`, `Sdn Bhd` and every `·`. The credits **body** paragraph is not translated — see §7.
