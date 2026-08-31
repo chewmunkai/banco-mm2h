@@ -174,6 +174,34 @@
               <span class="opt__d" data-i18n="app.qs.a3d">Choosing and applying to schools</span>
             </span>
           </label>
+
+          <!-- school stage: a branch of the tick above, not a new question -->
+          <div class="subq" id="eduLevels" hidden>
+            <p class="subq__q" data-i18n="app.qs.edu">Which stage are your children at?</p>
+            <div class="opts opts--multi opts--tight">
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="preschool">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">Preschool / kindergarten</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="primary">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">Primary</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="secondary">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">Secondary</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="pre_university">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">Pre-university / college</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="university">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">University</span></span>
+              </label>
+            </div>
+          </div>
+
           <label class="opt">
             <input type="checkbox" name="services" value="remittance">
             <span class="opt__b">
@@ -202,6 +230,19 @@
               <span class="opt__d" data-i18n="app.qs.a7d">Tell us what you need</span>
             </span>
           </label>
+
+          <!-- Sits inside the list, directly under the tick it belongs to: at the
+               end of the list it read as a follow-up to "Just the visa for now". -->
+          <div class="subq subq--write" id="otherWrap" hidden>
+            <label class="subq__q" for="fother" data-i18n="app.qs.otherq">What else can we help with?</label>
+            <div class="write">
+              <textarea id="fother" name="services_other" rows="3" maxlength="200"
+                        data-i18n="app.qs.otherph" data-i18n-attr="placeholder"
+                        placeholder="Pet relocation, importing a car, a domestic helper — anything at all."></textarea>
+              <span class="write__count" aria-hidden="true"><b data-count-now>0</b><span>/200</span></span>
+            </div>
+          </div>
+
           <label class="opt">
             <input type="checkbox" name="services" value="none" data-exclusive>
             <span class="opt__b">
@@ -211,36 +252,7 @@
           </label>
         </div>
 
-        <div class="subq" id="eduLevels" hidden>
-          <p class="subq__q" data-i18n="app.qs.edu">Which stage are your children at?</p>
-          <div class="opts opts--multi opts--tight">
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="preschool">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">Preschool / kindergarten</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="primary">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">Primary</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="secondary">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">Secondary</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="pre_university">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">Pre-university / college</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="university">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">University</span></span>
-            </label>
-          </div>
-        </div>
 
-        <p class="field subq" id="otherWrap" hidden>
-          <label for="fother" data-i18n="app.qs.otherq">What else can we help with?</label>
-          <input id="fother" name="services_other" type="text" maxlength="200">
-        </p>
       </fieldset>
 
       <!-- ── 5 · contact ─────────────────────────────────────────────── -->

@@ -346,3 +346,45 @@ body.app {
 @media (max-width:700px){.wa svg{width:31px;height:31px}}
 @media (max-width:700px){.wa{width:62px;height:62px}}
 @media (prefers-reduced-motion:reduce){.wa{transition:none}}
+
+/* ── "Others" free text ───────────────────────────────────────────────────
+   Sits inside the option list directly under its tick, so it keeps .subq's
+   indent and rule and reads as a branch of that answer.
+
+   A textarea rather than a one-line input: the limit is 200 characters, and a
+   single line hides all but the last few words of anything that long. The
+   counter lives inside the box so the field stays one object, and the padding
+   below reserves its row rather than letting text run underneath it. */
+.subq--write { margin-top: 10px; margin-bottom: 2px; }
+label.subq__q { display: block; cursor: pointer; }
+
+.write { position: relative; }
+.write textarea {
+  display: block; width: 100%;
+  padding: 14px 16px 34px;
+  font-family: inherit; font-size: 16px;   /* 16px keeps iOS from zooming */
+  line-height: 1.55;
+  color: var(--text-strong);
+  background: var(--surface-card);
+  border: 1px solid var(--border-hairline);
+  border-radius: 12px;
+  resize: vertical; min-height: 104px;
+  transition: border-color .22s var(--app-ease), box-shadow .22s var(--app-ease);
+}
+.write textarea::placeholder { color: var(--text-muted); opacity: 1; }
+.write textarea:focus {
+  outline: none;
+  border-color: var(--pine);
+  box-shadow: 0 0 0 3px var(--focus-ring);
+}
+
+.write__count {
+  position: absolute; right: 13px; bottom: 11px;
+  font-size: 12px; color: var(--text-muted);
+  font-variant-numeric: tabular-nums;   /* stops the row jittering as it counts */
+  pointer-events: none;
+  transition: color .2s var(--app-ease);
+}
+.write__count b { font-weight: 600; }
+.write__count.is-near { color: #9A6B1F; }
+.write__count.is-full { color: var(--danger, #B23B2E); }

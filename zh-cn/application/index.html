@@ -176,6 +176,34 @@
               <span class="opt__d" data-i18n="app.qs.a3d">选校与入学申请</span>
             </span>
           </label>
+
+          <!-- school stage: a branch of the tick above, not a new question -->
+          <div class="subq" id="eduLevels" hidden="">
+            <p class="subq__q" data-i18n="app.qs.edu">孩子目前就读哪个阶段？</p>
+            <div class="opts opts--multi opts--tight">
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="preschool">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">幼儿园</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="primary">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">小学</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="secondary">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">初中与高中</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="pre_university">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">大学先修（A-Level、IB 等）</span></span>
+              </label>
+              <label class="opt opt--sm">
+                <input type="checkbox" name="education_levels" value="university">
+                <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">大学</span></span>
+              </label>
+            </div>
+          </div>
+
           <label class="opt">
             <input type="checkbox" name="services" value="remittance">
             <span class="opt__b">
@@ -204,6 +232,17 @@
               <span class="opt__d" data-i18n="app.qs.a7d">请告诉我们您需要什么</span>
             </span>
           </label>
+
+          <!-- Sits inside the list, directly under the tick it belongs to: at the
+               end of the list it read as a follow-up to "Just the visa for now". -->
+          <div class="subq subq--write" id="otherWrap" hidden="">
+            <label class="subq__q" for="fother" data-i18n="app.qs.otherq">还有什么是我们可以协助的？</label>
+            <div class="write">
+              <textarea id="fother" name="services_other" rows="3" maxlength="200" data-i18n="app.qs.otherph" data-i18n-attr="placeholder" placeholder="宠物搬迁、汽车进口、家庭帮佣签证——任何需求都可以告诉我们。"></textarea>
+              <span class="write__count" aria-hidden="true"><b data-count-now="">0</b><span>/200</span></span>
+            </div>
+          </div>
+
           <label class="opt">
             <input type="checkbox" name="services" value="none" data-exclusive="">
             <span class="opt__b">
@@ -213,36 +252,7 @@
           </label>
         </div>
 
-        <div class="subq" id="eduLevels" hidden="">
-          <p class="subq__q" data-i18n="app.qs.edu">孩子目前就读哪个阶段？</p>
-          <div class="opts opts--multi opts--tight">
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="preschool">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu1">幼儿园</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="primary">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu2">小学</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="secondary">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu3">初中与高中</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="pre_university">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu4">大学先修（A-Level、IB 等）</span></span>
-            </label>
-            <label class="opt opt--sm">
-              <input type="checkbox" name="education_levels" value="university">
-              <span class="opt__b"><span class="opt__t" data-i18n="app.qs.edu5">大学</span></span>
-            </label>
-          </div>
-        </div>
 
-        <p class="field subq" id="otherWrap" hidden="">
-          <label for="fother" data-i18n="app.qs.otherq">还有什么是我们可以协助的？</label>
-          <input id="fother" name="services_other" type="text" maxlength="200">
-        </p>
       </fieldset>
 
       <!-- ── 5 · contact ─────────────────────────────────────────────── -->

@@ -93,15 +93,33 @@
     if (!wrap || !box) return;
     wrap.hidden = !box.checked;
     if (box.checked) return;
-    [].forEach.call(wrap.querySelectorAll('input'), function (i) {
+    // textarea as well as input: a hidden <textarea> still submits, so leaving
+    // it out would send free text for a service that was un-ticked.
+    [].forEach.call(wrap.querySelectorAll('input, textarea'), function (i) {
       if (i.type === 'checkbox') i.checked = false; else i.value = '';
     });
+    countOther();
   }
 
   function syncSubQuestions() {
     reveal('eduLevels', 'svcEdu');
     reveal('otherWrap', 'svcOther');
   }
+
+  // Live count for the "Others" box. maxlength stops typing silently at the
+  // cap, so show the remaining room rather than letting keystrokes vanish.
+  var otherBox = document.getElementById('fother');
+  var otherNow = document.querySelector('[data-count-now]');
+  function countOther() {
+    if (!otherBox || !otherNow) return;
+    var max = parseInt(otherBox.getAttribute('maxlength'), 10) || 200;
+    var n = otherBox.value.length;
+    otherNow.textContent = n;
+    var el = otherNow.parentNode;
+    el.classList.toggle('is-near', n >= max * 0.8 && n < max);
+    el.classList.toggle('is-full', n >= max);
+  }
+  if (otherBox) otherBox.addEventListener('input', countOther);
 
   form.addEventListener('change', function (e) {
     if (e.target.type !== 'radio' && e.target.type !== 'checkbox') return;

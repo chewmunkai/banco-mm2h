@@ -1308,3 +1308,11 @@ WhatsApp 聯絡我們
 
 [[app.qs.a8d]]
 其他部分之後再談
+
+# ─────────────────────────────────────────────────────────────────────────────
+# "Others" free-text field: now a textarea with a placeholder and a live
+# character count. The count reads "n/200" and needs no translation.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[app.qs.otherph]]
+寵物搬遷、汽車進口、家庭幫傭簽證——任何需求都可以告訴我們。
