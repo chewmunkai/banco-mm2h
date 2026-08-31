@@ -359,3 +359,101 @@ a:hover{color:inherit}
 /* WhatsApp CTA in the closing band — .btn__l already lays the glyph inline;
    this only stops it shrinking when the row wraps. */
 .ctax__wa svg{flex:none}
+
+/* ══ MOBILE ═══════════════════════════════════════════════════════════════
+   Phones open on the Kuala Lumpur hero and skip the Earth descent entirely.
+   The descent costs three.js plus four Earth textures (~2 MB) and three
+   screens of pinned scrolling before a single word of content — a poor trade
+   on a phone and on a mobile connection. index.html also skips loading
+   three.js and journey.js at this width, so none of it is fetched.
+
+   The rest tightens the vertical rhythm: at 375px the page ran to roughly
+   29 screens, most of it section padding and full-viewport panels. */
+@media (max-width: 820px) {
+  .journey { display: none; }
+
+  /* the hero no longer overlaps a pinned section above it, so it stands alone */
+  .vhero { height: 100svh; margin-top: 0; }
+  .vhero__stage { position: relative; opacity: 1; }
+  .vhero__veil { opacity: 0; }
+  .vhero__clouds { display: none; }   /* the cloud dive only reads out of the descent */
+  .vhero__pad { opacity: 1; }
+
+  /* every section carried ~97px top and bottom */
+  :root { --u-pad: clamp(2.75rem, 7vh, 4.25rem); }
+
+  /* pathway panels were a full viewport each, three of them */
+  .phz__panel { height: auto; padding-block: 1.6rem 2rem; }
+  .phz__panel .media { height: 42vh; min-height: 240px; }
+  .phz__big { font-size: clamp(3rem, 15vw, 4.5rem); }
+
+  /* pricing was the tallest section on the page: four ~730px cards */
+  .ptier { padding: 22px 20px 24px; border-radius: 18px; }
+  .ptier__name { font-size: 1.85rem; margin-top: 10px; }
+  .ptier__desc { font-size: 14.5px; line-height: 1.5; }
+  .ptier__row { padding-block: 9px; }
+  .ptier__fee { margin-top: 14px; }
+  .ptiers, .tiers__grid { gap: 14px; }
+
+  /* headings and leads: display type set for a 1440px canvas overflows here */
+  .tiers__head, .faqx__head, .film__head, .statx__head, .hubx__head, .supp__head { margin-bottom: 1.75rem; }
+  .feat__copy > p, .tiers__head p, .faqx__head p, .supp__head p { margin-block: .6rem 0; }
+
+  /* the filmstrip and process rails don't need full-bleed spacing here */
+  .proc__step { padding-block: 1.1rem; }
+  .supp__cards { gap: 12px; }
+  .supp__card { padding: 18px 18px 20px; }
+}
+
+/* Below the fold on a phone, the hero's own nav is the only one needed. */
+@media (max-width: 700px) {
+  .vhead { font-size: clamp(2.6rem, 11vw, 3.6rem); line-height: 1.02; }
+  .vsub { font-size: 1rem; line-height: 1.55; }
+}
+
+/* Second pass, measured rather than guessed. At 375px the four tallest blocks
+   were the pricing cards, the pathway panels, the process rail and the hub
+   rows — between them roughly two thirds of the page. upgrade.js already puts
+   pathways into .no-pin here, so its panel media has to be overridden through
+   that selector, not the bare one. */
+@media (max-width: 820px) {
+  .phz.no-pin .phz__panel .media { height: 38vh; min-height: 230px; }
+  .phz.no-pin .phz__panel { padding-block: 1.5rem 1.9rem; }
+
+  /* pricing card: 665px each, four of them */
+  .ptier__desc { font-size: 14px; line-height: 1.45; }
+  .ptier__dep { margin-block: 12px; }
+  .ptier__row { padding-block: 7px; font-size: 14px; }
+  .ptier__btn { padding: 13px 20px; margin-top: 16px; }
+  .ptier__hint { font-size: 12px; }
+
+  /* process rail: five steps at 220px */
+  .proc__step { padding-block: .85rem; }
+  .proc__step p { font-size: 15.5px; line-height: 1.55; }
+  .proc__dot { margin-bottom: 8px; }
+
+  /* hub rows: four at 348px */
+  .hubx__row { padding-block: 18px; }
+  .hubx__row .body p { font-size: 15.5px; line-height: 1.55; }
+  .hubx__row .tags { gap: 6px; margin-top: 10px; }
+
+  /* feature blocks (education / property) */
+  .feat__list li { font-size: 15.5px; line-height: 1.55; }
+  .feat__list li b { font-size: 16.5px; }
+  .feat { padding-block: var(--u-pad); }
+
+  /* manifesto + closing band */
+  .manifesto__meta .v { font-size: 16.5px; line-height: 1.55; }
+  .manifesto__meta { gap: 1.5rem; }
+  .ctax__band { padding-block: 2.25rem; }
+}
+
+/* The hero's own nav wrapped onto two rows at 375px and repeated the
+   "Begin application" button that sits in the hero body a few lines below.
+   One row, no duplicate action — the hero keeps the height instead. */
+@media (max-width: 820px) {
+  .vhero .vnav__cta { display: none; }
+  .vnav { padding: 8px 10px 8px 12px; gap: 10px; flex-wrap: nowrap; }
+  .vnav .langsw { margin-left: auto; }
+  .vnav__brand .brand__mark { width: 30px; height: 30px; }
+}

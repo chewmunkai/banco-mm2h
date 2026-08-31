@@ -9,6 +9,10 @@
   let lenis = null;
   function initLenis() {
     if (reduced || !window.Lenis) return;
+    // Phones keep native scrolling. Lenis runs a RAF loop that fires a
+    // ScrollTrigger update every frame, and its easing fights the platform's
+    // own momentum — a flick that should coast instead feels heavy and slow.
+    if (window.matchMedia('(max-width: 820px)').matches) return;
     lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
     if (G) { lenis.on('scroll', () => ScrollTrigger.update()); G.ticker.add(t => lenis.raf(t * 1000)); G.ticker.lagSmoothing(0); }
     else { const r = t => { lenis.raf(t); requestAnimationFrame(r); }; requestAnimationFrame(r); }
@@ -111,6 +115,10 @@
   const clamp = (a, b, x) => Math.max(0, Math.min(1, (x - a) / (b - a)));
   function initJourney() {
     const sec = document.querySelector('.journey'); if (!sec) return;
+    // Hidden on phones (see the MOBILE block in refine.css), where the page
+    // opens on the Kuala Lumpur hero. Wiring ScrollTrigger to a display:none
+    // section would pin against a zero-height element.
+    if (!sec.offsetParent && getComputedStyle(sec).display === 'none') return;
     const jhero = sec.querySelector('.jhero'), flash = sec.querySelector('.journey__flash'),
           rail = sec.querySelector('.journey__rail i'), cue = sec.querySelector('.scrollcue'),
           beats = Array.prototype.slice.call(sec.querySelectorAll('.beat'));
@@ -232,7 +240,13 @@
       });
       if (pr > 0.1) play();
     };
-    if (G && window.ScrollTrigger && !reduced) {
+    // Without the descent above it the hero is exactly one viewport tall, so
+    // "top top" and "bottom bottom" resolve to the same scroll position: the
+    // scrub would have zero distance and progress would sit at 0 forever,
+    // leaving the stage and its copy at opacity 0. Land it straight away.
+    const scrubbable = !!document.querySelector('.journey') &&
+      getComputedStyle(document.querySelector('.journey')).display !== 'none';
+    if (G && window.ScrollTrigger && !reduced && scrubbable) {
       ScrollTrigger.create({ trigger: hero, start: 'top top', end: 'bottom bottom', scrub: 0.5, onUpdate: self => reveal(self.progress) });
       reveal(0);
     } else {

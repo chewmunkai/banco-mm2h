@@ -98,8 +98,10 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
   <!-- VIDEO HERO (Kuala Lumpur) · emerges from the cloud dive -->
   <section class="vhero" id="welcome">
    <div class="vhero__stage">
-    <video class="vhero__bg" autoplay="" loop="" muted="" playsinline="" preload="auto" poster="../assets/photos/kl-hero.jpg">
-      <source src="../assets/video/kl-hero.mp4" type="video/mp4">
+    <!-- data-src, not src: the clip is 2.7 MB and phones get the poster frame
+         instead. The loader at the end of the page promotes it on desktop. -->
+    <video class="vhero__bg" autoplay="" loop="" muted="" playsinline="" preload="none" poster="../assets/photos/kl-hero.jpg">
+      <source data-src="../assets/video/kl-hero.mp4" type="video/mp4">
     </video>
     <div class="vhero__veil"></div>
     <div class="vhero__mask" aria-hidden="true"></div>
@@ -137,7 +139,7 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
       </div></nav>
       <div class="vhero__content">
         <div class="vhero__main">
-          <h1 class="vhead" data-vhead="">您的第二个家，
+          <h1 class="vhead" data-vhead="">您的第二个家
 在马来西亚</h1>
           <p class="vsub" data-vfade="800">在马来西亚展开更从容、安排妥当的生活。签证、房产、升学与银行，由一位顾问全程负责。</p>
           <div class="vbtns" data-vfade="1200">
@@ -592,8 +594,23 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
-  <script src="../journey.js"></script>
+  <!-- The Earth→Kuala Lumpur descent is desktop only; at 820px and below the
+       section is hidden and the page opens on the Kuala Lumpur hero instead.
+       Loading these conditionally saves a phone three.js plus the four Earth
+       textures it pulls — around 2 MB that would never be seen. async=false
+       keeps three.js ahead of journey.js, which is the only ordering that
+       matters (site.js guards on window.BancoJourney). -->
+  <script>
+  (function () {
+    if (window.matchMedia('(max-width: 820px)').matches) return;
+    ['https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js', './journey.js']
+      .forEach(function (src) {
+        var s = document.createElement('script');
+        s.src = src; s.async = false;
+        document.head.appendChild(s);
+      });
+  })();
+  </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
@@ -609,9 +626,19 @@ setTimeout(function(){if(!window.__bancoBooted){document.documentElement.classLi
   <script src="../site.js"></script>
   <script src="../upgrade.js"></script>
   <script src="../refine.js"></script>
-  <script>/* hero clip: some hosts serve mp4 without byte-range support, which stalls <video>; fall back to a blob */
-(function(){var v=document.querySelector('.vhero__bg');if(!v)return;var s=v.querySelector('source');if(!s)return;var url=s.src;
-setTimeout(function(){if(v.readyState>0)return;fetch(url).then(function(r){return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);v.load();var p=v.play();if(p&&p.catch)p.catch(function(){})}).catch(function(){})},1800);})();</script>
+  <script>/* Hero clip. Phones keep the poster frame — 2.7 MB of video plus continuous
+   decode is not worth it there, and the still reads the same. On desktop we
+   promote data-src, then fall back to a blob if the host serves the mp4 without
+   byte-range support, which otherwise stalls <video> indefinitely. */
+(function(){
+  var v=document.querySelector('.vhero__bg');if(!v)return;
+  var s=v.querySelector('source');if(!s)return;
+  var url=s.getAttribute('data-src');if(!url)return;
+  if(window.matchMedia('(max-width: 820px)').matches)return;
+  s.setAttribute('src',url);v.preload='auto';v.load();
+  var p0=v.play();if(p0&&p0.catch)p0.catch(function(){});
+  setTimeout(function(){if(v.readyState>0)return;fetch(url).then(function(r){return r.blob()}).then(function(b){v.src=URL.createObjectURL(b);v.load();var p=v.play();if(p&&p.catch)p.catch(function(){})}).catch(function(){})},1800);
+})();</script>
 
 
 </body></html>
