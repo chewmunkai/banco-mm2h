@@ -360,5 +360,8 @@
   "proof.val.4.v": "从第一次咨询到您落地的那一天，都是同一位顾问。",
   "ui.wa.aria": "通过 WhatsApp 与我们联系",
   "ui.wa.label": "WhatsApp 咨询",
-  "ui.cursor.whatsapp": "WhatsApp"
+  "ui.cursor.whatsapp": "WhatsApp",
+  "cta.button.call": "致电顾问",
+  "cta.button.wa": "WhatsApp 联系我们",
+  "ui.cursor.call": "致电"
 }

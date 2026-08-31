@@ -338,13 +338,14 @@ a:hover{color:inherit}
 /* ── floating WhatsApp ───────────────────────────────────────────────────────
    Sits under the custom cursor (z-index 95) and the scroll progress bar (90),
    above the fixed header (70). */
-.wa{position:fixed;right:clamp(16px,2.2vw,28px);bottom:clamp(16px,2.2vw,28px);z-index:80;
-  display:grid;place-items:center;width:56px;height:56px;border-radius:50%;
+.wa{position:fixed;right:clamp(18px,2.4vw,32px);bottom:clamp(18px,2.4vw,32px);z-index:80;
+  display:grid;place-items:center;width:72px;height:72px;border-radius:50%;
   background:#25D366;color:#FFFFFF;box-shadow:0 6px 22px rgba(14,24,18,0.28);
   transition:transform .25s var(--ease),box-shadow .25s var(--ease)}
 .wa:hover,.wa:focus-visible{transform:translateY(-2px) scale(1.04);box-shadow:0 10px 30px rgba(14,24,18,0.36)}
 .wa:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.wa svg{display:block}
+.wa svg{display:block;width:36px;height:36px}
+@media (max-width:700px){.wa svg{width:31px;height:31px}}
 /* label unfurls on hover; hidden from pointer-less/narrow screens */
 .wa__tip{position:absolute;right:calc(100% + 12px);white-space:nowrap;
   font-size:13px;font-weight:600;letter-spacing:0.01em;color:#FFFFFF;
@@ -352,5 +353,9 @@ a:hover{color:inherit}
   opacity:0;transform:translateX(6px);pointer-events:none;
   transition:opacity .25s var(--ease),transform .25s var(--ease)}
 .wa:hover .wa__tip,.wa:focus-visible .wa__tip{opacity:1;transform:translateX(0)}
-@media (max-width:700px){.wa{width:52px;height:52px}.wa__tip{display:none}}
+@media (max-width:700px){.wa{width:62px;height:62px}.wa__tip{display:none}}
 @media (prefers-reduced-motion:reduce){.wa,.wa__tip{transition:none}}
+
+/* WhatsApp CTA in the closing band — .btn__l already lays the glyph inline;
+   this only stops it shrinking when the row wraps. */
+.ctax__wa svg{flex:none}

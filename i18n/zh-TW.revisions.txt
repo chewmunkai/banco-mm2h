@@ -1235,3 +1235,20 @@ WhatsApp 諮詢
 
 [[ui.cursor.whatsapp]]
 WhatsApp
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Client revisions, round 2.
+#   · the footer's "Begin application" button is removed (footer.cta unused);
+#     the closing band directly above it now carries every action
+#   · the closing band gains two actions beside "Begin application": a call and
+#     a WhatsApp link. The number itself still shows in cta.phone beneath them.
+# ─────────────────────────────────────────────────────────────────────────────
+
+[[cta.button.call]]
+致電顧問
+
+[[cta.button.wa]]
+WhatsApp 聯絡我們
+
+[[ui.cursor.call]]
+致電

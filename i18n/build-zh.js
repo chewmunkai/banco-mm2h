@@ -282,6 +282,10 @@ T('.ctax__l .u-eyebrow', 'cta.eyebrow');
 H('.ctax__l h2', 'cta.h2');
 T('.ctax__l p', 'cta.lead');
 LEAD('.btn--gold .btn__l', 'cta.button');
+// Two further actions beside it: call, and WhatsApp. The WhatsApp label sits
+// after an inline glyph, so it replaces only the trailing text node.
+T('.ctax__actions .btn--ghost .btn__l', 'cta.button.call', 0);
+LEAD('.ctax__wa .btn__l', 'cta.button.wa');
 LEAD('.ctax__phone', 'cta.phone');               // keeps the svg + <b>number</b>
 
 // ─── footer ──────────────────────────────────────────────────────────────────
@@ -303,7 +307,8 @@ T('.wa__tip', 'ui.wa.label');
 
 // The design's expanded footer.
 T('.foot__blurb', 'footer.blurb');
-T('.foot__cta', 'footer.cta');
+// The footer's "Begin application" button was removed — the closing band above
+// it carries the actions now. footer.cta stays in the json, unused.
 // Column order follows the design: Programmes · Services · Company · Talk to us.
 // The phone number and email address are not translated (brief §7).
 const FOOTCOLS = [
@@ -335,7 +340,7 @@ const CURSOR = {
   Banking: 'ui.cursor.banking', Retirement: 'ui.cursor.retirement',
   Business: 'ui.cursor.business', Education: 'ui.cursor.education', Drag: 'ui.cursor.drag',
   Privacy: 'ui.cursor.privacy', Terms: 'ui.cursor.terms', Email: 'ui.cursor.email',
-  WhatsApp: 'ui.cursor.whatsapp',
+  WhatsApp: 'ui.cursor.whatsapp', Call: 'ui.cursor.call',
 };
 $('[data-cursor]').each((_, el) => {
   const k = CURSOR[$(el).attr('data-cursor')];
@@ -379,7 +384,11 @@ $('head').append(
 // ─── rebase relative paths (the page now lives one directory down) ───────────
 let out = $.html();
 out = out
-  .replace(/(\b(?:src|href|poster|data-img|data-icon)=")(?!https?:|#|\.\.\/|\/)\.?\/?(?=[a-z])/g, '$1../')
+  // Skip anything already absolute, anchored, or carrying a URI scheme. The
+  // exclusion is any "scheme:", not just http(s): mailto: and tel: are links,
+  // not paths, and prefixing them with ../ silently turns them into dead
+  // relative URLs. (mailto: was being mangled this way until 2026-08-31.)
+  .replace(/(\b(?:src|href|poster|data-img|data-icon)=")(?![a-z][a-z0-9+.-]*:|#|\.\.\/|\/)\.?\/?(?=[a-z])/g, '$1../')
   .replace(/(data-base=")(?!https?:|\.\.\/)\.?\/?/g, '$1../');
 // the switcher's own links were just rebased by the rule above — undo that
 out = out.replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="../index.html"');
