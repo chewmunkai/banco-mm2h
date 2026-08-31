@@ -18,14 +18,32 @@
 <link rel="alternate" hreflang="x-default" href="./index.html">
 <link rel="alternate" hreflang="zh-Hant-TW" href="../zh/application/index.html">
 <link rel="alternate" hreflang="zh-Hans-CN" href="../zh-cn/application/index.html">
+<link rel="canonical" href="https://bancomm2h.com/application/">
+
+<!-- Share preview. og:url and og:locale are rewritten per edition by
+     i18n/build-zh.js, so each language has its own card when the link is
+     pasted into WhatsApp, Facebook, LinkedIn or Telegram. Absolute URLs:
+     scrapers do not resolve relative ones. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="STF (Revenue) MM2H">
+<meta property="og:title" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
+<meta property="og:description" data-i18n="app.og.desc" data-i18n-attr="content" content="Five short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
+<meta property="og:url" content="https://bancomm2h.com/application/">
+<meta property="og:locale" content="en_MY">
+<meta property="og:image" content="https://bancomm2h.com/assets/og-application.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" data-i18n="app.og.title" data-i18n-attr="content" content="Begin your MM2H application">
+<meta name="twitter:description" data-i18n="app.og.desc" data-i18n-attr="content" content="Five short questions so we can match you to the right MM2H pathway. No obligation, and one advisor replies within a business day.">
+<meta name="twitter:image" content="https://bancomm2h.com/assets/og-application.jpg">
 </head>
 <body class="app">
 
-  <header class="app__bar">
-    <a class="app__brand" href="../index.html">
-      <img src="../assets/logo-mark.png" alt="Banco MM2H" width="34" height="34">
-      <span class="app__brandtxt"><b>BANCO</b><i data-i18n="nav.brand.sub">Advisory &amp; Consultancy</i></span>
-    </a>
+  <!-- Deliberately unbranded: this form is white-labelled, so the header carries
+       no lockup. The collaboration is credited in the footer instead. -->
+  <header class="app__bar app__bar--plain">
     <div class="langsw" role="group" aria-label="Select language">
       <span class="langsw__opt is-on" aria-current="true">English</span>
       <a class="langsw__opt" href="../zh/application/index.html" hreflang="zh-Hant-TW">繁體</a>
@@ -318,8 +336,11 @@
   </main>
 
   <footer class="app__foot">
-    <span data-i18n="footer.legal">© 2026 Banco Advisory &amp; Consultancy · MM2H relocation advisory</span>
-    <a href="mailto:hello@bancomm2h.my">hello@bancomm2h.my</a>
+    <p class="app__partner" data-i18n="app.foot.partner">STF (Revenue) MM2H in collaboration with Banco Advisory &amp; Consultancy</p>
+    <div class="app__footrow">
+      <span data-i18n="footer.legal">© 2026 Banco Advisory &amp; Consultancy · MM2H relocation advisory</span>
+      <a href="mailto:hello@bancomm2h.my">hello@bancomm2h.my</a>
+    </div>
   </footer>
 
   <!-- floating WhatsApp — same number as the marketing site -->

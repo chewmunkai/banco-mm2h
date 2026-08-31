@@ -13,9 +13,12 @@ const ROOT = path.join(__dirname, '..');
 //   node i18n/build-zh.js tw    → /zh/      traditional, Taiwan
 //   node i18n/build-zh.js cn    → /zh-cn/   simplified, mainland
 const EDITIONS = {
-  tw: { dir: 'zh',    lang: 'zh-Hant-TW', json: 'zh-TW.json' },
-  cn: { dir: 'zh-cn', lang: 'zh-Hans-CN', json: 'zh-CN.json' },
+  tw: { dir: 'zh',    lang: 'zh-Hant-TW', json: 'zh-TW.json', ogLocale: 'zh_TW' },
+  cn: { dir: 'zh-cn', lang: 'zh-Hans-CN', json: 'zh-CN.json', ogLocale: 'zh_CN' },
 };
+// Canonical origin, used to build the per-edition share URLs. Social scrapers
+// do not resolve relative og:url values, so these have to be absolute.
+const ORIGIN = 'https://bancomm2h.com';
 const TARGET = process.argv[2] || 'tw';
 const ED = EDITIONS[TARGET];
 if (!ED) { console.error('unknown edition: ' + process.argv[2]); process.exit(1); }
@@ -436,6 +439,12 @@ process.exitCode = miss.length ? 1 : 0;
   });
 
   $a('html').attr('lang', ED.lang);
+
+  // Give this edition its own share card: its own URL and locale, so pasting
+  // the Chinese link into WhatsApp previews in Chinese and points at /zh/.
+  $a('meta[property="og:url"]').attr('content', `${ORIGIN}/${ED.dir}/application/`);
+  $a('meta[property="og:locale"]').attr('content', ED.ogLocale);
+  $a('link[rel="canonical"]').attr('href', `${ORIGIN}/${ED.dir}/application/`);
 
   // Same three-way switcher as the marketing page, from one level deeper.
   const APPLANG = [

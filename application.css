@@ -388,3 +388,22 @@ label.subq__q { display: block; cursor: pointer; }
 .write__count b { font-weight: 600; }
 .write__count.is-near { color: #9A6B1F; }
 .write__count.is-full { color: var(--danger, #B23B2E); }
+
+/* ── white-labelled header ────────────────────────────────────────────────
+   The form carries no lockup, so the bar holds only the language switcher.
+   Pushed right rather than left so the page still reads as having a header. */
+.app__bar--plain { justify-content: flex-end; }
+
+/* ── footer ───────────────────────────────────────────────────────────────
+   The collaboration credit leads and gets its own line; the legal notice and
+   contact sit under it, keeping the row they had before. */
+.app__foot { display: grid; gap: 9px; }
+.app__partner {
+  margin: 0;
+  font-size: 13.5px; font-weight: 600; line-height: 1.5;
+  color: var(--text-strong);
+}
+.app__footrow {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 8px 16px; flex-wrap: wrap;
+}
