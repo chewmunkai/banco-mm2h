@@ -285,11 +285,14 @@ T('.ctax__l .u-eyebrow', 'cta.eyebrow');
 H('.ctax__l h2', 'cta.h2');
 T('.ctax__l p', 'cta.lead');
 LEAD('.btn--gold .btn__l', 'cta.button');
-// Two further actions beside it: call, and WhatsApp. The WhatsApp label sits
-// after an inline glyph, so it replaces only the trailing text node.
-T('.ctax__actions .btn--ghost .btn__l', 'cta.button.call', 0);
+// One further action beside it: WhatsApp. Its label sits after an inline glyph,
+// so LEAD replaces only the trailing text node.
+//
+// The "Talk to a consultant" button and the phone line under it were removed,
+// leaving just these two. cta.button.call and cta.phone stay in the json,
+// unused. Note the call button was matched positionally (first .btn--ghost),
+// which is now the WhatsApp one — mapping it here would relabel WhatsApp.
 LEAD('.ctax__wa .btn__l', 'cta.button.wa');
-LEAD('.ctax__phone', 'cta.phone');               // keeps the svg + <b>number</b>
 
 // ─── footer ──────────────────────────────────────────────────────────────────
 // v3 replaced the lockup image with a mark + live wordmark, so the old
