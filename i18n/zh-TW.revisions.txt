@@ -1324,7 +1324,7 @@ WhatsApp 聯絡我們
 # ─────────────────────────────────────────────────────────────────────────────
 
 [[app.foot.partner]]
-STF (Revenue) MM2H 與 Banco Advisory & Consultancy 合作提供
+PAKS (MM2H) Sdn. Bhd.（MOTAC 執照 MM2H881）與 Banco Advisory & Consultancy 合作提供
 
 [[app.og.title]]
 開始您的 MM2H 申請

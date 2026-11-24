@@ -337,6 +337,8 @@ const FOOTCOLS = [
   { head: 'footer.col.company', links: ['footer.co.pathways', 'footer.co.process', 'footer.co.life', 'footer.co.faq'] },
   { head: 'footer.col.talk', links: [null, null], spans: ['footer.talk.cities', 'footer.talk.hours'] },
 ];
+// English-only links (the guides are not translated yet).
+$('[data-en-only]').remove();
 $('.foot__col').each((i, el) => {
   const c = FOOTCOLS[i], col = $(el);
   if (!c) return untranslated.push(`footer column ${i + 1} has no mapping`);
