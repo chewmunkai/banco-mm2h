@@ -643,3 +643,15 @@ a:hover{color:inherit}
 @media (max-width: 820px) {
   .phz.no-pin.has-carousel .phz__carousel { margin-inline: 0; }
 }
+
+/* Licensed-partner strip under the Why Banco values: names PAKS, shows the
+   licence number and links to the official register so it can be checked. */
+.statx__partner{display:flex;align-items:center;gap:clamp(1.2rem,3vw,2.2rem);flex-wrap:wrap;
+  margin-top:clamp(2.4rem,5vh,3.6rem);padding-top:clamp(1.6rem,3vh,2.2rem);border-top:1px solid rgba(255,255,255,0.18)}
+.statx__plogo{background:#FFFFFF;border-radius:12px;padding:10px 16px;width:150px;height:auto;box-sizing:content-box;flex:none}
+.statx__pbody{flex:1 1 30ch;min-width:0}
+.statx__pname{font-family:var(--font-display);font-weight:900;letter-spacing:-0.02em;color:#FFFFFF;font-size:clamp(1.3rem,2.2vw,1.7rem);margin-top:8px}
+.statx__pfacts{color:#AECBB8;font-size:15px;line-height:1.6;margin:8px 0 0;max-width:68ch}
+.statx__pfacts b{color:#C3A24F;font-weight:700;letter-spacing:0.02em}
+.statx__pfacts .statx__verify{color:#C3A24F;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.statx__pfacts .statx__verify:hover{color:#FFFFFF}

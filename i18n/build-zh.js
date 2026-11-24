@@ -64,6 +64,16 @@ const ATTR = (sel, attr, key, i) => {
 // ─── document ────────────────────────────────────────────────────────────────
 $('html').attr('lang', ED.lang);
 T('title', 'meta.title');
+// Search and share metadata. Absolute URLs: search engines require them for
+// canonical/hreflang, and the path rebase below leaves https: URLs alone.
+const SITE = ORIGIN + '/';
+const PAGE_URL = SITE + ED.dir + '/';
+ATTR('meta[name="description"]', 'content', 'meta.description');
+ATTR('meta[property="og:title"]', 'content', 'meta.title');
+ATTR('meta[property="og:description"]', 'content', 'meta.description');
+$('link[rel="canonical"]').attr('href', PAGE_URL);
+$('meta[property="og:url"]').attr('content', PAGE_URL);
+$('meta[property="og:locale"]').attr('content', ED.ogLocale);
 
 // ─── nav (fixed header) ──────────────────────────────────────────────────────
 ['nav.hub', 'nav.pathways', 'nav.pricing', 'nav.property', 'nav.life', 'nav.faq']
@@ -268,6 +278,10 @@ $('.statx__val').each((i, el) => {
   v.find('.k').text(t[`proof.val.${n}.k`]);
   v.find('.v').text(t[`proof.val.${n}.v`]);
 });
+// Licensed-partner strip. Company name, licence number and register link are
+// facts, not copy: only the words around them translate.
+T('.statx__plabel', 'partner.label');
+H('.statx__pfacts', 'partner.facts');
 
 // ─── faq ─────────────────────────────────────────────────────────────────────
 T('.faqx__head .u-eyebrow', 'faq.eyebrow');
@@ -381,10 +395,10 @@ $('.vnav').append(switcher().replace('class="langsw"', 'class="langsw langsw--v"
 $('.jhero').append(switcher().replace('class="langsw"', 'class="langsw langsw--hero"'));
 
 $('head').append(
-  `\n<link rel="alternate" hreflang="en" href="../index.html">` +
-  `\n<link rel="alternate" hreflang="x-default" href="../index.html">` +
-  `\n<link rel="alternate" hreflang="zh-Hant-TW" href="../zh/index.html">` +
-  `\n<link rel="alternate" hreflang="zh-Hans-CN" href="../zh-cn/index.html">` +
+  `\n<link rel="alternate" hreflang="en" href="${SITE}">` +
+  `\n<link rel="alternate" hreflang="x-default" href="${SITE}">` +
+  `\n<link rel="alternate" hreflang="zh-Hant-TW" href="${SITE}zh/">` +
+  `\n<link rel="alternate" hreflang="zh-Hans-CN" href="${SITE}zh-cn/">` +
   `\n<link rel="stylesheet" href="../i18n/lang.css">\n`);
 
 // ─── rebase relative paths (the page now lives one directory down) ───────────
@@ -398,12 +412,6 @@ out = out
   .replace(/(data-base=")(?!https?:|\.\.\/)\.?\/?/g, '$1../');
 // the switcher's own links were just rebased by the rule above — undo that
 out = out.replace(/href="\.\.\/\.\.\/index\.html"/g, 'href="../index.html"');
-// The zh self-referencing alternate must point at THIS page. The rebase above
-// rewrote its "./index.html" to "../index.html", i.e. at the English page —
-// which tells search engines the Chinese URL's zh-TW version is the English one.
-out = out.replace(
-  new RegExp('(<link rel="alternate" hreflang="' + ED.lang + '" href=")[^"]*(")'),
-  '$1./index.html$2');
 // Every CTA must land on the Chinese form, not the English one. These are
 // root-relative so the path rebase above deliberately leaves them alone.
 out = out.replace(/href="\/application\/\?src=/g, 'href="/' + ED.dir + '/application/?src=');

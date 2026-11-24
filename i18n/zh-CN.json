@@ -1,5 +1,5 @@
 {
-  "meta.title": "Banco MM2H · 在马来西亚的第二个家",
+  "meta.title": "MM2H 马来西亚第二家园签证与移居 | Banco MM2H",
   "nav.hub": "一站式服务",
   "nav.pathways": "移居路径",
   "nav.pricing": "费用",
@@ -355,7 +355,7 @@
   "proof.val.2.k": "以官方规定为准",
   "proof.val.2.v": "申请条件由马来西亚政府订定，并会不时修订。我们会确认适用于您的规定，并指引您查阅官方来源。",
   "proof.val.3.k": "由持牌合作伙伴递交",
-  "proof.val.3.v": "您的申请由我们的持牌 MM2H 合作伙伴递交与处理。我们负责统筹，并逐份查核文件。",
+  "proof.val.3.v": "您的申请由我们的 MOTAC 持牌 MM2H 合作伙伴 PAKS 递交与办理。我们负责与他们协调，并逐一检查每份文件。",
   "proof.val.4.k": "全程同一位顾问",
   "proof.val.4.v": "从第一次咨询到您落地的那一天，都是同一位顾问。",
   "ui.wa.aria": "通过 WhatsApp 与我们联系",
@@ -379,5 +379,8 @@
   "app.qp.a4": "顶级签证（PVIP）",
   "app.qp.a4d": "为高收入者而设的长期签证，无需定期存款。",
   "app.qp.a5": "我还不确定",
-  "app.qp.a5d": "告诉我们您的状况，由我们建议合适的等级。"
+  "app.qp.a5d": "告诉我们您的状况，由我们建议合适的等级。",
+  "meta.description": "以 MM2H 长期居留签证移居马来西亚。Banco 一手包办整个移居流程：通过 MOTAC 持牌合作伙伴递交申请，并协助房产、学校与银行，由一位专属顾问全程负责。",
+  "partner.label": "我们的持牌 MM2H 合作伙伴",
+  "partner.facts": "MOTAC MM2H 执照 <b>MM2H881</b>，有效期至 2028 年 12 月。办公室位于吉隆坡武吉加里尔。<a class=\"statx__verify\" href=\"https://www.mm2h.gov.my/agencies\" target=\"_blank\" rel=\"noopener\">至官方名册查证&nbsp;↗</a>"
 }

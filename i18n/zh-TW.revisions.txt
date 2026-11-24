@@ -1388,3 +1388,26 @@ MM2H 白金級
 
 [[app.qp.a5d]]
 告訴我們您的狀況，由我們建議合適的等級。
+
+────────────────────────────────────────────────────────────────────────────
+REVISED + NEW · name the licensed partner (2026-11-24)
+────────────────────────────────────────────────────────────────────────────
+PAKS (MM2H) Sdn. Bhd., licence MM2H881, verified on mm2h.gov.my/agencies
+(valid to 17/12/2028); PAKS approved being named. The search title is
+rewritten around the MM2H keyword. Company name, licence number and the
+register link stay as written in every edition.
+
+[[meta.title]]
+MM2H 馬來西亞第二家園簽證與移居 | Banco MM2H
+
+[[meta.description]]
+以 MM2H 長期居留簽證移居馬來西亞。Banco 一手包辦整個移居流程：透過 MOTAC 持牌合作夥伴遞交申請，並協助房產、學校與銀行，由一位專屬顧問全程負責。
+
+[[proof.val.3.v]]
+您的申請由我們的 MOTAC 持牌 MM2H 合作夥伴 PAKS 遞交與辦理。我們負責與他們協調，並逐一檢查每份文件。
+
+[[partner.label]]
+我們的持牌 MM2H 合作夥伴
+
+[[partner.facts]]
+MOTAC MM2H 執照 <b>MM2H881</b>，有效期至 2028 年 12 月。辦公室位於吉隆坡武吉加里爾。<a class="statx__verify" href="https://www.mm2h.gov.my/agencies" target="_blank" rel="noopener">至官方名冊查證&nbsp;↗</a>

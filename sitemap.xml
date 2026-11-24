@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://bancomm2h.com/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bancomm2h.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://bancomm2h.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-CN" href="https://bancomm2h.com/zh-cn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bancomm2h.com/"/>
+  </url>
+  <url>
+    <loc>https://bancomm2h.com/zh/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bancomm2h.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://bancomm2h.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-CN" href="https://bancomm2h.com/zh-cn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bancomm2h.com/"/>
+  </url>
+  <url>
+    <loc>https://bancomm2h.com/zh-cn/</loc>
+    <lastmod>2026-11-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://bancomm2h.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant-TW" href="https://bancomm2h.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans-CN" href="https://bancomm2h.com/zh-cn/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://bancomm2h.com/"/>
+  </url>
+</urlset>
