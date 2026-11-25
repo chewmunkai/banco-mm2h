@@ -29,6 +29,10 @@ const src = fs.readFileSync(path.join(ROOT, 'index.html'), 'utf8');
 // decodeEntities:false keeps &amp; / &nbsp; byte-identical through the round trip.
 const $ = cheerio.load(src, { decodeEntities: false });
 
+// English-only links (the guides are not translated yet). Removed first, so no
+// later step tries to translate or position-map them.
+$('[data-en-only]').remove();
+
 const miss = [];
 // Strings the design added that have no translation yet. These stay English on
 // the zh page — recorded and reported rather than silently shipped.
@@ -76,8 +80,7 @@ $('meta[property="og:url"]').attr('content', PAGE_URL);
 $('meta[property="og:locale"]').attr('content', ED.ogLocale);
 
 // ─── nav (fixed header) ──────────────────────────────────────────────────────
-['nav.hub', 'nav.pathways', 'nav.pricing', 'nav.property', 'nav.life', 'nav.faq']
-  .forEach((k, i) => T('.nav__links a', k, i));
+// Nav labels are set by href further down (NAVKEY), not by position.
 LEAD('.nav__right .btn--primary .btn__l', 'nav.cta');
 ATTR('.nav__burger', 'aria-label', 'nav.burger.aria');
 $('.brand__sub').each((_, el) => $(el).text(t['nav.brand.sub']));
@@ -337,8 +340,6 @@ const FOOTCOLS = [
   { head: 'footer.col.company', links: ['footer.co.pathways', 'footer.co.process', 'footer.co.life', 'footer.co.faq'] },
   { head: 'footer.col.talk', links: [null, null], spans: ['footer.talk.cities', 'footer.talk.hours'] },
 ];
-// English-only links (the guides are not translated yet).
-$('[data-en-only]').remove();
 $('.foot__col').each((i, el) => {
   const c = FOOTCOLS[i], col = $(el);
   if (!c) return untranslated.push(`footer column ${i + 1} has no mapping`);

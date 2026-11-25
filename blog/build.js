@@ -117,8 +117,14 @@ const bar = `
   <div class="bwrap bbar__in">
     <a class="bbar__brand" href="/" aria-label="Banco MM2H home"><img src="/assets/logo-full.svg" alt="Banco MM2H" width="148" height="32"></a>
     <nav class="bbar__nav" aria-label="Main">
-      <a href="/blog/">Guides</a>
-      <a href="/#pricing">Tiers</a>
+      <div class="bbar__links">
+        <a href="/#hub">Services</a>
+        <a href="/#pathways">Pathways</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#property">Property</a>
+        <a href="/blog/" aria-current="page">Guides</a>
+        <a href="/#faq">FAQ</a>
+      </div>
       <a class="bbar__cta" href="/application/?src=blog-bar">Talk to an advisor</a>
     </nav>
   </div>
@@ -139,7 +145,19 @@ const ORG = { '@type': 'Organization', '@id': `${ORIGIN}/#org`, name: 'Banco MM2
 
 /* ---- article page ---------------------------------------------------- */
 
-function renderPost({ meta, body }) {
+function renderPost({ meta, body }, posts = []) {
+  // Related guides: the slugs listed in meta.related, else the newest others.
+  // Internal links between guides are how search engines find and rank them.
+  const others = posts.filter((p) => p.meta.slug !== meta.slug);
+  const related = (meta.related || []).map((s) => others.find((p) => p.meta.slug === s)).filter(Boolean);
+  for (const p of others) { if (related.length >= 3) break; if (!related.includes(p)) related.push(p); }
+  const relatedHtml = related.length ? `
+        <section class="related" aria-labelledby="related-h">
+          <h2 id="related-h">Related guides</h2>
+          <ul>${related.map(({ meta: m }) => `
+            <li><a href="/blog/${m.slug}/">${m.h1}</a><span>${esc(m.description)}</span></li>`).join('')}
+          </ul>
+        </section>` : '';
   const url = `${ORIGIN}/blog/${meta.slug}/`;
   const { html, toc, faq, minutes } = enrich(body);
   const image = ORIGIN + (meta.og || meta.hero.src);
@@ -220,6 +238,7 @@ ${bar}
 
       <div class="prose">
 ${html}
+${relatedHtml}
         <section class="sources" id="sources">
           <h2>Sources</h2>
           <p>Every rule and figure above comes from these documents. Where they disagree, we say so in the article.</p>
@@ -333,7 +352,7 @@ const posts = fs.readdirSync(SRC).filter((f) => f.endsWith('.html') && !f.starts
 for (const p of posts) {
   const dir = path.join(__dirname, p.meta.slug);
   fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, 'index.html'), renderPost(p));
+  fs.writeFileSync(path.join(dir, 'index.html'), renderPost(p, posts));
   console.log(`✓ /blog/${p.meta.slug}/`);
 }
 fs.writeFileSync(path.join(__dirname, 'index.html'), renderIndex(posts));
